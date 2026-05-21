@@ -278,6 +278,116 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
 .qty-btn:hover{transform:scale(1.3);}
 .qty-num{color:var(--white);font-weight:700;font-size:.85rem;min-width:15px;text-align:center;}
 
+/* COMPLETE MENU LISTS */
+.menu-list-container {
+  margin-top: 3rem;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 16px;
+}
+.menu-subcategory-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin: 2.5rem 0 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.menu-subcategory-title:first-of-type {
+  margin-top: 0;
+}
+.menu-subcategory-title::after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(212, 175, 55, 0.25), transparent);
+}
+.menu-list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 3rem;
+}
+@media (max-width: 900px) {
+  .menu-list-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .menu-list-container {
+    padding: 1.5rem;
+  }
+}
+.menu-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.06);
+}
+.menu-list-item-details {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  min-width: 0;
+}
+.menu-list-item-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.menu-list-item-dots {
+  flex-grow: 1;
+  border-bottom: 1px dotted rgba(212, 175, 55, 0.15);
+  margin: 0 10px;
+  align-self: flex-end;
+  margin-bottom: 5px;
+}
+.menu-list-item-price {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--gold);
+  font-size: 1rem;
+  margin-right: 1.2rem;
+  white-space: nowrap;
+}
+.menu-list-item-action {
+  display: flex;
+  align-items: center;
+  min-width: 80px;
+  justify-content: flex-end;
+}
+.add-btn-small {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.add-btn-small:hover {
+  background: linear-gradient(135deg, var(--gold), var(--saffron));
+  color: var(--black);
+  border-color: transparent;
+}
+.menu-list-item .qty-controls {
+  padding: 0.2rem 0.5rem;
+  gap: 0.5rem;
+}
+.menu-list-item .qty-btn {
+  font-size: 0.9rem;
+}
+.menu-list-item .qty-num {
+  font-size: 0.75rem;
+  min-width: 12px;
+}
+
 /* CART DRAWER */
 .cart-drawer{position:fixed;top:0;right:-420px;width:100%;max-width:400px;height:100vh;background:var(--black-soft);z-index:2000;box-shadow:-10px 0 40px rgba(0,0,0,.8);transition:right .5s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;border-left:1px solid rgba(212,175,55,.15);}
 .cart-drawer.open{right:0;}
@@ -549,6 +659,7 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
     <button class="menu-tab" onclick="switchTab('tawa-sandwich')">🥪 Tawa & Sandwich</button>
     <button class="menu-tab" onclick="switchTab('beverages')">🍹 Beverages</button>
     <button class="menu-tab" onclick="switchTab('desserts')">🍨 Desserts</button>
+    <button class="menu-tab" onclick="switchTab('chats')">🌶️ Chats</button>
   </div>
 
   <!-- CURRIES -->
@@ -584,7 +695,11 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
           <div class="food-footer">
             <span class="food-price">₹220</span>
             <button class="add-btn" onclick="addToCart(this,'Veg Kolhapuri')">+ Add</button>
-            <div class="qty-controls" data-item="Veg Kolhapuri"><button class="qty-btn" onclick="updateQty('Veg Kolhapuri', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Veg Kolhapuri', 1)">+</button></div>
+            <div class="qty-controls" data-item="Veg Kolhapuri">
+              <button class="qty-btn" onclick="updateQty('Veg Kolhapuri', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Kolhapuri', 1)">+</button>
+            </div>
           </div>
         </div>
       </div>
@@ -599,7 +714,11 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
           <div class="food-footer">
             <span class="food-price">₹180</span>
             <button class="add-btn" onclick="addToCart(this,'Dal Makhani')">+ Add</button>
-            <div class="qty-controls" data-item="Dal Makhani"><button class="qty-btn" onclick="updateQty('Dal Makhani', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Dal Makhani', 1)">+</button></div>
+            <div class="qty-controls" data-item="Dal Makhani">
+              <button class="qty-btn" onclick="updateQty('Dal Makhani', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Dal Makhani', 1)">+</button>
+            </div>
           </div>
         </div>
       </div>
@@ -614,14 +733,476 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
           <div class="food-footer">
             <span class="food-price">₹230</span>
             <button class="add-btn" onclick="addToCart(this,'Malai Koftha')">+ Add</button>
-            <div class="qty-controls" data-item="Malai Koftha"><button class="qty-btn" onclick="updateQty('Malai Koftha', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Malai Koftha', 1)">+</button></div>
+            <div class="qty-controls" data-item="Malai Koftha">
+              <button class="qty-btn" onclick="updateQty('Malai Koftha', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Malai Koftha', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-list-container">
+      <div class="menu-subcategory-title">Classic Gravies & Specialties</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Channa Masala</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹180</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Channa Masala')">+ Add</button>
+            <div class="qty-controls" data-item="Channa Masala">
+              <button class="qty-btn" onclick="updateQty('Channa Masala', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Channa Masala', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Aloo Gobi Masala</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹220</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Aloo Gobi Masala')">+ Add</button>
+            <div class="qty-controls" data-item="Aloo Gobi Masala">
+              <button class="qty-btn" onclick="updateQty('Aloo Gobi Masala', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Aloo Gobi Masala', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Baby Corn Masala</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Baby Corn Masala')">+ Add</button>
+            <div class="qty-controls" data-item="Baby Corn Masala">
+              <button class="qty-btn" onclick="updateQty('Baby Corn Masala', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Baby Corn Masala', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Gobi Masala</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Gobi Masala')">+ Add</button>
+            <div class="qty-controls" data-item="Gobi Masala">
+              <button class="qty-btn" onclick="updateQty('Gobi Masala', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Gobi Masala', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Baby Corn Green Masala</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Baby Corn Green Masala')">+ Add</button>
+            <div class="qty-controls" data-item="Baby Corn Green Masala">
+              <button class="qty-btn" onclick="updateQty('Baby Corn Green Masala', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Baby Corn Green Masala', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Green Peas Masala</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Green Peas Masala')">+ Add</button>
+            <div class="qty-controls" data-item="Green Peas Masala">
+              <button class="qty-btn" onclick="updateQty('Green Peas Masala', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Green Peas Masala', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Plain Palak Masala</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Plain Palak Masala')">+ Add</button>
+            <div class="qty-controls" data-item="Plain Palak Masala">
+              <button class="qty-btn" onclick="updateQty('Plain Palak Masala', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Plain Palak Masala', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Aloo Palak</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹200</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Aloo Palak')">+ Add</button>
+            <div class="qty-controls" data-item="Aloo Palak">
+              <button class="qty-btn" onclick="updateQty('Aloo Palak', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Aloo Palak', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Palak</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Palak')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Palak">
+              <button class="qty-btn" onclick="updateQty('Paneer Palak', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Palak', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Capsicum Masala</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Capsicum Masala')">+ Add</button>
+            <div class="qty-controls" data-item="Capsicum Masala">
+              <button class="qty-btn" onclick="updateQty('Capsicum Masala', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Capsicum Masala', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Mix Veg Curry</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Mix Veg Curry')">+ Add</button>
+            <div class="qty-controls" data-item="Mix Veg Curry">
+              <button class="qty-btn" onclick="updateQty('Mix Veg Curry', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mix Veg Curry', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Hariyali</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹220</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Hariyali')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Hariyali">
+              <button class="qty-btn" onclick="updateQty('Veg Hariyali', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Hariyali', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Hyderabadi</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹220</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Hyderabadi')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Hyderabadi">
+              <button class="qty-btn" onclick="updateQty('Veg Hyderabadi', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Hyderabadi', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Do-Pyaza</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Do-Pyaza')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Do-Pyaza">
+              <button class="qty-btn" onclick="updateQty('Veg Do-Pyaza', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Do-Pyaza', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Kurma</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Kurma')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Kurma">
+              <button class="qty-btn" onclick="updateQty('Veg Kurma', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Kurma', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Handi</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Handi')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Handi">
+              <button class="qty-btn" onclick="updateQty('Veg Handi', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Handi', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Kadai Mushroom</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹220</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Kadai Mushroom')">+ Add</button>
+            <div class="qty-controls" data-item="Kadai Mushroom">
+              <button class="qty-btn" onclick="updateQty('Kadai Mushroom', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Kadai Mushroom', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Mushroom Masala</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Mushroom Masala')">+ Add</button>
+            <div class="qty-controls" data-item="Mushroom Masala">
+              <button class="qty-btn" onclick="updateQty('Mushroom Masala', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mushroom Masala', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Burji</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Burji')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Burji">
+              <button class="qty-btn" onclick="updateQty('Paneer Burji', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Burji', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Kurma</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹250</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Kurma')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Kurma">
+              <button class="qty-btn" onclick="updateQty('Paneer Kurma', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Kurma', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Kadai</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹240</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Kadai')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Kadai">
+              <button class="qty-btn" onclick="updateQty('Paneer Kadai', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Kadai', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Kaju Masala</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹250</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Kaju Masala')">+ Add</button>
+            <div class="qty-controls" data-item="Kaju Masala">
+              <button class="qty-btn" onclick="updateQty('Kaju Masala', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Kaju Masala', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Koftha</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹250</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Koftha')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Koftha">
+              <button class="qty-btn" onclick="updateQty('Veg Koftha', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Koftha', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Koftha</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹240</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Koftha')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Koftha">
+              <button class="qty-btn" onclick="updateQty('Paneer Koftha', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Koftha', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Tikka Masala</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹260</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Tikka Masala')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Tikka Masala">
+              <button class="qty-btn" onclick="updateQty('Paneer Tikka Masala', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Tikka Masala', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-subcategory-title">Kolhapuri & Regional Specials</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Kolhapuri</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹220</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Kolhapuri')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Kolhapuri">
+              <button class="qty-btn" onclick="updateQty('Paneer Kolhapuri', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Kolhapuri', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">BabyCorn Kolhapuri</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹220</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'BabyCorn Kolhapuri')">+ Add</button>
+            <div class="qty-controls" data-item="BabyCorn Kolhapuri">
+              <button class="qty-btn" onclick="updateQty('BabyCorn Kolhapuri', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('BabyCorn Kolhapuri', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Dal Kolhapuri</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹220</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Dal Kolhapuri')">+ Add</button>
+            <div class="qty-controls" data-item="Dal Kolhapuri">
+              <button class="qty-btn" onclick="updateQty('Dal Kolhapuri', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Dal Kolhapuri', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Gobi Kolhapuri</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹220</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Gobi Kolhapuri')">+ Add</button>
+            <div class="qty-controls" data-item="Gobi Kolhapuri">
+              <button class="qty-btn" onclick="updateQty('Gobi Kolhapuri', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Gobi Kolhapuri', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Hyderabad</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹230</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Hyderabad')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Hyderabad">
+              <button class="qty-btn" onclick="updateQty('Paneer Hyderabad', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Hyderabad', 1)">+</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- RICE & NOODLES -->
+  <!-- RICE-NOODLES -->
   <div class="menu-panel" id="tab-rice-noodles">
     <div class="menu-grid">
       <div class="food-card">
@@ -632,7 +1213,15 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">Schezwan Fried Rice</div>
           <div class="food-desc">Spicy wok-tossed rice with vegetables in Schezwan sauce</div>
-          <div class="food-footer"><span class="food-price">₹170</span><button class="add-btn" onclick="addToCart(this,'Schezwan Fried Rice')">+ Add</button><div class="qty-controls" data-item="Schezwan Fried Rice"><button class="qty-btn" onclick="updateQty('Schezwan Fried Rice', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Schezwan Fried Rice', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹170</span>
+            <button class="add-btn" onclick="addToCart(this,'Schezwan Fried Rice')">+ Add</button>
+            <div class="qty-controls" data-item="Schezwan Fried Rice">
+              <button class="qty-btn" onclick="updateQty('Schezwan Fried Rice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Schezwan Fried Rice', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
@@ -643,7 +1232,15 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">Veg Fried Rice</div>
           <div class="food-desc">Classic Indo-Chinese style wok-fried rice with colorful vegetables</div>
-          <div class="food-footer"><span class="food-price">₹150</span><button class="add-btn" onclick="addToCart(this,'Veg Fried Rice')">+ Add</button><div class="qty-controls" data-item="Veg Fried Rice"><button class="qty-btn" onclick="updateQty('Veg Fried Rice', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Veg Fried Rice', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹150</span>
+            <button class="add-btn" onclick="addToCart(this,'Veg Fried Rice')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Fried Rice">
+              <button class="qty-btn" onclick="updateQty('Veg Fried Rice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Fried Rice', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
@@ -654,7 +1251,15 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">Hakka Noodles</div>
           <div class="food-desc">Wok-tossed soft noodles with crunchy vegetables & soy sauce</div>
-          <div class="food-footer"><span class="food-price">₹180</span><button class="add-btn" onclick="addToCart(this,'Hakka Noodles')">+ Add</button><div class="qty-controls" data-item="Hakka Noodles"><button class="qty-btn" onclick="updateQty('Hakka Noodles', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Hakka Noodles', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹180</span>
+            <button class="add-btn" onclick="addToCart(this,'Hakka Noodles')">+ Add</button>
+            <div class="qty-controls" data-item="Hakka Noodles">
+              <button class="qty-btn" onclick="updateQty('Hakka Noodles', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Hakka Noodles', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
@@ -665,24 +1270,213 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">Mushroom Fried Rice</div>
           <div class="food-desc">Aromatic fried rice loaded with fresh mushrooms</div>
-          <div class="food-footer"><span class="food-price">₹160</span><button class="add-btn" onclick="addToCart(this,'Mushroom Fried Rice')">+ Add</button><div class="qty-controls" data-item="Mushroom Fried Rice"><button class="qty-btn" onclick="updateQty('Mushroom Fried Rice', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Mushroom Fried Rice', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹160</span>
+            <button class="add-btn" onclick="addToCart(this,'Mushroom Fried Rice')">+ Add</button>
+            <div class="qty-controls" data-item="Mushroom Fried Rice">
+              <button class="qty-btn" onclick="updateQty('Mushroom Fried Rice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mushroom Fried Rice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-list-container">
+      <div class="menu-subcategory-title">Chinese Special Fried Rice</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Fried Rice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Fried Rice')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Fried Rice">
+              <button class="qty-btn" onclick="updateQty('Paneer Fried Rice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Fried Rice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Combination Fried Rice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Combination Fried Rice')">+ Add</button>
+            <div class="qty-controls" data-item="Combination Fried Rice">
+              <button class="qty-btn" onclick="updateQty('Combination Fried Rice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Combination Fried Rice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Ginger Garlic Fried Rice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Ginger Garlic Fried Rice')">+ Add</button>
+            <div class="qty-controls" data-item="Ginger Garlic Fried Rice">
+              <button class="qty-btn" onclick="updateQty('Ginger Garlic Fried Rice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Ginger Garlic Fried Rice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Baby Corn Fried Rice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Baby Corn Fried Rice')">+ Add</button>
+            <div class="qty-controls" data-item="Baby Corn Fried Rice">
+              <button class="qty-btn" onclick="updateQty('Baby Corn Fried Rice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Baby Corn Fried Rice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-subcategory-title">Chinese Specials (Noodles)</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Noodles</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹160</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Noodles')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Noodles">
+              <button class="qty-btn" onclick="updateQty('Veg Noodles', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Noodles', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Schezwan Noodles</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Schezwan Noodles')">+ Add</button>
+            <div class="qty-controls" data-item="Schezwan Noodles">
+              <button class="qty-btn" onclick="updateQty('Schezwan Noodles', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Schezwan Noodles', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Mushroom Noodles</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹180</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Mushroom Noodles')">+ Add</button>
+            <div class="qty-controls" data-item="Mushroom Noodles">
+              <button class="qty-btn" onclick="updateQty('Mushroom Noodles', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mushroom Noodles', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Noodles</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹180</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Noodles')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Noodles">
+              <button class="qty-btn" onclick="updateQty('Paneer Noodles', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Noodles', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Singapore Noodles</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Singapore Noodles')">+ Add</button>
+            <div class="qty-controls" data-item="Singapore Noodles">
+              <button class="qty-btn" onclick="updateQty('Singapore Noodles', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Singapore Noodles', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Chow Mein Noodles</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹180</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Chow Mein Noodles')">+ Add</button>
+            <div class="qty-controls" data-item="Chow Mein Noodles">
+              <button class="qty-btn" onclick="updateQty('Chow Mein Noodles', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Chow Mein Noodles', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Tripple Noodles</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹190</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Tripple Noodles')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Tripple Noodles">
+              <button class="qty-btn" onclick="updateQty('Veg Tripple Noodles', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Tripple Noodles', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- BIRYANI & MEALS -->
+  <!-- BIRYANI-MEALS -->
   <div class="menu-panel" id="tab-biryani-meals">
     <div class="menu-grid">
       <div class="food-card">
         <div class="food-card-img">
-          <img src="biryani_premium_1779043630915.png" alt="Veg Biryani">
+          <img src="biryani_premium_1779043630915.png" alt="Hyderabadi Veg Biryani">
           <div class="veg-badge"><div class="veg-dot"></div></div>
         </div>
         <div class="food-card-body">
           <div class="food-name">Hyderabadi Veg Biryani</div>
           <div class="food-desc">Fragrant basmati rice with seasonal vegetables & rich whole spices</div>
-          <div class="food-footer"><span class="food-price">₹170</span><button class="add-btn" onclick="addToCart(this,'Hyderabadi Veg Biryani')">+ Add</button><div class="qty-controls" data-item="Hyderabadi Veg Biryani"><button class="qty-btn" onclick="updateQty('Hyderabadi Veg Biryani', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Hyderabadi Veg Biryani', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹170</span>
+            <button class="add-btn" onclick="addToCart(this,'Hyderabadi Veg Biryani')">+ Add</button>
+            <div class="qty-controls" data-item="Hyderabadi Veg Biryani">
+              <button class="qty-btn" onclick="updateQty('Hyderabadi Veg Biryani', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Hyderabadi Veg Biryani', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
@@ -693,7 +1487,15 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">North Indian Meals</div>
           <div class="food-desc">Authentic North Indian Thali with Roti, Dal, Sabzi, Rice & Sweet</div>
-          <div class="food-footer"><span class="food-price">₹160</span><button class="add-btn" onclick="addToCart(this,'North Indian Meals')">+ Add</button><div class="qty-controls" data-item="North Indian Meals"><button class="qty-btn" onclick="updateQty('North Indian Meals', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('North Indian Meals', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹160</span>
+            <button class="add-btn" onclick="addToCart(this,'North Indian Meals')">+ Add</button>
+            <div class="qty-controls" data-item="North Indian Meals">
+              <button class="qty-btn" onclick="updateQty('North Indian Meals', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('North Indian Meals', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
@@ -704,7 +1506,15 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">South Indian Meals</div>
           <div class="food-desc">Traditional banana leaf thali with Sambar, Rasam, Rice & Poriyal</div>
-          <div class="food-footer"><span class="food-price">₹120</span><button class="add-btn" onclick="addToCart(this,'South Indian Meals')">+ Add</button><div class="qty-controls" data-item="South Indian Meals"><button class="qty-btn" onclick="updateQty('South Indian Meals', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('South Indian Meals', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹120</span>
+            <button class="add-btn" onclick="addToCart(this,'South Indian Meals')">+ Add</button>
+            <div class="qty-controls" data-item="South Indian Meals">
+              <button class="qty-btn" onclick="updateQty('South Indian Meals', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('South Indian Meals', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
@@ -715,13 +1525,575 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">Paneer Biryani</div>
           <div class="food-desc">Aromatic Dum Biryani with marinated paneer cubes</div>
-          <div class="food-footer"><span class="food-price">₹180</span><button class="add-btn" onclick="addToCart(this,'Paneer Biryani')">+ Add</button><div class="qty-controls" data-item="Paneer Biryani"><button class="qty-btn" onclick="updateQty('Paneer Biryani', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Paneer Biryani', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹180</span>
+            <button class="add-btn" onclick="addToCart(this,'Paneer Biryani')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Biryani">
+              <button class="qty-btn" onclick="updateQty('Paneer Biryani', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Biryani', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-list-container">
+      <div class="menu-subcategory-title">Thalis & Meals</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">South Indian Meals</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹120</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'South Indian Meals')">+ Add</button>
+            <div class="qty-controls" data-item="South Indian Meals">
+              <button class="qty-btn" onclick="updateQty('South Indian Meals', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('South Indian Meals', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">North Indian Meals</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹160</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'North Indian Meals')">+ Add</button>
+            <div class="qty-controls" data-item="North Indian Meals">
+              <button class="qty-btn" onclick="updateQty('North Indian Meals', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('North Indian Meals', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">North Special Delux Meals</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹250</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'North Special Delux Meals')">+ Add</button>
+            <div class="qty-controls" data-item="North Special Delux Meals">
+              <button class="qty-btn" onclick="updateQty('North Special Delux Meals', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('North Special Delux Meals', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">South Special Delux Meals</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'South Special Delux Meals')">+ Add</button>
+            <div class="qty-controls" data-item="South Special Delux Meals">
+              <button class="qty-btn" onclick="updateQty('South Special Delux Meals', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('South Special Delux Meals', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Mudde Meals</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹110</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Mudde Meals')">+ Add</button>
+            <div class="qty-controls" data-item="Mudde Meals">
+              <button class="qty-btn" onclick="updateQty('Mudde Meals', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mudde Meals', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-subcategory-title">Combos</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">North Biriyani Combo</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'North Biriyani Combo')">+ Add</button>
+            <div class="qty-controls" data-item="North Biriyani Combo">
+              <button class="qty-btn" onclick="updateQty('North Biriyani Combo', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('North Biriyani Combo', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Chinese Combo</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹200</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Chinese Combo')">+ Add</button>
+            <div class="qty-controls" data-item="Chinese Combo">
+              <button class="qty-btn" onclick="updateQty('Chinese Combo', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Chinese Combo', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Fried Rice Combo</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹200</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Fried Rice Combo')">+ Add</button>
+            <div class="qty-controls" data-item="Fried Rice Combo">
+              <button class="qty-btn" onclick="updateQty('Fried Rice Combo', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Fried Rice Combo', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Hyderabad Biriyani Combo</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹230</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Hyderabad Biriyani Combo')">+ Add</button>
+            <div class="qty-controls" data-item="Hyderabad Biriyani Combo">
+              <button class="qty-btn" onclick="updateQty('Hyderabad Biriyani Combo', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Hyderabad Biriyani Combo', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Mushroom Kebab Biriyani Combo</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Mushroom Kebab Biriyani Combo')">+ Add</button>
+            <div class="qty-controls" data-item="Mushroom Kebab Biriyani Combo">
+              <button class="qty-btn" onclick="updateQty('Mushroom Kebab Biriyani Combo', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mushroom Kebab Biriyani Combo', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Kebab Biriyani Combo</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹210</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Kebab Biriyani Combo')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Kebab Biriyani Combo">
+              <button class="qty-btn" onclick="updateQty('Paneer Kebab Biriyani Combo', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Kebab Biriyani Combo', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Mushroom Kebab Fried Rice Combo</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹200</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Mushroom Kebab Fried Rice Combo')">+ Add</button>
+            <div class="qty-controls" data-item="Mushroom Kebab Fried Rice Combo">
+              <button class="qty-btn" onclick="updateQty('Mushroom Kebab Fried Rice Combo', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mushroom Kebab Fried Rice Combo', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Kebab Fried Rice Combo</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹200</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Kebab Fried Rice Combo')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Kebab Fried Rice Combo">
+              <button class="qty-btn" onclick="updateQty('Paneer Kebab Fried Rice Combo', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Kebab Fried Rice Combo', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Ghee Rice Kebab Combo</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹230</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Ghee Rice Kebab Combo')">+ Add</button>
+            <div class="qty-controls" data-item="Ghee Rice Kebab Combo">
+              <button class="qty-btn" onclick="updateQty('Ghee Rice Kebab Combo', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Ghee Rice Kebab Combo', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Jeera Rice Combo</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹230</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Jeera Rice Combo')">+ Add</button>
+            <div class="qty-controls" data-item="Jeera Rice Combo">
+              <button class="qty-btn" onclick="updateQty('Jeera Rice Combo', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Jeera Rice Combo', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-subcategory-title">Basmati Specials</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Steam Rice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹100</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Steam Rice')">+ Add</button>
+            <div class="qty-controls" data-item="Steam Rice">
+              <button class="qty-btn" onclick="updateQty('Steam Rice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Steam Rice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Pulav</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹140</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Pulav')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Pulav">
+              <button class="qty-btn" onclick="updateQty('Veg Pulav', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Pulav', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Biriyani</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹160</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Biriyani')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Biriyani">
+              <button class="qty-btn" onclick="updateQty('Veg Biriyani', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Biriyani', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Ghee Rice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹160</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Ghee Rice')">+ Add</button>
+            <div class="qty-controls" data-item="Ghee Rice">
+              <button class="qty-btn" onclick="updateQty('Ghee Rice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Ghee Rice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Jeera Rice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹160</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Jeera Rice')">+ Add</button>
+            <div class="qty-controls" data-item="Jeera Rice">
+              <button class="qty-btn" onclick="updateQty('Jeera Rice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Jeera Rice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Dal Kichidi</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹160</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Dal Kichidi')">+ Add</button>
+            <div class="qty-controls" data-item="Dal Kichidi">
+              <button class="qty-btn" onclick="updateQty('Dal Kichidi', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Dal Kichidi', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Palak Kichidi</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Palak Kichidi')">+ Add</button>
+            <div class="qty-controls" data-item="Palak Kichidi">
+              <button class="qty-btn" onclick="updateQty('Palak Kichidi', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Palak Kichidi', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Handi Biriyani</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Handi Biriyani')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Handi Biriyani">
+              <button class="qty-btn" onclick="updateQty('Veg Handi Biriyani', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Handi Biriyani', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Mughali Biriyani</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Mughali Biriyani')">+ Add</button>
+            <div class="qty-controls" data-item="Mughali Biriyani">
+              <button class="qty-btn" onclick="updateQty('Mughali Biriyani', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mughali Biriyani', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Kashmiri Pulav</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹200</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Kashmiri Pulav')">+ Add</button>
+            <div class="qty-controls" data-item="Kashmiri Pulav">
+              <button class="qty-btn" onclick="updateQty('Kashmiri Pulav', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Kashmiri Pulav', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Hyderabadi Biriyani</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Hyderabadi Biriyani')">+ Add</button>
+            <div class="qty-controls" data-item="Hyderabadi Biriyani">
+              <button class="qty-btn" onclick="updateQty('Hyderabadi Biriyani', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Hyderabadi Biriyani', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Mushroom Kabab Biriyani</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹190</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Mushroom Kabab Biriyani')">+ Add</button>
+            <div class="qty-controls" data-item="Mushroom Kabab Biriyani">
+              <button class="qty-btn" onclick="updateQty('Mushroom Kabab Biriyani', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mushroom Kabab Biriyani', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Aloo Biriyani</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Aloo Biriyani')">+ Add</button>
+            <div class="qty-controls" data-item="Aloo Biriyani">
+              <button class="qty-btn" onclick="updateQty('Aloo Biriyani', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Aloo Biriyani', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Peas Pulav</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹150</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Peas Pulav')">+ Add</button>
+            <div class="qty-controls" data-item="Peas Pulav">
+              <button class="qty-btn" onclick="updateQty('Peas Pulav', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Peas Pulav', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Mushroom Biriyani</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Mushroom Biriyani')">+ Add</button>
+            <div class="qty-controls" data-item="Mushroom Biriyani">
+              <button class="qty-btn" onclick="updateQty('Mushroom Biriyani', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mushroom Biriyani', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Kebab Biriyani</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹200</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Kebab Biriyani')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Kebab Biriyani">
+              <button class="qty-btn" onclick="updateQty('Paneer Kebab Biriyani', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Kebab Biriyani', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Kaju Paneer Mutter Pulao</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹220</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Kaju Paneer Mutter Pulao')">+ Add</button>
+            <div class="qty-controls" data-item="Kaju Paneer Mutter Pulao">
+              <button class="qty-btn" onclick="updateQty('Kaju Paneer Mutter Pulao', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Kaju Paneer Mutter Pulao', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-subcategory-title">Extra Items</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Extra Rice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹50</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Extra Rice')">+ Add</button>
+            <div class="qty-controls" data-item="Extra Rice">
+              <button class="qty-btn" onclick="updateQty('Extra Rice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Extra Rice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Cup Curd</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹30</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Cup Curd')">+ Add</button>
+            <div class="qty-controls" data-item="Cup Curd">
+              <button class="qty-btn" onclick="updateQty('Cup Curd', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Cup Curd', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Extra Poori</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹30</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Extra Poori')">+ Add</button>
+            <div class="qty-controls" data-item="Extra Poori">
+              <button class="qty-btn" onclick="updateQty('Extra Poori', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Extra Poori', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Extra Butter</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹30</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Extra Butter')">+ Add</button>
+            <div class="qty-controls" data-item="Extra Butter">
+              <button class="qty-btn" onclick="updateQty('Extra Butter', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Extra Butter', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- TAWA & SANDWICH -->
+  <!-- TAWA-SANDWICH -->
   <div class="menu-panel" id="tab-tawa-sandwich">
     <div class="menu-grid">
       <div class="food-card">
@@ -732,7 +2104,15 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">Pav Bhaji</div>
           <div class="food-desc">Mumbai-style spicy vegetable mash with butter-toasted pav</div>
-          <div class="food-footer"><span class="food-price">₹100</span><button class="add-btn" onclick="addToCart(this,'Pav Bhaji')">+ Add</button><div class="qty-controls" data-item="Pav Bhaji"><button class="qty-btn" onclick="updateQty('Pav Bhaji', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Pav Bhaji', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹100</span>
+            <button class="add-btn" onclick="addToCart(this,'Pav Bhaji')">+ Add</button>
+            <div class="qty-controls" data-item="Pav Bhaji">
+              <button class="qty-btn" onclick="updateQty('Pav Bhaji', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Pav Bhaji', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
@@ -743,7 +2123,15 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">Veg Cheese Grill Sandwich</div>
           <div class="food-desc">Toasted sandwich loaded with veggies and melting cheese</div>
-          <div class="food-footer"><span class="food-price">₹100</span><button class="add-btn" onclick="addToCart(this,'Veg Cheese Grill Sandwich')">+ Add</button><div class="qty-controls" data-item="Veg Cheese Grill Sandwich"><button class="qty-btn" onclick="updateQty('Veg Cheese Grill Sandwich', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Veg Cheese Grill Sandwich', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹100</span>
+            <button class="add-btn" onclick="addToCart(this,'Veg Cheese Grill Sandwich')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Cheese Grill Sandwich">
+              <button class="qty-btn" onclick="updateQty('Veg Cheese Grill Sandwich', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Cheese Grill Sandwich', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
@@ -754,7 +2142,15 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">Butter Tawa Pulav</div>
           <div class="food-desc">Street-style spiced rice cooked on a hot tawa with generous butter</div>
-          <div class="food-footer"><span class="food-price">₹160</span><button class="add-btn" onclick="addToCart(this,'Butter Tawa Pulav')">+ Add</button><div class="qty-controls" data-item="Butter Tawa Pulav"><button class="qty-btn" onclick="updateQty('Butter Tawa Pulav', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Butter Tawa Pulav', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹160</span>
+            <button class="add-btn" onclick="addToCart(this,'Butter Tawa Pulav')">+ Add</button>
+            <div class="qty-controls" data-item="Butter Tawa Pulav">
+              <button class="qty-btn" onclick="updateQty('Butter Tawa Pulav', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Butter Tawa Pulav', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
@@ -765,7 +2161,173 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">S R V Special Sandwich</div>
           <div class="food-desc">Our signature triple-layered premium grill sandwich</div>
-          <div class="food-footer"><span class="food-price">₹120</span><button class="add-btn" onclick="addToCart(this,'S R V Special Sandwich')">+ Add</button><div class="qty-controls" data-item="S R V Special Sandwich"><button class="qty-btn" onclick="updateQty('S R V Special Sandwich', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('S R V Special Sandwich', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹120</span>
+            <button class="add-btn" onclick="addToCart(this,'S R V Special Sandwich')">+ Add</button>
+            <div class="qty-controls" data-item="S R V Special Sandwich">
+              <button class="qty-btn" onclick="updateQty('S R V Special Sandwich', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('S R V Special Sandwich', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-list-container">
+      <div class="menu-subcategory-title">Tawa Ka Kamal</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Pav Bhaji</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹110</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Pav Bhaji')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Pav Bhaji">
+              <button class="qty-btn" onclick="updateQty('Paneer Pav Bhaji', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Pav Bhaji', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Cheese Pav Bhaji</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹110</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Cheese Pav Bhaji')">+ Add</button>
+            <div class="qty-controls" data-item="Cheese Pav Bhaji">
+              <button class="qty-btn" onclick="updateQty('Cheese Pav Bhaji', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Cheese Pav Bhaji', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Kadai Pav Bhaji</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹120</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Kadai Pav Bhaji')">+ Add</button>
+            <div class="qty-controls" data-item="Kadai Pav Bhaji">
+              <button class="qty-btn" onclick="updateQty('Kadai Pav Bhaji', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Kadai Pav Bhaji', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Extra Pav</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹50</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Extra Pav')">+ Add</button>
+            <div class="qty-controls" data-item="Extra Pav">
+              <button class="qty-btn" onclick="updateQty('Extra Pav', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Extra Pav', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Paneer Tawa Pulav</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Paneer Tawa Pulav')">+ Add</button>
+            <div class="qty-controls" data-item="Paneer Tawa Pulav">
+              <button class="qty-btn" onclick="updateQty('Paneer Tawa Pulav', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Paneer Tawa Pulav', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Cheese Tawa Pulav</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹170</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Cheese Tawa Pulav')">+ Add</button>
+            <div class="qty-controls" data-item="Cheese Tawa Pulav">
+              <button class="qty-btn" onclick="updateQty('Cheese Tawa Pulav', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Cheese Tawa Pulav', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-subcategory-title">Sandwiches</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Grill Sandwich</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹90</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Grill Sandwich')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Grill Sandwich">
+              <button class="qty-btn" onclick="updateQty('Veg Grill Sandwich', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Grill Sandwich', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Paneer Grill Sandwich</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹100</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Paneer Grill Sandwich')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Paneer Grill Sandwich">
+              <button class="qty-btn" onclick="updateQty('Veg Paneer Grill Sandwich', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Paneer Grill Sandwich', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Cheese Paneer Grill Sandwich</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹105</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Cheese Paneer Grill Sandwich')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Cheese Paneer Grill Sandwich">
+              <button class="qty-btn" onclick="updateQty('Veg Cheese Paneer Grill Sandwich', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Cheese Paneer Grill Sandwich', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Veg Mushroom Grill Sandwich</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹100</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Veg Mushroom Grill Sandwich')">+ Add</button>
+            <div class="qty-controls" data-item="Veg Mushroom Grill Sandwich">
+              <button class="qty-btn" onclick="updateQty('Veg Mushroom Grill Sandwich', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Veg Mushroom Grill Sandwich', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -781,8 +2343,16 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         </div>
         <div class="food-card-body">
           <div class="food-name">Dry Fruit Shake</div>
-          <div class="food-desc">Thick, creamy premium milkshake packed with rich dry fruits</div>
-          <div class="food-footer"><span class="food-price">₹140</span><button class="add-btn" onclick="addToCart(this,'Dry Fruit Shake')">+ Add</button><div class="qty-controls" data-item="Dry Fruit Shake"><button class="qty-btn" onclick="updateQty('Dry Fruit Shake', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Dry Fruit Shake', 1)">+</button></div></div>
+          <div class="food-desc">Thick, creamy premium milkshake packed with dry fruits & nuts</div>
+          <div class="food-footer">
+            <span class="food-price">₹140</span>
+            <button class="add-btn" onclick="addToCart(this,'Dry Fruit Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Dry Fruit Shake">
+              <button class="qty-btn" onclick="updateQty('Dry Fruit Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Dry Fruit Shake', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
@@ -793,7 +2363,15 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">Mango Juice</div>
           <div class="food-desc">Freshly blended chilled Alphonso mango juice</div>
-          <div class="food-footer"><span class="food-price">₹90</span><button class="add-btn" onclick="addToCart(this,'Mango Juice')">+ Add</button><div class="qty-controls" data-item="Mango Juice"><button class="qty-btn" onclick="updateQty('Mango Juice', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Mango Juice', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹90</span>
+            <button class="add-btn" onclick="addToCart(this,'Mango Juice')">+ Add</button>
+            <div class="qty-controls" data-item="Mango Juice">
+              <button class="qty-btn" onclick="updateQty('Mango Juice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mango Juice', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
@@ -804,7 +2382,15 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">Mango Lassi</div>
           <div class="food-desc">Classic sweet yogurt drink blended with mango pulp</div>
-          <div class="food-footer"><span class="food-price">₹100</span><button class="add-btn" onclick="addToCart(this,'Mango Lassi')">+ Add</button><div class="qty-controls" data-item="Mango Lassi"><button class="qty-btn" onclick="updateQty('Mango Lassi', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Mango Lassi', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹100</span>
+            <button class="add-btn" onclick="addToCart(this,'Mango Lassi')">+ Add</button>
+            <div class="qty-controls" data-item="Mango Lassi">
+              <button class="qty-btn" onclick="updateQty('Mango Lassi', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mango Lassi', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
@@ -815,7 +2401,662 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">Fresh Lime Soda</div>
           <div class="food-desc">Sparkling lime with mint & a hint of chaat masala</div>
-          <div class="food-footer"><span class="food-price">₹60</span><button class="add-btn" onclick="addToCart(this,'Fresh Lime Soda')">+ Add</button><div class="qty-controls" data-item="Fresh Lime Soda"><button class="qty-btn" onclick="updateQty('Fresh Lime Soda', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Fresh Lime Soda', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹60</span>
+            <button class="add-btn" onclick="addToCart(this,'Fresh Lime Soda')">+ Add</button>
+            <div class="qty-controls" data-item="Fresh Lime Soda">
+              <button class="qty-btn" onclick="updateQty('Fresh Lime Soda', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Fresh Lime Soda', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-list-container">
+      <div class="menu-subcategory-title">Fresh Juices</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Mosambi Juice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Mosambi Juice')">+ Add</button>
+            <div class="qty-controls" data-item="Mosambi Juice">
+              <button class="qty-btn" onclick="updateQty('Mosambi Juice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mosambi Juice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Orange Juice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Orange Juice')">+ Add</button>
+            <div class="qty-controls" data-item="Orange Juice">
+              <button class="qty-btn" onclick="updateQty('Orange Juice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Orange Juice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Pineapple Juice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Pineapple Juice')">+ Add</button>
+            <div class="qty-controls" data-item="Pineapple Juice">
+              <button class="qty-btn" onclick="updateQty('Pineapple Juice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Pineapple Juice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Ganga Jamuna</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Ganga Jamuna')">+ Add</button>
+            <div class="qty-controls" data-item="Ganga Jamuna">
+              <button class="qty-btn" onclick="updateQty('Ganga Jamuna', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Ganga Jamuna', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Water Melon Juice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Water Melon Juice')">+ Add</button>
+            <div class="qty-controls" data-item="Water Melon Juice">
+              <button class="qty-btn" onclick="updateQty('Water Melon Juice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Water Melon Juice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Cocktail Juice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹90</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Cocktail Juice')">+ Add</button>
+            <div class="qty-controls" data-item="Cocktail Juice">
+              <button class="qty-btn" onclick="updateQty('Cocktail Juice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Cocktail Juice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Musk Melon Juice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Musk Melon Juice')">+ Add</button>
+            <div class="qty-controls" data-item="Musk Melon Juice">
+              <button class="qty-btn" onclick="updateQty('Musk Melon Juice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Musk Melon Juice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Lime Juice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹50</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Lime Juice')">+ Add</button>
+            <div class="qty-controls" data-item="Lime Juice">
+              <button class="qty-btn" onclick="updateQty('Lime Juice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Lime Juice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Pudhina Lime Juice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹60</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Pudhina Lime Juice')">+ Add</button>
+            <div class="qty-controls" data-item="Pudhina Lime Juice">
+              <button class="qty-btn" onclick="updateQty('Pudhina Lime Juice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Pudhina Lime Juice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Grapes Juice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Grapes Juice')">+ Add</button>
+            <div class="qty-controls" data-item="Grapes Juice">
+              <button class="qty-btn" onclick="updateQty('Grapes Juice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Grapes Juice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Orange Solid</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹90</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Orange Solid')">+ Add</button>
+            <div class="qty-controls" data-item="Orange Solid">
+              <button class="qty-btn" onclick="updateQty('Orange Solid', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Orange Solid', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Moosumbi Solid</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹90</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Moosumbi Solid')">+ Add</button>
+            <div class="qty-controls" data-item="Moosumbi Solid">
+              <button class="qty-btn" onclick="updateQty('Moosumbi Solid', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Moosumbi Solid', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Pomegranate Juice</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹90</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Pomegranate Juice')">+ Add</button>
+            <div class="qty-controls" data-item="Pomegranate Juice">
+              <button class="qty-btn" onclick="updateQty('Pomegranate Juice', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Pomegranate Juice', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-subcategory-title">Fruit Shakes</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Apple Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹100</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Apple Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Apple Shake">
+              <button class="qty-btn" onclick="updateQty('Apple Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Apple Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Sapota Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹90</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Sapota Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Sapota Shake">
+              <button class="qty-btn" onclick="updateQty('Sapota Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Sapota Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Pomegranate Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹100</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Pomegranate Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Pomegranate Shake">
+              <button class="qty-btn" onclick="updateQty('Pomegranate Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Pomegranate Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Butter Fruit Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹100</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Butter Fruit Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Butter Fruit Shake">
+              <button class="qty-btn" onclick="updateQty('Butter Fruit Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Butter Fruit Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Musk Melon Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹100</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Musk Melon Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Musk Melon Shake">
+              <button class="qty-btn" onclick="updateQty('Musk Melon Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Musk Melon Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Banana Milk Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹90</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Banana Milk Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Banana Milk Shake">
+              <button class="qty-btn" onclick="updateQty('Banana Milk Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Banana Milk Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Mango Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹90</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Mango Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Mango Shake">
+              <button class="qty-btn" onclick="updateQty('Mango Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mango Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Kiwi Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹100</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Kiwi Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Kiwi Shake">
+              <button class="qty-btn" onclick="updateQty('Kiwi Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Kiwi Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Special Mango</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹110</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Special Mango')">+ Add</button>
+            <div class="qty-controls" data-item="Special Mango">
+              <button class="qty-btn" onclick="updateQty('Special Mango', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Special Mango', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Cold Badam</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹100</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Cold Badam')">+ Add</button>
+            <div class="qty-controls" data-item="Cold Badam">
+              <button class="qty-btn" onclick="updateQty('Cold Badam', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Cold Badam', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-subcategory-title">Ice Cream Shakes</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Chocolate Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹110</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Chocolate Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Chocolate Shake">
+              <button class="qty-btn" onclick="updateQty('Chocolate Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Chocolate Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Strawberry Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹110</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Strawberry Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Strawberry Shake">
+              <button class="qty-btn" onclick="updateQty('Strawberry Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Strawberry Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Cold (Coffee/Badam)</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹110</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Cold (Coffee/Badam)')">+ Add</button>
+            <div class="qty-controls" data-item="Cold (Coffee/Badam)">
+              <button class="qty-btn" onclick="updateQty('Cold (Coffee/Badam)', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Cold (Coffee/Badam)', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Rose Milk</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹90</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Rose Milk')">+ Add</button>
+            <div class="qty-controls" data-item="Rose Milk">
+              <button class="qty-btn" onclick="updateQty('Rose Milk', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Rose Milk', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Pista Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹110</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Pista Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Pista Shake">
+              <button class="qty-btn" onclick="updateQty('Pista Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Pista Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Vanilla Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹100</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Vanilla Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Vanilla Shake">
+              <button class="qty-btn" onclick="updateQty('Vanilla Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Vanilla Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Butter Scotch Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹110</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Butter Scotch Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Butter Scotch Shake">
+              <button class="qty-btn" onclick="updateQty('Butter Scotch Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Butter Scotch Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Black Current Shake</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹110</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Black Current Shake')">+ Add</button>
+            <div class="qty-controls" data-item="Black Current Shake">
+              <button class="qty-btn" onclick="updateQty('Black Current Shake', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Black Current Shake', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Dry Fruit Milk</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹120</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Dry Fruit Milk')">+ Add</button>
+            <div class="qty-controls" data-item="Dry Fruit Milk">
+              <button class="qty-btn" onclick="updateQty('Dry Fruit Milk', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Dry Fruit Milk', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-subcategory-title">Lassi</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Butter Milk</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹45</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Butter Milk')">+ Add</button>
+            <div class="qty-controls" data-item="Butter Milk">
+              <button class="qty-btn" onclick="updateQty('Butter Milk', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Butter Milk', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Sweet Lassi</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹90</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Sweet Lassi')">+ Add</button>
+            <div class="qty-controls" data-item="Sweet Lassi">
+              <button class="qty-btn" onclick="updateQty('Sweet Lassi', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Sweet Lassi', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Salt Lassi</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹90</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Salt Lassi')">+ Add</button>
+            <div class="qty-controls" data-item="Salt Lassi">
+              <button class="qty-btn" onclick="updateQty('Salt Lassi', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Salt Lassi', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Khaara Lassi</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹90</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Khaara Lassi')">+ Add</button>
+            <div class="qty-controls" data-item="Khaara Lassi">
+              <button class="qty-btn" onclick="updateQty('Khaara Lassi', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Khaara Lassi', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Special Lassi</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹100</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Special Lassi')">+ Add</button>
+            <div class="qty-controls" data-item="Special Lassi">
+              <button class="qty-btn" onclick="updateQty('Special Lassi', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Special Lassi', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Dry Fruit Lassi</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹110</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Dry Fruit Lassi')">+ Add</button>
+            <div class="qty-controls" data-item="Dry Fruit Lassi">
+              <button class="qty-btn" onclick="updateQty('Dry Fruit Lassi', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Dry Fruit Lassi', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-subcategory-title">Refreshing Sodas</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Pudhina Lime Soda</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Pudhina Lime Soda')">+ Add</button>
+            <div class="qty-controls" data-item="Pudhina Lime Soda">
+              <button class="qty-btn" onclick="updateQty('Pudhina Lime Soda', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Pudhina Lime Soda', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Ginger Lime Soda</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Ginger Lime Soda')">+ Add</button>
+            <div class="qty-controls" data-item="Ginger Lime Soda">
+              <button class="qty-btn" onclick="updateQty('Ginger Lime Soda', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Ginger Lime Soda', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Masala Soda</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Masala Soda')">+ Add</button>
+            <div class="qty-controls" data-item="Masala Soda">
+              <button class="qty-btn" onclick="updateQty('Masala Soda', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Masala Soda', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Kiwi Soda</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Kiwi Soda')">+ Add</button>
+            <div class="qty-controls" data-item="Kiwi Soda">
+              <button class="qty-btn" onclick="updateQty('Kiwi Soda', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Kiwi Soda', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -832,29 +3073,53 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">Special Falooda</div>
           <div class="food-desc">Colorful layers of rose syrup, vermicelli, basil seeds, topped with ice cream</div>
-          <div class="food-footer"><span class="food-price">₹150</span><button class="add-btn" onclick="addToCart(this,'Special Falooda')">+ Add</button><div class="qty-controls" data-item="Special Falooda"><button class="qty-btn" onclick="updateQty('Special Falooda', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Special Falooda', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹150</span>
+            <button class="add-btn" onclick="addToCart(this,'Special Falooda')">+ Add</button>
+            <div class="qty-controls" data-item="Special Falooda">
+              <button class="qty-btn" onclick="updateQty('Special Falooda', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Special Falooda', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
         <div class="food-card-img">
-          <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&q=80&auto=format&fit=crop" alt="Gud Bud">
+          <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&q=80&auto=format&fit=crop" alt="Gud Bud Ice Cream">
           <div class="veg-badge"><div class="veg-dot"></div></div>
         </div>
         <div class="food-card-body">
           <div class="food-name">Gud Bud Ice Cream</div>
           <div class="food-desc">Three scoops of ice cream layered with fresh fruits, jelly and nuts</div>
-          <div class="food-footer"><span class="food-price">₹140</span><button class="add-btn" onclick="addToCart(this,'Gud Bud Ice Cream')">+ Add</button><div class="qty-controls" data-item="Gud Bud Ice Cream"><button class="qty-btn" onclick="updateQty('Gud Bud Ice Cream', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Gud Bud Ice Cream', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹140</span>
+            <button class="add-btn" onclick="addToCart(this,'Gud Bud Ice Cream')">+ Add</button>
+            <div class="qty-controls" data-item="Gud Bud Ice Cream">
+              <button class="qty-btn" onclick="updateQty('Gud Bud Ice Cream', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Gud Bud Ice Cream', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
         <div class="food-card-img">
-          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&q=80&auto=format&fit=crop" alt="Gulab Jamun">
+          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&q=80&auto=format&fit=crop" alt="Gulab Jamun (2 pcs)">
           <div class="veg-badge"><div class="veg-dot"></div></div>
         </div>
         <div class="food-card-body">
           <div class="food-name">Gulab Jamun (2 pcs)</div>
           <div class="food-desc">Soft, melt-in-the-mouth fried dumplings soaked in sugar syrup</div>
-          <div class="food-footer"><span class="food-price">₹50</span><button class="add-btn" onclick="addToCart(this,'Gulab Jamun')">+ Add</button><div class="qty-controls" data-item="Gulab Jamun"><button class="qty-btn" onclick="updateQty('Gulab Jamun', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Gulab Jamun', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹50</span>
+            <button class="add-btn" onclick="addToCart(this,'Gulab Jamun (2 pcs)')">+ Add</button>
+            <div class="qty-controls" data-item="Gulab Jamun (2 pcs)">
+              <button class="qty-btn" onclick="updateQty('Gulab Jamun (2 pcs)', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Gulab Jamun (2 pcs)', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="food-card">
@@ -865,14 +3130,734 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <div class="food-card-body">
           <div class="food-name">Carrot Halwa</div>
           <div class="food-desc">Traditional rich dessert made with grated carrots, milk, and nuts</div>
-          <div class="food-footer"><span class="food-price">₹70</span><button class="add-btn" onclick="addToCart(this,'Carrot Halwa')">+ Add</button><div class="qty-controls" data-item="Carrot Halwa"><button class="qty-btn" onclick="updateQty('Carrot Halwa', -1)">−</button><span class="qty-num">1</span><button class="qty-btn" onclick="updateQty('Carrot Halwa', 1)">+</button></div></div>
+          <div class="food-footer">
+            <span class="food-price">₹70</span>
+            <button class="add-btn" onclick="addToCart(this,'Carrot Halwa')">+ Add</button>
+            <div class="qty-controls" data-item="Carrot Halwa">
+              <button class="qty-btn" onclick="updateQty('Carrot Halwa', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Carrot Halwa', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-list-container">
+      <div class="menu-subcategory-title">Sweets & Ice Cream</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Dry Jamun</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹30</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Dry Jamun')">+ Add</button>
+            <div class="qty-controls" data-item="Dry Jamun">
+              <button class="qty-btn" onclick="updateQty('Dry Jamun', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Dry Jamun', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Holige</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹40</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Holige')">+ Add</button>
+            <div class="qty-controls" data-item="Holige">
+              <button class="qty-btn" onclick="updateQty('Holige', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Holige', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Vanilla Ice Cream</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Vanilla Ice Cream')">+ Add</button>
+            <div class="qty-controls" data-item="Vanilla Ice Cream">
+              <button class="qty-btn" onclick="updateQty('Vanilla Ice Cream', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Vanilla Ice Cream', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Strawberry Ice Cream</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Strawberry Ice Cream')">+ Add</button>
+            <div class="qty-controls" data-item="Strawberry Ice Cream">
+              <button class="qty-btn" onclick="updateQty('Strawberry Ice Cream', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Strawberry Ice Cream', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Chocolate Ice Cream</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Chocolate Ice Cream')">+ Add</button>
+            <div class="qty-controls" data-item="Chocolate Ice Cream">
+              <button class="qty-btn" onclick="updateQty('Chocolate Ice Cream', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Chocolate Ice Cream', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Mango Ice Cream</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹85</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Mango Ice Cream')">+ Add</button>
+            <div class="qty-controls" data-item="Mango Ice Cream">
+              <button class="qty-btn" onclick="updateQty('Mango Ice Cream', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mango Ice Cream', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Pista Ice Cream</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Pista Ice Cream')">+ Add</button>
+            <div class="qty-controls" data-item="Pista Ice Cream">
+              <button class="qty-btn" onclick="updateQty('Pista Ice Cream', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Pista Ice Cream', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-subcategory-title">Fruit Salad</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Fruit Salad</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Fruit Salad')">+ Add</button>
+            <div class="qty-controls" data-item="Fruit Salad">
+              <button class="qty-btn" onclick="updateQty('Fruit Salad', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Fruit Salad', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Cut Fruit</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Cut Fruit')">+ Add</button>
+            <div class="qty-controls" data-item="Cut Fruit">
+              <button class="qty-btn" onclick="updateQty('Cut Fruit', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Cut Fruit', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Fruit Salad with Ice Cream</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹100</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Fruit Salad with Ice Cream')">+ Add</button>
+            <div class="qty-controls" data-item="Fruit Salad with Ice Cream">
+              <button class="qty-btn" onclick="updateQty('Fruit Salad with Ice Cream', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Fruit Salad with Ice Cream', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Fruit Salad with Jelly Ice Cream</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹120</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Fruit Salad with Jelly Ice Cream')">+ Add</button>
+            <div class="qty-controls" data-item="Fruit Salad with Jelly Ice Cream">
+              <button class="qty-btn" onclick="updateQty('Fruit Salad with Jelly Ice Cream', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Fruit Salad with Jelly Ice Cream', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-subcategory-title">Special Ice Cream & Sundaes</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Falooda</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹130</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Falooda')">+ Add</button>
+            <div class="qty-controls" data-item="Falooda">
+              <button class="qty-btn" onclick="updateQty('Falooda', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Falooda', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">S R V Special Ice Cream</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹140</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'S R V Special Ice Cream')">+ Add</button>
+            <div class="qty-controls" data-item="S R V Special Ice Cream">
+              <button class="qty-btn" onclick="updateQty('S R V Special Ice Cream', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('S R V Special Ice Cream', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Vanilla Nut Sundae</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹130</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Vanilla Nut Sundae')">+ Add</button>
+            <div class="qty-controls" data-item="Vanilla Nut Sundae">
+              <button class="qty-btn" onclick="updateQty('Vanilla Nut Sundae', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Vanilla Nut Sundae', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Chocolate Nut Sundae</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹150</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Chocolate Nut Sundae')">+ Add</button>
+            <div class="qty-controls" data-item="Chocolate Nut Sundae">
+              <button class="qty-btn" onclick="updateQty('Chocolate Nut Sundae', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Chocolate Nut Sundae', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Raja Rani</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹150</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Raja Rani')">+ Add</button>
+            <div class="qty-controls" data-item="Raja Rani">
+              <button class="qty-btn" onclick="updateQty('Raja Rani', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Raja Rani', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Titanic Special</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹150</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Titanic Special')">+ Add</button>
+            <div class="qty-controls" data-item="Titanic Special">
+              <button class="qty-btn" onclick="updateQty('Titanic Special', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Titanic Special', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Honeymoon Special</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹150</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Honeymoon Special')">+ Add</button>
+            <div class="qty-controls" data-item="Honeymoon Special">
+              <button class="qty-btn" onclick="updateQty('Honeymoon Special', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Honeymoon Special', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Fruit Sundae</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹130</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Fruit Sundae')">+ Add</button>
+            <div class="qty-controls" data-item="Fruit Sundae">
+              <button class="qty-btn" onclick="updateQty('Fruit Sundae', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Fruit Sundae', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHATS -->
+  <div class="menu-panel" id="tab-chats">
+    <div class="menu-grid">
+      <div class="food-card">
+        <div class="food-card-img">
+          <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=400&q=80&auto=format&fit=crop" alt="Pani Puri">
+          <div class="veg-badge"><div class="veg-dot"></div></div>
+        </div>
+        <div class="food-card-body">
+          <div class="food-name">Pani Puri</div>
+          <div class="food-desc">Crispy hollow food-card filled with spiced potato, chickpea, and seasoned mint water</div>
+          <div class="food-footer">
+            <span class="food-price">₹60</span>
+            <button class="add-btn" onclick="addToCart(this,'Pani Puri')">+ Add</button>
+            <div class="qty-controls" data-item="Pani Puri">
+              <button class="qty-btn" onclick="updateQty('Pani Puri', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Pani Puri', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="food-card">
+        <div class="food-card-img">
+          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&q=80&auto=format&fit=crop" alt="Masala Puri">
+          <div class="veg-badge"><div class="veg-dot"></div></div>
+        </div>
+        <div class="food-card-body">
+          <div class="food-name">Masala Puri</div>
+          <div class="food-desc">Crushed crispy pooris topped with rich peas gravy, onions, coriander & sev</div>
+          <div class="food-footer">
+            <span class="food-price">₹60</span>
+            <button class="add-btn" onclick="addToCart(this,'Masala Puri')">+ Add</button>
+            <div class="qty-controls" data-item="Masala Puri">
+              <button class="qty-btn" onclick="updateQty('Masala Puri', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Masala Puri', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="food-card">
+        <div class="food-card-img">
+          <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=400&q=80&auto=format&fit=crop" alt="Bhel Puri">
+          <div class="veg-badge"><div class="veg-dot"></div></div>
+        </div>
+        <div class="food-card-body">
+          <div class="food-name">Bhel Puri</div>
+          <div class="food-desc">Puffed rice mixed with sev, crushed papdi, raw mango, tomatoes & tangy chutneys</div>
+          <div class="food-footer">
+            <span class="food-price">₹70</span>
+            <button class="add-btn" onclick="addToCart(this,'Bhel Puri')">+ Add</button>
+            <div class="qty-controls" data-item="Bhel Puri">
+              <button class="qty-btn" onclick="updateQty('Bhel Puri', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Bhel Puri', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="food-card">
+        <div class="food-card-img">
+          <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80&auto=format&fit=crop" alt="Vada Pav">
+          <div class="veg-badge"><div class="veg-dot"></div></div>
+        </div>
+        <div class="food-card-body">
+          <div class="food-name">Vada Pav</div>
+          <div class="food-desc">Spicy fried potato dumpling inside a soft bun, lined with sweet & dry garlic chutneys</div>
+          <div class="food-footer">
+            <span class="food-price">₹50</span>
+            <button class="add-btn" onclick="addToCart(this,'Vada Pav')">+ Add</button>
+            <div class="qty-controls" data-item="Vada Pav">
+              <button class="qty-btn" onclick="updateQty('Vada Pav', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Vada Pav', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-list-container">
+      <div class="menu-subcategory-title">Chats Specials (Served 2 PM - 10 PM)</div>
+      <div class="menu-list-grid">
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Sev Puri</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Sev Puri')">+ Add</button>
+            <div class="qty-controls" data-item="Sev Puri">
+              <button class="qty-btn" onclick="updateQty('Sev Puri', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Sev Puri', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Special Sev Puri</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Special Sev Puri')">+ Add</button>
+            <div class="qty-controls" data-item="Special Sev Puri">
+              <button class="qty-btn" onclick="updateQty('Special Sev Puri', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Special Sev Puri', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Dry Bhel Puri</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Dry Bhel Puri')">+ Add</button>
+            <div class="qty-controls" data-item="Dry Bhel Puri">
+              <button class="qty-btn" onclick="updateQty('Dry Bhel Puri', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Dry Bhel Puri', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Special Bhel</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Special Bhel')">+ Add</button>
+            <div class="qty-controls" data-item="Special Bhel">
+              <button class="qty-btn" onclick="updateQty('Special Bhel', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Special Bhel', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Bhel Masala Chat</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Bhel Masala Chat')">+ Add</button>
+            <div class="qty-controls" data-item="Bhel Masala Chat">
+              <button class="qty-btn" onclick="updateQty('Bhel Masala Chat', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Bhel Masala Chat', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Corn Bhel Puri</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Corn Bhel Puri')">+ Add</button>
+            <div class="qty-controls" data-item="Corn Bhel Puri">
+              <button class="qty-btn" onclick="updateQty('Corn Bhel Puri', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Corn Bhel Puri', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">All Mix Chat</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'All Mix Chat')">+ Add</button>
+            <div class="qty-controls" data-item="All Mix Chat">
+              <button class="qty-btn" onclick="updateQty('All Mix Chat', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('All Mix Chat', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Tomato Chat</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹60</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Tomato Chat')">+ Add</button>
+            <div class="qty-controls" data-item="Tomato Chat">
+              <button class="qty-btn" onclick="updateQty('Tomato Chat', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Tomato Chat', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Boondi Chat</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹60</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Boondi Chat')">+ Add</button>
+            <div class="qty-controls" data-item="Boondi Chat">
+              <button class="qty-btn" onclick="updateQty('Boondi Chat', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Boondi Chat', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Mung Dal Chat</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹60</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Mung Dal Chat')">+ Add</button>
+            <div class="qty-controls" data-item="Mung Dal Chat">
+              <button class="qty-btn" onclick="updateQty('Mung Dal Chat', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Mung Dal Chat', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Nippat Chat</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹60</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Nippat Chat')">+ Add</button>
+            <div class="qty-controls" data-item="Nippat Chat">
+              <button class="qty-btn" onclick="updateQty('Nippat Chat', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Nippat Chat', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Peanut Masala</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Peanut Masala')">+ Add</button>
+            <div class="qty-controls" data-item="Peanut Masala">
+              <button class="qty-btn" onclick="updateQty('Peanut Masala', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Peanut Masala', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Samosa Masala</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Samosa Masala')">+ Add</button>
+            <div class="qty-controls" data-item="Samosa Masala">
+              <button class="qty-btn" onclick="updateQty('Samosa Masala', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Samosa Masala', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Samosa Chat</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Samosa Chat')">+ Add</button>
+            <div class="qty-controls" data-item="Samosa Chat">
+              <button class="qty-btn" onclick="updateQty('Samosa Chat', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Samosa Chat', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Cucumber Chat</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹60</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Cucumber Chat')">+ Add</button>
+            <div class="qty-controls" data-item="Cucumber Chat">
+              <button class="qty-btn" onclick="updateQty('Cucumber Chat', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Cucumber Chat', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Cheese Vada Pav</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Cheese Vada Pav')">+ Add</button>
+            <div class="qty-controls" data-item="Cheese Vada Pav">
+              <button class="qty-btn" onclick="updateQty('Cheese Vada Pav', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Cheese Vada Pav', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Dahi Potato</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Dahi Potato')">+ Add</button>
+            <div class="qty-controls" data-item="Dahi Potato">
+              <button class="qty-btn" onclick="updateQty('Dahi Potato', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Dahi Potato', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Dahi Samosa Chat</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Dahi Samosa Chat')">+ Add</button>
+            <div class="qty-controls" data-item="Dahi Samosa Chat">
+              <button class="qty-btn" onclick="updateQty('Dahi Samosa Chat', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Dahi Samosa Chat', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Dahi Aloo Puri</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Dahi Aloo Puri')">+ Add</button>
+            <div class="qty-controls" data-item="Dahi Aloo Puri">
+              <button class="qty-btn" onclick="updateQty('Dahi Aloo Puri', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Dahi Aloo Puri', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Dahi Papdi</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Dahi Papdi')">+ Add</button>
+            <div class="qty-controls" data-item="Dahi Papdi">
+              <button class="qty-btn" onclick="updateQty('Dahi Papdi', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Dahi Papdi', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Dahi Chat</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹80</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Dahi Chat')">+ Add</button>
+            <div class="qty-controls" data-item="Dahi Chat">
+              <button class="qty-btn" onclick="updateQty('Dahi Chat', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Dahi Chat', 1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-list-item">
+          <div class="menu-list-item-details">
+            <span class="menu-list-item-name">Corn Onion Dry Chat</span>
+            <span class="menu-list-item-dots"></span>
+          </div>
+          <span class="menu-list-item-price">₹70</span>
+          <div class="menu-list-item-action">
+            <button class="add-btn-small" onclick="addToCart(this,'Corn Onion Dry Chat')">+ Add</button>
+            <div class="qty-controls" data-item="Corn Onion Dry Chat">
+              <button class="qty-btn" onclick="updateQty('Corn Onion Dry Chat', -1)">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn" onclick="updateQty('Corn Onion Dry Chat', 1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
 </section>
-
 <!-- CHEF SPECIALS -->
 <section style="background:var(--black-soft);padding:5rem 4rem;">
   <div class="section-label reveal">Chef's Recommendations</div>
@@ -1096,6 +4081,7 @@ footer{background:linear-gradient(180deg,#080808 0%,#050505 100%);border-top:1px
         <li><a href="#" onclick="switchTab('biryani-meals');document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Biryani & Meals</a></li>
         <li><a href="#" onclick="switchTab('beverages');document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Beverages</a></li>
         <li><a href="#" onclick="switchTab('desserts');document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Desserts</a></li>
+        <li><a href="#" onclick="switchTab('chats');document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Chats</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1164,7 +4150,7 @@ function switchTab(tab){
   document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('tab-'+tab).classList.add('active');
-  const tabs=['curries','rice-noodles','biryani-meals','tawa-sandwich','beverages','desserts'];
+  const tabs=['curries','rice-noodles','biryani-meals','tawa-sandwich','beverages','desserts','chats'];
   const idx=tabs.indexOf(tab);
   document.querySelectorAll('.menu-tab')[idx].classList.add('active');
 }
