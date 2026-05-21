@@ -1,0 +1,22 @@
+# Ignore executables
+Antigravity-x64.exe
+
+# Ignore keys/secrets
+pollinations_key.txt
+
+# Ignore testing scripts and temporary images
+test_*.py
+test_*.png
+test_*.jpg
+
+# Ignore download helper scripts and check scripts
+download_*.py
+check_images.py
+update_index_html.py
+
+# Ignore IDE / system files
+.vs/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
