@@ -2159,6 +2159,11 @@
     <h2 class="section-title reveal">Crafted with Love,<br>Served with <em>Pride</em></h2>
     <p class="section-sub reveal">Every dish tells a story of tradition, passion, and premium quality.</p>
 
+    <div class="service-type-tabs" style="display:flex; justify-content:center; gap:1rem; margin-bottom:1.5rem;">
+      <button class="service-type-btn active" id="btn-ac" onclick="switchServiceType('ac')" style="padding:.6rem 2rem; border-radius:40px; font-weight:700; font-size:.9rem; letter-spacing:.1em; cursor:pointer; transition:all .3s; background:linear-gradient(135deg,var(--gold),var(--saffron)); color:var(--black); border:1px solid var(--gold);">❄️ AC</button>
+      <button class="service-type-btn" id="btn-self" onclick="switchServiceType('self')" style="padding:.6rem 2rem; border-radius:40px; font-weight:700; font-size:.9rem; letter-spacing:.1em; cursor:pointer; transition:all .3s; background:rgba(255,255,255,0.03); color:var(--gold); border:1px solid rgba(212,175,55,0.3);">🚶 SELF SERVICE</button>
+    </div>
+
     <div class="menu-tabs" id="menuTabs">
       <button class="menu-tab active" onclick="switchTab('curries')">🍛 Curries</button>
       <button class="menu-tab" onclick="switchTab('rice-noodles')">🍜 Rice & Noodles</button>
@@ -4754,6 +4759,31 @@
       document.getElementById('navLinks').classList.toggle('open');
     }
     document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+
+    let currentServiceType = 'ac';
+    function switchServiceType(type) {
+      currentServiceType = type;
+      const btnAc = document.getElementById('btn-ac');
+      const btnSelf = document.getElementById('btn-self');
+      
+      if(type === 'ac') {
+        btnAc.style.background = 'linear-gradient(135deg,var(--gold),var(--saffron))';
+        btnAc.style.color = 'var(--black)';
+        btnAc.style.borderColor = 'var(--gold)';
+        
+        btnSelf.style.background = 'rgba(255,255,255,0.03)';
+        btnSelf.style.color = 'var(--gold)';
+        btnSelf.style.borderColor = 'rgba(212,175,55,0.3)';
+      } else {
+        btnSelf.style.background = 'linear-gradient(135deg,var(--gold),var(--saffron))';
+        btnSelf.style.color = 'var(--black)';
+        btnSelf.style.borderColor = 'var(--gold)';
+        
+        btnAc.style.background = 'rgba(255,255,255,0.03)';
+        btnAc.style.color = 'var(--gold)';
+        btnAc.style.borderColor = 'rgba(212,175,55,0.3)';
+      }
+    }
 
     // MENU TABS
     function switchTab(tab) {
