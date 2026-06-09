@@ -2599,14 +2599,14 @@
       
       // Update UI for existing cart items
       updateCartUI();
+      // Trigger reveal animation for newly added items
+      if (typeof reveal === 'function') reveal();
     }
     
     // Initialize menu on load
-    document.addEventListener('DOMContentLoaded', () => {
-      if(typeof menuData !== 'undefined') {
-        generateMenuTabs();
-      }
-    });
+    if(typeof menuData !== 'undefined') {
+      generateMenuTabs();
+    }
 
     // CART SYSTEM
     let cart = {};
