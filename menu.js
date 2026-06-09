@@ -172,7 +172,7 @@ const menuData = [
     ]
   },
   {
-    "category": "Dosas",
+    "category": "Dosa's",
     "items": [
       {
         "name": "Ragi Dosa",
@@ -646,7 +646,7 @@ const menuData = [
     ]
   },
   {
-    "category": "Chinese Special (Noodles)",
+    "category": "Chinese Special",
     "items": [
       {
         "name": "Chow Mein Noodles",
@@ -729,6 +729,41 @@ const menuData = [
         "ac_price": 50,
         "self_price": 50,
         "image": "logo.png"
+      }
+    ]
+  },
+  {
+    "category": "Basumathi Special",
+    "items": [
+      {
+        "name": "Veg Pulav",
+        "ac_price": 150,
+        "self_price": 150,
+        "image": "veg_pulav_premium.png"
+      },
+      {
+        "name": "Veg Biriyani",
+        "ac_price": 170,
+        "self_price": 170,
+        "image": "paneer_biryani_premium.png"
+      },
+      {
+        "name": "Ghee Rice",
+        "ac_price": 180,
+        "self_price": 180,
+        "image": "ghee_rice_premium.png"
+      },
+      {
+        "name": "Jeera Rice",
+        "ac_price": 200,
+        "self_price": 200,
+        "image": "jeera_rice_premium.png"
+      },
+      {
+        "name": "Dal Kichidi",
+        "ac_price": 220,
+        "self_price": 220,
+        "image": "dal_kichidi_premium.png"
       }
     ]
   },
@@ -870,11 +905,7 @@ const menuData = [
     ]
   },
   {
-    "category": "Puri",
-    "items": []
-  },
-  {
-    "category": "Tawa",
+    "category": "Tawa Ka Kamal",
     "items": []
   },
   {
