@@ -6,37 +6,37 @@ const menuData = [
                 "name": "Tea / Coffee",
                 "self_price": 15,
                 "ac_price": 30,
-                "image": "assets/images/tea___coffee.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Ginger Coffee",
                 "self_price": 20,
                 "ac_price": 35,
-                "image": "assets/images/ginger_coffee.png"
+                "image": "logo.png"
             },
             {
                 "name": "Lemon Tea",
                 "self_price": 20,
                 "ac_price": 30,
-                "image": "assets/images/lemon_tea.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Green Tea",
                 "self_price": 20,
                 "ac_price": 20,
-                "image": "assets/images/green_tea.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Badam Milk",
                 "self_price": 20,
                 "ac_price": 40,
-                "image": "assets/images/badam_milk.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Horlicks / Bournvita",
                 "self_price": 20,
                 "ac_price": 40,
-                "image": "assets/images/horlicks___bournvita.jpg"
+                "image": "logo.png"
             }
         ]
     },
@@ -47,145 +47,145 @@ const menuData = [
                 "name": "Idli (2 Nos)",
                 "self_price": 40,
                 "ac_price": 50,
-                "image": "assets/images/idli_2_nos.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Ghee Pudi Idli (2 Nos)",
                 "self_price": 50,
                 "ac_price": 60,
-                "image": "assets/images/ghee_pudi_idli_2_nos.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Idli Vada (Single)",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "assets/images/idli_vada_single.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Vada (1 No)",
                 "self_price": 35,
                 "ac_price": 40,
-                "image": "assets/images/vada_1_no.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "2 Idli 1 Vada",
                 "self_price": 70,
                 "ac_price": 80,
-                "image": "assets/images/2_idli_1_vada.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Rava Idli with Ghee Pudi",
                 "self_price": 50,
                 "ac_price": 55,
-                "image": "assets/images/rava_idli_with_ghee_pudi.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Ghee Kharabath",
                 "self_price": 35,
                 "ac_price": 50,
-                "image": "assets/images/ghee_kharabath.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Ghee Kesaribath",
                 "self_price": 35,
                 "ac_price": 50,
-                "image": "assets/images/ghee_kesaribath.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Ghee Chow Chow Bath",
                 "self_price": 70,
                 "ac_price": 100,
-                "image": "assets/images/ghee_chow_chow_bath.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Rice Bath",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "assets/images/rice_bath.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Poori Sagu",
                 "self_price": 70,
                 "ac_price": 80,
-                "image": "assets/images/poori_sagu.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Ghee Bisi Bele Bath",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "assets/images/ghee_bisi_bele_bath.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Ghee Pongal",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "assets/images/ghee_pongal.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Curd Vada",
                 "self_price": 50,
                 "ac_price": 60,
-                "image": "assets/images/curd_vada.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Mangalore Bajji / Pakoda",
                 "self_price": 40,
                 "ac_price": 50,
-                "image": "assets/images/mangalore_bajji___pakoda.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Buns (2 Nos)",
                 "self_price": 70,
                 "ac_price": 80,
-                "image": "assets/images/buns_2_nos.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Bonda Soup",
                 "self_price": 50,
                 "ac_price": 60,
-                "image": "assets/images/bonda_soup.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Shavige Bath",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "assets/images/shavige_bath.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Curd Rice",
                 "self_price": 50,
                 "ac_price": 85,
-                "image": "assets/images/curd_rice.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Ghee Thatte Idli",
                 "self_price": 40,
                 "ac_price": 50,
-                "image": "assets/images/ghee_thatte_idli.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Batan Idli",
                 "self_price": 40,
                 "ac_price": 50,
-                "image": "assets/images/batan_idli.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Ragi Dosa",
                 "self_price": 80,
                 "ac_price": 90,
-                "image": "assets/images/ragi_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Breakfast Combo",
                 "self_price": 120,
                 "ac_price": 140,
-                "image": "assets/images/breakfast_combo.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Mini Combo",
                 "self_price": 100,
                 "ac_price": 130,
-                "image": "assets/images/mini_combo.jpg"
+                "image": "logo.png"
             }
         ]
     },
@@ -196,169 +196,169 @@ const menuData = [
                 "name": "Plain Dosa",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "assets/images/plain_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Ghee Plain Dosa",
                 "self_price": 70,
                 "ac_price": 90,
-                "image": "assets/images/ghee_plain_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Butter Plain Dosa",
                 "self_price": 80,
                 "ac_price": 90,
-                "image": "assets/images/butter_plain_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Plain Dosa",
                 "self_price": 90,
                 "ac_price": 110,
-                "image": "assets/images/paneer_plain_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Cheese Plain Dosa",
                 "self_price": 90,
                 "ac_price": 110,
-                "image": "assets/images/cheese_plain_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Paper Plain Dosa",
                 "self_price": 90,
                 "ac_price": 110,
-                "image": "assets/images/paper_plain_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Masala Dosa",
                 "self_price": 70,
                 "ac_price": 85,
-                "image": "assets/images/masala_soda_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Ghee Masala Dosa",
                 "self_price": 100,
                 "ac_price": 100,
-                "image": "assets/images/ghee_masala_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Butter Masala Dosa",
                 "self_price": 100,
                 "ac_price": 100,
-                "image": "assets/images/butter_masala_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Masala Dosa",
                 "self_price": 100,
                 "ac_price": 125,
-                "image": "assets/images/paneer_masala_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Cheese Masala Dosa",
                 "self_price": 100,
                 "ac_price": 125,
-                "image": "assets/images/cheese_masala_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Paper Masala Dosa",
                 "self_price": 110,
                 "ac_price": 125,
-                "image": "assets/images/paper_masala_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Set Dosa",
                 "self_price": 70,
                 "ac_price": 85,
-                "image": "assets/images/set_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Khali Dosa",
                 "self_price": 70,
                 "ac_price": 85,
-                "image": "assets/images/khali_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Khali Butter Dosa",
                 "self_price": 80,
                 "ac_price": 95,
-                "image": "assets/images/khali_butter_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Onion Dosa",
                 "self_price": 90,
                 "ac_price": 100,
-                "image": "assets/images/onion_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Rava Dosa",
                 "self_price": 90,
                 "ac_price": 100,
-                "image": "assets/images/rava_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Rava Onion Dosa",
                 "self_price": 100,
                 "ac_price": 110,
-                "image": "assets/images/rava_onion_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Rava Masala Dosa",
                 "self_price": 100,
                 "ac_price": 125,
-                "image": "assets/images/rava_masala_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Rava Onion Masala Dosa",
                 "self_price": 110,
                 "ac_price": 125,
-                "image": "assets/images/rava_onion_masala_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Open Butter Masala Dosa",
                 "self_price": 80,
                 "ac_price": 110,
-                "image": "assets/images/open_butter_masala_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Mysore Masala Dosa",
                 "self_price": 100,
                 "ac_price": 110,
-                "image": "assets/images/mysore_masala_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "SRV Special Dosa",
                 "self_price": 110,
                 "ac_price": 125,
-                "image": "assets/images/srv_special_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Day Special Dosa",
                 "self_price": 100,
                 "ac_price": 100,
-                "image": "assets/images/day_special_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Butter Akki Rotti / Ragi Rotti",
                 "self_price": 90,
                 "ac_price": 100,
-                "image": "assets/images/butter_akki_rotti___ragi_rotti.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Neer Dosa",
                 "self_price": 70,
                 "ac_price": 80,
-                "image": "assets/images/neer_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Menthe Dosa",
                 "self_price": 80,
                 "ac_price": 95,
-                "image": "assets/images/menthe_dosa.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Palak Dosa",
                 "self_price": 80,
                 "ac_price": 95,
-                "image": "assets/images/palak_dosa.jpg"
+                "image": "logo.png"
             }
         ]
     },
@@ -369,61 +369,61 @@ const menuData = [
                 "name": "Tomato Soup",
                 "self_price": 90,
                 "ac_price": 90,
-                "image": "assets/images/tomato_soup.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Cream of Veg Soup",
                 "self_price": 85,
                 "ac_price": 95,
-                "image": "assets/images/cream_of_veg_soup.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Sweet Corn Soup",
                 "self_price": 85,
                 "ac_price": 95,
-                "image": "assets/images/sweet_corn_soup.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Hot & Sour Soup",
                 "self_price": 90,
                 "ac_price": 90,
-                "image": "assets/images/hot_and_sour_soup.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Manchow Clear Soup",
                 "self_price": 95,
                 "ac_price": 100,
-                "image": "assets/images/manchow_clear_soup.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Veg Clear Soup",
                 "self_price": 85,
                 "ac_price": 100,
-                "image": "assets/images/veg_clear_soup.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Lemon Coriander Soup",
                 "self_price": 80,
                 "ac_price": 100,
-                "image": "assets/images/lemon_coriander_soup.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Cream of Mushroom",
                 "self_price": 90,
                 "ac_price": 100,
-                "image": "assets/images/cream_of_mushroom.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Schezwan Palak Soup",
                 "self_price": 90,
                 "ac_price": 110,
-                "image": "assets/images/schezwan_palak_soup.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "French Onion Soup",
                 "self_price": 90,
                 "ac_price": 110,
-                "image": "assets/images/french_onion_soup.jpg"
+                "image": "logo.png"
             }
         ]
     },
@@ -434,43 +434,43 @@ const menuData = [
                 "name": "Paneer Tikka",
                 "self_price": 210,
                 "ac_price": 225,
-                "image": "assets/images/paneer_tikka.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Aloo Tikka",
                 "self_price": 190,
                 "ac_price": 200,
-                "image": "assets/images/aloo_tikka.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Veg Sheekh Kebab",
                 "self_price": 190,
                 "ac_price": 200,
-                "image": "assets/images/veg_sheekh_kebab.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom Tikka",
                 "self_price": 210,
                 "ac_price": 225,
-                "image": "assets/images/mushroom_tikka.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Gobi Tikka",
                 "self_price": 180,
                 "ac_price": 200,
-                "image": "assets/images/gobi_tikka.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Harabara Kebab",
                 "self_price": 190,
                 "ac_price": 200,
-                "image": "assets/images/harabara_kebab.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Special Veg Platter",
                 "self_price": 240,
                 "ac_price": 280,
-                "image": "assets/images/special_veg_platter.jpg"
+                "image": "logo.png"
             }
         ]
     },
@@ -481,109 +481,109 @@ const menuData = [
                 "name": "Gobi Manchurian",
                 "self_price": 110,
                 "ac_price": 140,
-                "image": "assets/images/gobi_manchurian.png"
+                "image": "logo.png"
             },
             {
                 "name": "Baby Corn Manchurian",
                 "self_price": 130,
                 "ac_price": 150,
-                "image": "assets/images/baby_corn_manchurian.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom Manchurian",
                 "self_price": 140,
                 "ac_price": 170,
-                "image": "assets/images/mushroom_manchurian.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Manchurian",
                 "self_price": 150,
                 "ac_price": 180,
-                "image": "assets/images/paneer_manchurian.png"
+                "image": "logo.png"
             },
             {
                 "name": "Veg 65",
                 "self_price": 120,
                 "ac_price": 140,
-                "image": "assets/images/veg_65.png"
+                "image": "logo.png"
             },
             {
                 "name": "Gobi 65",
                 "self_price": 120,
                 "ac_price": 150,
-                "image": "assets/images/gobi_65.png"
+                "image": "logo.png"
             },
             {
                 "name": "Baby Corn 65",
                 "self_price": 130,
                 "ac_price": 160,
-                "image": "assets/images/baby_corn_65.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom 65",
                 "self_price": 140,
                 "ac_price": 170,
-                "image": "assets/images/mushroom_65.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer 65",
                 "self_price": 150,
                 "ac_price": 180,
-                "image": "assets/images/paneer_65.png"
+                "image": "logo.png"
             },
             {
                 "name": "Crispy Veg",
                 "self_price": 140,
                 "ac_price": 160,
-                "image": "assets/images/crispy_veg.png"
+                "image": "logo.png"
             },
             {
                 "name": "Crispy Corn",
                 "self_price": 140,
                 "ac_price": 160,
-                "image": "assets/images/crispy_corn.png"
+                "image": "logo.png"
             },
             {
                 "name": "Crispy Baby Corn",
                 "self_price": 150,
                 "ac_price": 170,
-                "image": "assets/images/crispy_baby_corn.png"
+                "image": "logo.png"
             },
             {
                 "name": "Crispy Mushroom",
                 "self_price": 160,
                 "ac_price": 180,
-                "image": "assets/images/crispy_mushroom.png"
+                "image": "logo.png"
             },
             {
                 "name": "Crispy Paneer",
                 "self_price": 170,
                 "ac_price": 190,
-                "image": "assets/images/crispy_paneer.png"
+                "image": "logo.png"
             },
             {
                 "name": "Chilli Gobi",
                 "self_price": 130,
                 "ac_price": 150,
-                "image": "assets/images/chilli_gobi.png"
+                "image": "logo.png"
             },
             {
                 "name": "Chilli Baby Corn",
                 "self_price": 140,
                 "ac_price": 160,
-                "image": "assets/images/chilli_baby_corn.png"
+                "image": "logo.png"
             },
             {
                 "name": "Chilli Mushroom",
                 "self_price": 150,
                 "ac_price": 170,
-                "image": "assets/images/chilli_mushroom.png"
+                "image": "logo.png"
             },
             {
                 "name": "Chilli Paneer",
                 "self_price": 160,
                 "ac_price": 180,
-                "image": "assets/images/chilli_paneer.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -594,55 +594,55 @@ const menuData = [
                 "name": "Veg Pulao",
                 "self_price": 110,
                 "ac_price": 140,
-                "image": "assets/images/veg_pulav_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Kashmiri Pulao",
                 "self_price": 130,
                 "ac_price": 160,
-                "image": "assets/images/kashmiri_pulav_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Pulao",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "assets/images/paneer_palak_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom Pulao",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "assets/images/mushroom_pulao.png"
+                "image": "logo.png"
             },
             {
                 "name": "Ghee Rice",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "assets/images/ghee_rice_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Jeera Rice",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "assets/images/jeera_rice_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Veg Biryani",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "assets/images/veg_biryani.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Biryani",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "assets/images/paneer_biryani_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom Biryani",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "assets/images/mushroom_biryani_premium.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -653,19 +653,19 @@ const menuData = [
                 "name": "Roasted Papad",
                 "self_price": 20,
                 "ac_price": 30,
-                "image": "assets/images/roasted_papad.png"
+                "image": "logo.png"
             },
             {
                 "name": "Masala Papad",
                 "self_price": 40,
                 "ac_price": 50,
-                "image": "assets/images/masala_papad.png"
+                "image": "logo.png"
             },
             {
                 "name": "Fry Papad",
                 "self_price": 25,
                 "ac_price": 35,
-                "image": "assets/images/fry_papad.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -676,43 +676,43 @@ const menuData = [
                 "name": "Gobi Dry",
                 "self_price": 140,
                 "ac_price": 170,
-                "image": "assets/images/gobi_dry.png"
+                "image": "logo.png"
             },
             {
                 "name": "Veg Kolhapuri Dry",
                 "self_price": 150,
                 "ac_price": 180,
-                "image": "assets/images/veg_kolhapuri_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Veg Kadai Dry",
                 "self_price": 150,
                 "ac_price": 180,
-                "image": "assets/images/veg_kadai_dry.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Butter Masala Dry",
                 "self_price": 180,
                 "ac_price": 220,
-                "image": "assets/images/paneer_butter_masala_dry.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Kadai Dry",
                 "self_price": 180,
                 "ac_price": 220,
-                "image": "assets/images/paneer_kadai_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom Masala Dry",
                 "self_price": 170,
                 "ac_price": 200,
-                "image": "assets/images/mushroom_masala_dry.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom Kadai Dry",
                 "self_price": 170,
                 "ac_price": 200,
-                "image": "assets/images/mushroom_kadai_dry.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -723,55 +723,55 @@ const menuData = [
                 "name": "Tandoori Roti",
                 "self_price": 25,
                 "ac_price": 30,
-                "image": "assets/images/tandoori_roti.png"
+                "image": "logo.png"
             },
             {
                 "name": "Butter Roti",
                 "self_price": 30,
                 "ac_price": 40,
-                "image": "assets/images/butter_roti.png"
+                "image": "logo.png"
             },
             {
                 "name": "Plain Naan",
                 "self_price": 40,
                 "ac_price": 50,
-                "image": "assets/images/plain_naan.png"
+                "image": "logo.png"
             },
             {
                 "name": "Butter Naan",
                 "self_price": 50,
                 "ac_price": 60,
-                "image": "assets/images/butter_naan.png"
+                "image": "logo.png"
             },
             {
                 "name": "Garlic Naan",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "assets/images/garlic_naan.png"
+                "image": "logo.png"
             },
             {
                 "name": "Kulcha",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "assets/images/kulcha.png"
+                "image": "logo.png"
             },
             {
                 "name": "Butter Kulcha",
                 "self_price": 70,
                 "ac_price": 80,
-                "image": "assets/images/butter_kulcha.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paratha",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "assets/images/paratha.png"
+                "image": "logo.png"
             },
             {
                 "name": "Butter Paratha",
                 "self_price": 70,
                 "ac_price": 80,
-                "image": "assets/images/butter_paratha.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -782,31 +782,31 @@ const menuData = [
                 "name": "Plain Raitha",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/plain_raitha.png"
+                "image": "logo.png"
             },
             {
                 "name": "Onion Raitha",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "assets/images/onion_raitha.png"
+                "image": "logo.png"
             },
             {
                 "name": "Cucumber Raitha",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "assets/images/cucumber_raitha.png"
+                "image": "logo.png"
             },
             {
                 "name": "Veg Salad",
                 "self_price": 70,
                 "ac_price": 90,
-                "image": "assets/images/veg_salad.png"
+                "image": "logo.png"
             },
             {
                 "name": "Green Salad",
                 "self_price": 70,
                 "ac_price": 90,
-                "image": "assets/images/green_salad.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -817,67 +817,67 @@ const menuData = [
                 "name": "Veg Kurma",
                 "self_price": 130,
                 "ac_price": 170,
-                "image": "assets/images/veg_kurma.png"
+                "image": "logo.png"
             },
             {
                 "name": "Veg Kolhapuri",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "assets/images/veg_kolhapuri_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Veg Kadai",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "assets/images/veg_kadai.png"
+                "image": "logo.png"
             },
             {
                 "name": "Veg Hyderabadi",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "assets/images/veg_hyderabadi_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Veg Handi",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "assets/images/veg_handi.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Butter Masala",
                 "self_price": 160,
                 "ac_price": 220,
-                "image": "assets/images/paneer_butter_masala.png"
+                "image": "logo.png"
             },
             {
                 "name": "Kadai Paneer",
                 "self_price": 160,
                 "ac_price": 220,
-                "image": "assets/images/kadai_paneer.png"
+                "image": "logo.png"
             },
             {
                 "name": "Palak Paneer",
                 "self_price": 160,
                 "ac_price": 220,
-                "image": "assets/images/palak_paneer.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom Masala",
                 "self_price": 150,
                 "ac_price": 200,
-                "image": "assets/images/mushroom_masala.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom Kadai",
                 "self_price": 150,
                 "ac_price": 200,
-                "image": "assets/images/mushroom_kadai.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mix Veg Curry",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "assets/images/mix_veg_curry_premium.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -888,31 +888,31 @@ const menuData = [
                 "name": "Paneer Butter Masala Special",
                 "self_price": 180,
                 "ac_price": 240,
-                "image": "assets/images/paneer_butter_masala_special.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Tikka Masala",
                 "self_price": 180,
                 "ac_price": 240,
-                "image": "assets/images/paneer_tikka_masala_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom Pepper Dry",
                 "self_price": 170,
                 "ac_price": 220,
-                "image": "assets/images/mushroom_pepper_dry.png"
+                "image": "logo.png"
             },
             {
                 "name": "Veg Tawa Fry",
                 "self_price": 160,
                 "ac_price": 200,
-                "image": "assets/images/veg_tawa_fry.png"
+                "image": "logo.png"
             },
             {
                 "name": "SRV Special Veg",
                 "self_price": 180,
                 "ac_price": 240,
-                "image": "assets/images/srv_special_veg.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -923,61 +923,61 @@ const menuData = [
                 "name": "Veg Fried Rice",
                 "self_price": 120,
                 "ac_price": 150,
-                "image": "assets/images/veg_fried_rice_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Schezwan Fried Rice",
                 "self_price": 130,
                 "ac_price": 160,
-                "image": "assets/images/schezwan_fried_rice.png"
+                "image": "logo.png"
             },
             {
                 "name": "Gobi Fried Rice",
                 "self_price": 130,
                 "ac_price": 160,
-                "image": "assets/images/veg_fried_rice_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom Fried Rice",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "assets/images/mushroom_fried_rice_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Fried Rice",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "assets/images/paneer_fried_rice_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Veg Noodles",
                 "self_price": 120,
                 "ac_price": 150,
-                "image": "assets/images/veg_noodles_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Schezwan Noodles",
                 "self_price": 130,
                 "ac_price": 160,
-                "image": "assets/images/schezwan_noodles_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Gobi Noodles",
                 "self_price": 130,
                 "ac_price": 160,
-                "image": "assets/images/gobi_noodles.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom Noodles",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "assets/images/mushroom_noodles_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Noodles",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "assets/images/paneer_noodles_premium.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -988,19 +988,19 @@ const menuData = [
                 "name": "Fried Rice + Manchurian",
                 "self_price": 170,
                 "ac_price": 220,
-                "image": "assets/images/fried_rice_plus_manchurian.png"
+                "image": "logo.png"
             },
             {
                 "name": "Noodles + Manchurian",
                 "self_price": 170,
                 "ac_price": 220,
-                "image": "assets/images/noodles_plus_manchurian.png"
+                "image": "logo.png"
             },
             {
                 "name": "Fried Rice + Noodles + Manchurian",
                 "self_price": 220,
                 "ac_price": 280,
-                "image": "assets/images/fried_rice_plus_noodles_plus_manchurian.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1011,31 +1011,31 @@ const menuData = [
                 "name": "Dragon Paneer",
                 "self_price": 170,
                 "ac_price": 220,
-                "image": "assets/images/dragon_paneer.png"
+                "image": "logo.png"
             },
             {
                 "name": "Dragon Mushroom",
                 "self_price": 160,
                 "ac_price": 200,
-                "image": "assets/images/dragon_mushroom.png"
+                "image": "logo.png"
             },
             {
                 "name": "Dragon Baby Corn",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "assets/images/dragon_baby_corn.png"
+                "image": "logo.png"
             },
             {
                 "name": "Hong Kong Noodles",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "assets/images/hong_kong_noodles.png"
+                "image": "logo.png"
             },
             {
                 "name": "American Chopsuey",
                 "self_price": 160,
                 "ac_price": 220,
-                "image": "assets/images/american_chopsuey.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1046,19 +1046,19 @@ const menuData = [
                 "name": "South Meals",
                 "self_price": 100,
                 "ac_price": 140,
-                "image": "assets/images/south_meals.png"
+                "image": "logo.png"
             },
             {
                 "name": "Special Meals",
                 "self_price": 150,
                 "ac_price": 200,
-                "image": "assets/images/special_meals.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mini Meals",
                 "self_price": 80,
                 "ac_price": 120,
-                "image": "assets/images/mini_meals.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1069,31 +1069,31 @@ const menuData = [
                 "name": "Extra Curry",
                 "self_price": 30,
                 "ac_price": 40,
-                "image": "assets/images/extra_curry.png"
+                "image": "logo.png"
             },
             {
                 "name": "Extra Sambar",
                 "self_price": 20,
                 "ac_price": 30,
-                "image": "assets/images/extra_sambar.png"
+                "image": "logo.png"
             },
             {
                 "name": "Extra Chutney",
                 "self_price": 20,
                 "ac_price": 30,
-                "image": "assets/images/extra_chutney.png"
+                "image": "logo.png"
             },
             {
                 "name": "Curd",
                 "self_price": 30,
                 "ac_price": 40,
-                "image": "assets/images/curd.png"
+                "image": "logo.png"
             },
             {
                 "name": "Pickle",
                 "self_price": 10,
                 "ac_price": 20,
-                "image": "assets/images/pickle.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1104,31 +1104,31 @@ const menuData = [
                 "name": "Veg Dum Biryani",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "assets/images/veg_dum_biryani.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Dum Biryani",
                 "self_price": 170,
                 "ac_price": 220,
-                "image": "assets/images/paneer_biryani_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom Dum Biryani",
                 "self_price": 170,
                 "ac_price": 220,
-                "image": "assets/images/mushroom_biryani_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Kashmiri Biryani",
                 "self_price": 160,
                 "ac_price": 200,
-                "image": "assets/images/kashmiri_biryani.png"
+                "image": "logo.png"
             },
             {
                 "name": "Jeera Rice",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "assets/images/jeera_rice_premium.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1139,37 +1139,37 @@ const menuData = [
                 "name": "Masala Puri",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/masala_puri_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Pani Puri",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/pani_puri_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Sev Puri",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/sev_puri_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Dahi Puri",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "assets/images/dahi_puri.png"
+                "image": "logo.png"
             },
             {
                 "name": "Bhel Puri",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/bhel_puri_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Special Chat",
                 "self_price": 70,
                 "ac_price": 100,
-                "image": "assets/images/special_chat.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1180,31 +1180,31 @@ const menuData = [
                 "name": "Tawa Pulav",
                 "self_price": 110,
                 "ac_price": 140,
-                "image": "assets/images/tawa_pulav.png"
+                "image": "logo.png"
             },
             {
                 "name": "Veg Tawa Masala",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "assets/images/veg_tawa_masala.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Tawa Masala",
                 "self_price": 160,
                 "ac_price": 220,
-                "image": "assets/images/paneer_tikka_masala_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mushroom Tawa Masala",
                 "self_price": 150,
                 "ac_price": 200,
-                "image": "assets/images/mushroom_tawa_masala.png"
+                "image": "logo.png"
             },
             {
                 "name": "Tawa Biryani",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "assets/images/tawa_biryani.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1215,31 +1215,31 @@ const menuData = [
                 "name": "Veg Sandwich",
                 "self_price": 70,
                 "ac_price": 90,
-                "image": "assets/images/veg_sandwich.png"
+                "image": "logo.png"
             },
             {
                 "name": "Grilled Sandwich",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "assets/images/veg_grill_sandwich_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Cheese Sandwich",
                 "self_price": 100,
                 "ac_price": 130,
-                "image": "assets/images/cheese_grill_sandwich_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Paneer Sandwich",
                 "self_price": 110,
                 "ac_price": 140,
-                "image": "assets/images/paneer_grill_sandwich_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Club Sandwich",
                 "self_price": 120,
                 "ac_price": 160,
-                "image": "assets/images/club_sandwich.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1250,49 +1250,49 @@ const menuData = [
                 "name": "Sweet Lime",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "assets/images/sweet_lime.png"
+                "image": "logo.png"
             },
             {
                 "name": "Orange",
                 "self_price": 70,
                 "ac_price": 90,
-                "image": "assets/images/orange.png"
+                "image": "logo.png"
             },
             {
                 "name": "Pineapple",
                 "self_price": 70,
                 "ac_price": 90,
-                "image": "assets/images/pineapple.png"
+                "image": "logo.png"
             },
             {
                 "name": "Watermelon",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "assets/images/watermelon.png"
+                "image": "logo.png"
             },
             {
                 "name": "Grape",
                 "self_price": 70,
                 "ac_price": 90,
-                "image": "assets/images/grape.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mosambi",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "assets/images/mosambi.png"
+                "image": "logo.png"
             },
             {
                 "name": "Apple Juice",
                 "self_price": 80,
                 "ac_price": 110,
-                "image": "assets/images/pineapple_juice_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Pomegranate",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "assets/images/pomegranate.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1303,37 +1303,37 @@ const menuData = [
                 "name": "Banana Shake",
                 "self_price": 80,
                 "ac_price": 110,
-                "image": "assets/images/banana_shake.png"
+                "image": "logo.png"
             },
             {
                 "name": "Apple Shake",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "assets/images/apple_shake_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Pineapple Shake",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "assets/images/apple_shake_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Chikoo Shake",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "assets/images/chikoo_shake.png"
+                "image": "logo.png"
             },
             {
                 "name": "Mango Shake",
                 "self_price": 100,
                 "ac_price": 130,
-                "image": "assets/images/mango_shake.png"
+                "image": "logo.png"
             },
             {
                 "name": "Dry Fruit Shake",
                 "self_price": 120,
                 "ac_price": 160,
-                "image": "assets/images/dry_fruit_shake.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1344,19 +1344,19 @@ const menuData = [
                 "name": "Sweet Lassi",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "assets/images/sweet_lassi_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Salt Lassi",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "assets/images/salt_lassi.png"
+                "image": "logo.png"
             },
             {
                 "name": "Special Lassi",
                 "self_price": 80,
                 "ac_price": 110,
-                "image": "assets/images/special_lassi.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1367,25 +1367,25 @@ const menuData = [
                 "name": "Lemon Soda",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "assets/images/lemon_soda.png"
+                "image": "logo.png"
             },
             {
                 "name": "Sweet Lime Soda",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/sweet_lime_soda.png"
+                "image": "logo.png"
             },
             {
                 "name": "Salt Soda",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "assets/images/salt_soda.png"
+                "image": "logo.png"
             },
             {
                 "name": "Masala Soda",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/masala_soda_premium.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1396,31 +1396,31 @@ const menuData = [
                 "name": "Gulab Jamun",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "assets/images/gulab_jamun_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Carrot Halwa",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/carrot_halwa_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Gajar Halwa",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/gajar_halwa.png"
+                "image": "logo.png"
             },
             {
                 "name": "Kesari Bath",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "assets/images/kesari_bath.png"
+                "image": "logo.png"
             },
             {
                 "name": "Special Sweet",
                 "self_price": 60,
                 "ac_price": 90,
-                "image": "assets/images/special_sweet.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1431,31 +1431,31 @@ const menuData = [
                 "name": "Vanilla",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "assets/images/vanilla.png"
+                "image": "logo.png"
             },
             {
                 "name": "Strawberry",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "assets/images/strawberry.png"
+                "image": "logo.png"
             },
             {
                 "name": "Butterscotch",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/butterscotch.png"
+                "image": "logo.png"
             },
             {
                 "name": "Chocolate",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/chocolate.png"
+                "image": "logo.png"
             },
             {
                 "name": "Pista",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/pista.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1466,25 +1466,25 @@ const menuData = [
                 "name": "Vanilla Shake",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "assets/images/vanilla_shake.png"
+                "image": "logo.png"
             },
             {
                 "name": "Strawberry Shake",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "assets/images/strawberry_shake.png"
+                "image": "logo.png"
             },
             {
                 "name": "Chocolate Shake",
                 "self_price": 100,
                 "ac_price": 130,
-                "image": "assets/images/chocolate_shake_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Butterscotch Shake",
                 "self_price": 100,
                 "ac_price": 130,
-                "image": "assets/images/butterscotch_shake.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1495,13 +1495,13 @@ const menuData = [
                 "name": "Fruit Salad",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "assets/images/fruit_salad_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Fruit Salad with Ice Cream",
                 "self_price": 120,
                 "ac_price": 160,
-                "image": "assets/images/fruit_salad_ice_cream_premium.png"
+                "image": "logo.png"
             }
         ]
     },
@@ -1512,25 +1512,25 @@ const menuData = [
                 "name": "Gadbad Ice Cream",
                 "self_price": 120,
                 "ac_price": 160,
-                "image": "assets/images/gud_bud_ice_cream_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Dry Fruit Delight",
                 "self_price": 140,
                 "ac_price": 190,
-                "image": "assets/images/dry_fruit_delight.png"
+                "image": "logo.png"
             },
             {
                 "name": "Special Ice Cream",
                 "self_price": 130,
                 "ac_price": 180,
-                "image": "assets/images/srv_special_ice_cream_premium.png"
+                "image": "logo.png"
             },
             {
                 "name": "Banana Split",
                 "self_price": 150,
                 "ac_price": 200,
-                "image": "assets/images/banana_split.png"
+                "image": "logo.png"
             }
         ]
     }
