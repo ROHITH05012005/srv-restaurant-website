@@ -2577,11 +2577,11 @@
           imgSrc = 'logo.png';
         }
         card.innerHTML = `
-            <div class="food-img-wrap">
-              <img src="${imgSrc}" alt="${item.name}" class="food-img" loading="lazy">
-              <div class="diet-tag veg"></div>
+            <div class="food-card-img">
+              <img src="${imgSrc}" alt="${item.name}" loading="lazy">
+              <div class="veg-badge"><div class="veg-dot"></div></div>
             </div>
-            <div class="food-info">
+            <div class="food-card-body">
               <div class="food-name">${item.name}</div>
               <div class="food-price">₹${price}</div>
               <div class="food-actions">
