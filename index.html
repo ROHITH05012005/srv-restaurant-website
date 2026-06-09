@@ -2599,8 +2599,11 @@
       
       // Update UI for existing cart items
       updateCartUI();
-      // Trigger reveal animation for newly added items
-      if (typeof reveal === 'function') reveal();
+      
+      // Animate items in
+      setTimeout(() => {
+        grid.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+      }, 50);
     }
     
     // Initialize menu on load
