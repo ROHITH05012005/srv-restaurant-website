@@ -71,37 +71,37 @@ const menuData = [
                 "name": "2 Idli 1 Vada",
                 "self_price": 70,
                 "ac_price": 80,
-                "image": "logo.png"
+                "image": "assets/images/idli_vada_combo_premium.png"
             },
             {
                 "name": "Rava Idli with Ghee Pudi",
                 "self_price": 50,
                 "ac_price": 55,
-                "image": "logo.png"
+                "image": "assets/images/rava_idli_premium.png"
             },
             {
                 "name": "Ghee Kharabath",
                 "self_price": 35,
                 "ac_price": 50,
-                "image": "logo.png"
+                "image": "assets/images/ghee_kharabath_premium.png"
             },
             {
                 "name": "Ghee Kesaribath",
                 "self_price": 35,
                 "ac_price": 50,
-                "image": "logo.png"
+                "image": "assets/images/ghee_kesaribath_premium.png"
             },
             {
                 "name": "Ghee Chow Chow Bath",
                 "self_price": 70,
                 "ac_price": 100,
-                "image": "logo.png"
+                "image": "assets/images/chow_chow_bath_premium.png"
             },
             {
                 "name": "Rice Bath",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/rice_bath_premium.png"
             },
             {
                 "name": "Poori Sagu",
