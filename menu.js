@@ -12,7 +12,7 @@ const menuData = [
                 "name": "Ginger Coffee",
                 "self_price": 20,
                 "ac_price": 35,
-                "image": "logo.png"
+                "image": "assets/images/ginger_coffee_premium.png"
             },
             {
                 "name": "Lemon Tea",
