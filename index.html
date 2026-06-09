@@ -2467,7 +2467,7 @@
     <img id="lightboxImg" src="" alt="Gallery">
   </div>
 
-  <script src="menu.js"></script>
+  <script src="menu.js?v=2"></script>
   <script>
     // CURSOR
     const cursor = document.getElementById('cursor');
@@ -2570,7 +2570,7 @@
         const price = currentServiceType === 'ac' ? item.ac_price : item.self_price;
         const idName = item.name.replace(/\s+/g, '-');
         const card = document.createElement('div');
-        card.className = 'food-card reveal';
+        card.className = 'food-card';
         // Handle images
         let imgSrc = item.image;
         if (imgSrc === 'placeholder.png') {
@@ -2599,11 +2599,6 @@
       
       // Update UI for existing cart items
       updateCartUI();
-      
-      // Animate items in
-      setTimeout(() => {
-        grid.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-      }, 50);
     }
     
     // Initialize menu on load
