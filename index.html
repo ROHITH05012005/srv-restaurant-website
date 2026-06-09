@@ -2723,6 +2723,11 @@
     }, { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
+    // Initialize menu on load
+    if (typeof menuData !== 'undefined') {
+      generateMenuTabs();
+    }
+
     // COUNTERS
     const counterObs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
