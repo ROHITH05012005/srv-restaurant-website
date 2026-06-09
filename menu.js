@@ -18,7 +18,7 @@ const menuData = [
                 "name": "Lemon Tea",
                 "self_price": 20,
                 "ac_price": 30,
-                "image": "logo.png"
+                "image": "assets/images/lemon_tea_premium.png"
             },
             {
                 "name": "Green Tea",
