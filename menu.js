@@ -30,7 +30,7 @@ const menuData = [
                 "name": "Badam Milk",
                 "self_price": 20,
                 "ac_price": 40,
-                "image": "logo.png"
+                "image": "assets/images/badam_milk_premium.png"
             },
             {
                 "name": "Horlicks / Bournvita",
