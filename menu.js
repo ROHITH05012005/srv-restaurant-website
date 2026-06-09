@@ -24,7 +24,7 @@ const menuData = [
                 "name": "Green Tea",
                 "self_price": 20,
                 "ac_price": 20,
-                "image": "logo.png"
+                "image": "assets/images/green_tea_premium.png"
             },
             {
                 "name": "Badam Milk",
