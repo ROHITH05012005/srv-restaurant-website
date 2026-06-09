@@ -6,7 +6,7 @@ const menuData = [
                 "name": "Tea / Coffee",
                 "self_price": 15,
                 "ac_price": 30,
-                "image": "logo.png"
+                "image": "assets/images/filter_coffee_new.png"
             },
             {
                 "name": "Ginger Coffee",
