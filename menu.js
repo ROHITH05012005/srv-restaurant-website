@@ -36,7 +36,7 @@ const menuData = [
                 "name": "Horlicks / Bournvita",
                 "self_price": 20,
                 "ac_price": 40,
-                "image": "logo.png"
+                "image": "assets/images/horlicks_premium.png"
             }
         ]
     },
@@ -47,25 +47,25 @@ const menuData = [
                 "name": "Idli (2 Nos)",
                 "self_price": 40,
                 "ac_price": 50,
-                "image": "logo.png"
+                "image": "assets/images/idli_premium_new.png"
             },
             {
                 "name": "Ghee Pudi Idli (2 Nos)",
                 "self_price": 50,
                 "ac_price": 60,
-                "image": "logo.png"
+                "image": "assets/images/ghee_pudi_idli_premium.png"
             },
             {
                 "name": "Idli Vada (Single)",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "logo.png"
+                "image": "assets/images/idli_vada_premium.png"
             },
             {
                 "name": "Vada (1 No)",
                 "self_price": 35,
                 "ac_price": 40,
-                "image": "logo.png"
+                "image": "assets/images/vada_premium.png"
             },
             {
                 "name": "2 Idli 1 Vada",
