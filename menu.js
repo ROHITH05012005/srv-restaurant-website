@@ -107,85 +107,85 @@ const menuData = [
                 "name": "Poori Sagu",
                 "self_price": 70,
                 "ac_price": 80,
-                "image": "logo.png"
+                "image": "assets/images/poori_sagu_premium.png"
             },
             {
                 "name": "Ghee Bisi Bele Bath",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/ghee_bisi_bele_bath_premium.png"
             },
             {
                 "name": "Ghee Pongal",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/ghee_pongal_premium.png"
             },
             {
                 "name": "Curd Vada",
                 "self_price": 50,
                 "ac_price": 60,
-                "image": "logo.png"
+                "image": "assets/images/curd_vada_premium.png"
             },
             {
                 "name": "Mangalore Bajji / Pakoda",
                 "self_price": 40,
                 "ac_price": 50,
-                "image": "logo.png"
+                "image": "assets/images/mangalore_bajji_premium.png"
             },
             {
                 "name": "Buns (2 Nos)",
                 "self_price": 70,
                 "ac_price": 80,
-                "image": "logo.png"
+                "image": "assets/images/buns_premium.png"
             },
             {
                 "name": "Bonda Soup",
                 "self_price": 50,
                 "ac_price": 60,
-                "image": "logo.png"
+                "image": "assets/images/bonda_soup_premium.png"
             },
             {
                 "name": "Shavige Bath",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/shavige_bath_premium.png"
             },
             {
                 "name": "Curd Rice",
                 "self_price": 50,
                 "ac_price": 85,
-                "image": "logo.png"
+                "image": "assets/images/curd_rice_premium.png"
             },
             {
                 "name": "Ghee Thatte Idli",
                 "self_price": 40,
                 "ac_price": 50,
-                "image": "logo.png"
+                "image": "assets/images/ghee_thatte_idli_premium.png"
             },
             {
                 "name": "Batan Idli",
                 "self_price": 40,
                 "ac_price": 50,
-                "image": "logo.png"
+                "image": "assets/images/batan_idli_premium.png"
             },
             {
                 "name": "Ragi Dosa",
                 "self_price": 80,
                 "ac_price": 90,
-                "image": "logo.png"
+                "image": "assets/images/ragi_dosa_premium.png"
             },
             {
                 "name": "Breakfast Combo",
                 "self_price": 120,
                 "ac_price": 140,
-                "image": "logo.png"
+                "image": "assets/images/breakfast_combo_premium.png"
             },
             {
                 "name": "Mini Combo",
                 "self_price": 100,
                 "ac_price": 130,
-                "image": "logo.png"
+                "image": "assets/images/mini_combo_premium.png"
             }
         ]
     },

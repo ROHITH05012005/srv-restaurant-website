@@ -1,0 +1,199 @@
+0: Tea / Coffee
+1: Ginger Coffee
+2: Lemon Tea
+3: Badam Milk
+4: Horlicks / Bournivita
+5: Idli (2 nos)
+6: Ghee pudi Idli (2 nos)
+7: Idli Vada (Single)
+8: Vada (1 No)
+9: Rava Idli with ghee pudi
+10: Ghee Kharabath
+11: Ghee Kesaribath
+12: Ghee Chow Chow Bath
+13: Rice Bath
+14: Poori Sagu
+15: Ghee Bisi Bele Bath
+16: Ghee Pongal
+17: Curd Vada
+18: Mangalore Bajji / Pakoda
+19: Buns (2 nos)
+20: Bonda Soup
+21: Shavige Bath
+22: Curd Rice
+23: Ghee Pudi Thatte Idli
+24: Batan Idli
+25: Ragi Dosa
+26: Break fast Combo
+27: Mini Combo
+28: Bo / &83C
+29: Dal Makhani
+30: Channa Masala
+31: Aloo Gobi Masala
+32: Baby Corn Masala
+33: Gobi Masala
+34: Baby Corn Green Masala
+35: Grean peas Masala
+36: Plain Palak Masala
+37: Aloo Palak
+38: Paneer Palak
+39: Capsicum Masala
+40: Mix Veg Curry
+41: Veg Hariyali
+42: Veg Hyderabadi
+43: Veg Do-Pyaza
+44: Veg Kurma
+45: Veg Handi
+46: Paneer Butter Masala
+47: Kadai Mushroom
+48: Mushroom Masala
+49: Paneer Burji
+50: Paneer Kurma
+51: Paneer Kadai
+52: Kaju Masala
+53: Veg Koftha
+54: Malai Koftha
+55: Paneer Koftha
+56: Paneer Tikka Masala
+57: Veg Kolhapuri
+58: Paneer / Baby Corn Kolhapuri
+59: Dal Kolhapuri
+60: Gobi Kolhapuri
+61: Paneer Hyderabad
+62: Kaju Paneer Masala
+63: Mushroom Hyderabadi
+64: Babycorn Hyderabadi
+65: Veg Pepper Masala
+66: Veg Patiyala
+67: Aloo Dum
+68: PW WACO Socogxo
+69: sagas Baaw0
+70: Benmore Bred
+71: Ber SAOr DRO
+72: Bese Besos
+73: SOR BAF
+74: Veg Fried Rice
+75: Paneer Fried Rice
+76: Mushroom Fried Rice
+77: Schezwan Fried Rice
+78: Combination Fried Rice
+79: Ginger Garlic Fried Rice
+80: Baby Corn Fried Rice
+81: Ser Byer xe
+82: BAL Ee oye
+83: saQRS Bye GzP
+84: Rear Fors
+85: ROWSeMT Baio oy
+86: wou MOTE Fw Ox
+87: Ben mare Pye Ox
+88: North Biriyani Combo
+89: Chinese Combo
+90: Fried Rice Combo
+91: Chow Mein Noodles
+92: Veg Tripple Noodles
+93: Payer cadet
+94: set umet Rate,
+95: South Indian Meals
+96: North Indian Meals
+97: North Special Delux Meals
+98: South Special Delux Meals
+99: Mudde Meals
+100: PE QoBoma? Weo®
+101: MST BORA DWeo®
+102: MIT AWS Bow Aveo*
+103: PS AMO’ Bs Aeo®
+104: oes Deo®,
+105: Extra Rice
+106: Cup Curd
+107: Extra Poori
+108: Extra Butter
+109: OR, oye
+110: Be see
+111: AR D,2O
+112: OR, 230°
+113: Steam Rice
+114: Veg Pulav
+115: Veg Biriyani
+116: Ghee Rice
+117: Jeera Rice
+118: Dal Kichidi
+119: Masala Puri
+120: Pani Puri
+121: Bhel Puri
+122: Dahi Puri
+123: Sev Puri
+124: Special Sev Puri
+125: Dry Bhel Puri
+126: Special Bhel
+127: Bhel Masala Chat
+128: Corn Bhel Puri
+129: All Mix Chat
+130: Tomato Chat
+131: Boondi Chat
+132: Mung Dal Chat
+133: Nippat Chat
+134: Peanut Masala
+135: Aloo Puri
+136: Samosa Plain
+137: Samosa Masala
+138: Samosa Chat
+139: Cucumber Chat
+140: Vada Pav
+141: Cheese Vada Pav
+142: Dahi Potato
+143: Dahi Samosa Chat
+144: Dahi Aloo Puri
+145: Dahi Papdi
+146: Dahi Chat
+147: Corn Onion Dry Chat
+148: Pav Bhajji
+149: Paneer Pav Bhaji
+150: Cheese Pav Bhaji
+151: Kadai Pav Bhaji
+152: Extra Pav
+153: Butter Tawa Pulav
+154: Paneer Tawa Pulav
+155: Cheese Tawa Pulav
+156: Woe woes
+157: BAL? Tar 27023
+158: BHO WO woz
+159: DR, TF
+160: weso° Soo Boos
+161: BALO sao Boww
+162: wen So Bow
+163: Veg Grill Sandwich
+164: Veg Cheese Grill Sandwich
+165: Veg Paneer Grill Sandwich
+166: Veg Cheese Paneer Grill Sandwich
+167: Veg Mushroom Grill Sandwich
+168: SR V Special Sandwich
+169: ese Nor AR0ceP Nese
+170: Bese wear Nor AROTH DUP
+171: Ses? MAO AS® mor? Des
+172: ses e8en® MALO’ NE® me ore Dee
+173: ses? shagns® Nee more dese
+174: OF GO D AMO mors Des
+175: Mosambi Juice
+176: Gobi 65
+177: Reed 65
+178: Gobi Pepper Dry
+179: Raed dao &;
+180: Gobi Crispy
+181: Raw 3%,
+182: Gobi Salt & Pepper
+183: Raed mor, & Baoe
+184: Baby Corn Manchurian
+185: Berd Are aowmdova®
+186: Babycorn Chilly
+187: Benmrr wo
+188: Baby Corn Pepper Dry
+189: Ben ware Ago a;
+190: Babycorn 65
+191: Bema 65
+192: Babycorn Crispy
+193: Benmarr 32,
+194: Mushroom Manchurian
+195: abhaens sbowkedobat
+196: Mushroom Pepper Dry
+197: abaeme dye a,
+198: Rent, maz 60
