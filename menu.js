@@ -196,19 +196,19 @@ const menuData = [
                 "name": "Plain Dosa",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/plain_dosa_premium.png"
             },
             {
                 "name": "Ghee Plain Dosa",
                 "self_price": 70,
                 "ac_price": 90,
-                "image": "logo.png"
+                "image": "assets/images/ghee_plain_dosa_premium.png"
             },
             {
                 "name": "Butter Plain Dosa",
                 "self_price": 80,
                 "ac_price": 90,
-                "image": "logo.png"
+                "image": "assets/images/butter_plain_dosa_premium.png"
             },
             {
                 "name": "Paneer Plain Dosa",
