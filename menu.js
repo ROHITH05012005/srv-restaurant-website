@@ -238,7 +238,7 @@ const menuData = [
                 "name": "Ghee Masala Dosa",
                 "self_price": 100,
                 "ac_price": 100,
-                "image": "logo.png"
+                "image": "assets/images/ghee_masala_dosa_pollinations_proper.jpg"
             },
             {
                 "name": "Butter Masala Dosa",
