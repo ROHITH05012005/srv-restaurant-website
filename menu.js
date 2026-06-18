@@ -232,7 +232,7 @@ const menuData = [
                 "name": "Masala Dosa",
                 "self_price": 70,
                 "ac_price": 85,
-                "image": "logo.png"
+                "image": "assets/images/masala_dosa_real.jpg"
             },
             {
                 "name": "Ghee Masala Dosa",
