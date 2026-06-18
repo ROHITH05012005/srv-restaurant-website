@@ -3,7 +3,7 @@ import re
 import os
 import time
 import urllib.request
-from duckduckgo_search import DDGS
+import urllib.parse
 
 target_dir = r"assets\images"
 os.makedirs(target_dir, exist_ok=True)
@@ -16,7 +16,6 @@ match = re.search(r'const\s+menuData\s*=\s*(\[.*\]);', content, re.DOTALL)
 json_str = match.group(1)
 menu_data = json.loads(json_str)
 
-ddgs = DDGS()
 updated = 0
 
 for category in menu_data:
@@ -24,33 +23,44 @@ for category in menu_data:
         for item in category.get('items', []):
             if item['image'] == "logo.png":
                 item_name = item['name']
-                print(f"Searching for real image of: {item_name}...")
+                print(f"Searching Wikipedia for real image of: {item_name}...")
                 try:
-                    # Search for an image
-                    query = f"South Indian Food {item_name} high resolution restaurant photo"
-                    results = ddgs.images(query, max_results=1)
-                    if results:
-                        img_url = results[0]['image']
-                        print(f"Found image URL: {img_url}")
+                    # Search Wikipedia for the image
+                    search_term = urllib.parse.quote(item_name)
+                    api_url = f"https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles={search_term}"
+                    
+                    req = urllib.request.Request(api_url, headers={'User-Agent': 'Mozilla/5.0'})
+                    with urllib.request.urlopen(req, timeout=10) as response:
+                        data = json.loads(response.read())
+                        
+                    pages = data['query']['pages']
+                    img_url = None
+                    for page_id in pages:
+                        if 'original' in pages[page_id]:
+                            img_url = pages[page_id]['original']['source']
+                            break
+                    
+                    if img_url:
+                        print(f"Found Wikipedia image URL: {img_url}")
                         
                         clean_name = item_name.lower().replace(' ', '_').replace("'", "")
                         file_name = f"{clean_name}_real.jpg"
                         target_path = os.path.join(target_dir, file_name)
                         
                         # Download image
-                        req = urllib.request.Request(img_url, headers={'User-Agent': 'Mozilla/5.0'})
-                        with urllib.request.urlopen(req, timeout=10) as response, open(target_path, 'wb') as out_file:
+                        img_req = urllib.request.Request(img_url, headers={'User-Agent': 'Mozilla/5.0'})
+                        with urllib.request.urlopen(img_req, timeout=10) as response, open(target_path, 'wb') as out_file:
                             out_file.write(response.read())
                         
                         # Update item
                         item['image'] = f"assets/images/{file_name}"
                         updated += 1
                         print(f"Successfully downloaded and mapped {item_name}.")
-                        time.sleep(1) # Be nice to DDG
                     else:
-                        print(f"No image found for {item_name}")
+                        print(f"No Wikipedia image found for {item_name}")
                 except Exception as e:
                     print(f"Failed to fetch {item_name}: {e}")
+                time.sleep(0.5)
 
 print(f"Finished downloading {updated} items.")
 
