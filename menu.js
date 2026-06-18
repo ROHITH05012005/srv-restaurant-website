@@ -214,31 +214,31 @@ const menuData = [
                 "name": "Paneer Plain Dosa",
                 "self_price": 90,
                 "ac_price": 110,
-                "image": "assets/images/paneer_plain_dosa_ai.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Cheese Plain Dosa",
                 "self_price": 90,
                 "ac_price": 110,
-                "image": "assets/images/cheese_plain_dosa_ai.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Paper Plain Dosa",
                 "self_price": 90,
                 "ac_price": 110,
-                "image": "assets/images/paper_plain_dosa_ai.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Masala Dosa",
                 "self_price": 70,
                 "ac_price": 85,
-                "image": "assets/images/masala_dosa_real.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Ghee Masala Dosa",
                 "self_price": 100,
                 "ac_price": 100,
-                "image": "assets/images/ghee_masala_dosa_pollinations_proper.jpg"
+                "image": "logo.png"
             },
             {
                 "name": "Butter Masala Dosa",
