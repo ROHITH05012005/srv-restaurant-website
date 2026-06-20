@@ -346,7 +346,7 @@ const menuData = [
                 "name": "Neer Dosa",
                 "self_price": 70,
                 "ac_price": 80,
-                "image": "logo.png"
+                "image": "assets/images/neer_dosa_ai.png"
             },
             {
                 "name": "Menthe Dosa",
