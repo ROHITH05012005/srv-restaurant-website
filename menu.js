@@ -316,31 +316,31 @@ const menuData = [
                 "name": "Open Butter Masala Dosa",
                 "self_price": 80,
                 "ac_price": 110,
-                "image": "logo.png"
+                "image": "assets/images/open_butter_masala_dosa_ai.png"
             },
             {
                 "name": "Mysore Masala Dosa",
                 "self_price": 100,
                 "ac_price": 110,
-                "image": "logo.png"
+                "image": "assets/images/mysore_masala_dosa_ai.png"
             },
             {
                 "name": "SRV Special Dosa",
                 "self_price": 110,
                 "ac_price": 125,
-                "image": "logo.png"
+                "image": "assets/images/srv_special_dosa_ai.png"
             },
             {
                 "name": "Day Special Dosa",
                 "self_price": 100,
                 "ac_price": 100,
-                "image": "logo.png"
+                "image": "assets/images/day_special_dosa_ai.png"
             },
             {
                 "name": "Butter Akki Rotti / Ragi Rotti",
                 "self_price": 90,
                 "ac_price": 100,
-                "image": "logo.png"
+                "image": "assets/images/butter_akki_rotti___ragi_rotti_ai.png"
             },
             {
                 "name": "Neer Dosa",
