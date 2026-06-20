@@ -559,31 +559,31 @@ const menuData = [
                 "name": "Crispy Paneer",
                 "self_price": 170,
                 "ac_price": 190,
-                "image": "logo.png"
+                "image": "assets/images/crispy_paneer_ai.png"
             },
             {
                 "name": "Chilli Gobi",
                 "self_price": 130,
                 "ac_price": 150,
-                "image": "logo.png"
+                "image": "assets/images/chilli_gobi_ai.png"
             },
             {
                 "name": "Chilli Baby Corn",
                 "self_price": 140,
                 "ac_price": 160,
-                "image": "logo.png"
+                "image": "assets/images/chilli_baby_corn_ai.png"
             },
             {
                 "name": "Chilli Mushroom",
                 "self_price": 150,
                 "ac_price": 170,
-                "image": "logo.png"
+                "image": "assets/images/chilli_mushroom_ai.png"
             },
             {
                 "name": "Chilli Paneer",
                 "self_price": 160,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/chilli_paneer_ai.png"
             }
         ]
     },
@@ -594,49 +594,49 @@ const menuData = [
                 "name": "Veg Pulao",
                 "self_price": 110,
                 "ac_price": 140,
-                "image": "logo.png"
+                "image": "assets/images/veg_pulao_ai.png"
             },
             {
                 "name": "Kashmiri Pulao",
                 "self_price": 130,
                 "ac_price": 160,
-                "image": "logo.png"
+                "image": "assets/images/kashmiri_pulao_ai.png"
             },
             {
                 "name": "Paneer Pulao",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/paneer_pulao_ai.png"
             },
             {
                 "name": "Mushroom Pulao",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/mushroom_pulao_ai.png"
             },
             {
                 "name": "Ghee Rice",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "logo.png"
+                "image": "assets/images/ghee_rice_ai.png"
             },
             {
                 "name": "Jeera Rice",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "logo.png"
+                "image": "assets/images/jeera_rice_ai.png"
             },
             {
                 "name": "Veg Biryani",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/veg_biryani_ai.png"
             },
             {
                 "name": "Paneer Biryani",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "logo.png"
+                "image": "assets/images/paneer_biryani_ai.png"
             },
             {
                 "name": "Mushroom Biryani",
@@ -1128,7 +1128,7 @@ const menuData = [
                 "name": "Jeera Rice",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "logo.png"
+                "image": "assets/images/jeera_rice_ai.png"
             }
         ]
     },
