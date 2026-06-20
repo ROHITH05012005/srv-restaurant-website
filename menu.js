@@ -244,61 +244,61 @@ const menuData = [
                 "name": "Butter Masala Dosa",
                 "self_price": 100,
                 "ac_price": 100,
-                "image": "logo.png"
+                "image": "assets/images/butter_masala_dosa.png"
             },
             {
                 "name": "Paneer Masala Dosa",
                 "self_price": 100,
                 "ac_price": 125,
-                "image": "logo.png"
+                "image": "assets/images/paneer_masala_dosa.png"
             },
             {
                 "name": "Cheese Masala Dosa",
                 "self_price": 100,
                 "ac_price": 125,
-                "image": "logo.png"
+                "image": "assets/images/cheese_masala_dosa.png"
             },
             {
                 "name": "Paper Masala Dosa",
                 "self_price": 110,
                 "ac_price": 125,
-                "image": "logo.png"
+                "image": "assets/images/paper_masala_dosa.png"
             },
             {
                 "name": "Set Dosa",
                 "self_price": 70,
                 "ac_price": 85,
-                "image": "logo.png"
+                "image": "assets/images/set_dosa.png"
             },
             {
                 "name": "Khali Dosa",
                 "self_price": 70,
                 "ac_price": 85,
-                "image": "logo.png"
+                "image": "assets/images/khali_dosa.png"
             },
             {
                 "name": "Khali Butter Dosa",
                 "self_price": 80,
                 "ac_price": 95,
-                "image": "logo.png"
+                "image": "assets/images/khali_butter_dosa.png"
             },
             {
                 "name": "Onion Dosa",
                 "self_price": 90,
                 "ac_price": 100,
-                "image": "logo.png"
+                "image": "assets/images/onion_dosa.png"
             },
             {
                 "name": "Rava Dosa",
                 "self_price": 90,
                 "ac_price": 100,
-                "image": "logo.png"
+                "image": "assets/images/rava_dosa.png"
             },
             {
                 "name": "Rava Onion Dosa",
                 "self_price": 100,
                 "ac_price": 110,
-                "image": "logo.png"
+                "image": "assets/images/rava_onion_dosa.png"
             },
             {
                 "name": "Rava Masala Dosa",
