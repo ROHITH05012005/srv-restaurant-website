@@ -1,0 +1,2786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sri Raghavendra Vaibhava | Premium Vegetarian Restaurant</title>
+  <meta name="description"
+    content="Experience authentic South Indian vegetarian cuisine at Sri Raghavendra Vaibhava. Premium dining with AC & Non-AC halls, fresh ingredients, and traditional flavors.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #F0D060;
+      --gold-dark: #A88920;
+      --saffron: #FF6B00;
+      --saffron-dark: #CC5500;
+      --cream: #FFF8F0;
+      --cream-dark: #F5E8D0;
+      --brown: #3D1C02;
+      --brown-light: #6B3A1F;
+      --black: #0A0A0A;
+      --black-soft: #141414;
+      --orange: #FF4500;
+      --white: #FFFFFF;
+      --text-light: #F5E8D0;
+      --text-muted: #C4A882;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: 'Raleway', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* CUSTOM CURSOR */
+    .cursor {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform .1s;
+      mix-blend-mode: difference;
+    }
+
+    .cursor-ring {
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transition: transform .15s ease, width .2s, height .2s;
+      transform: translate(-50%, -50%);
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.2rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all .4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 10, 10, .92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212, 175, 55, .15);
+      padding: .9rem 4rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo-emblem {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: transparent;
+      border: 2px solid var(--gold);
+      overflow: hidden;
+      transition: transform .3s ease;
+    }
+
+    .nav-logo-emblem::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 3px solid transparent;
+      border-top-color: var(--saffron);
+      border-bottom-color: #138808;
+      border-radius: 50%;
+      animation: rotate 10s linear infinite;
+    }
+
+    .nav-logo-emblem .srv-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--gold);
+      z-index: 1;
+      letter-spacing: 0;
+    }
+
+    .nav-logo:hover .nav-logo-emblem {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .nav-logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: .03em;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: color .3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width .3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), var(--saffron));
+      color: var(--black) !important;
+      padding: .55rem 1.4rem;
+      border-radius: 30px;
+      font-weight: 700 !important;
+      font-size: .78rem !important;
+      transition: all .3s !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, .4);
+      color: var(--black) !important;
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    .nav-mobile-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-mobile-btn span {
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, .08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(255, 107, 0, .06) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(10, 10, 10, .3) 0%, rgba(10, 10, 10, .7) 60%, rgba(10, 10, 10, .95) 100%);
+      z-index: 1;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      background: url('hero_bg_premium.png') center/cover no-repeat;
+      transform: scale(1.08);
+      animation: heroZoom 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from {
+        transform: scale(1.08);
+      }
+
+      to {
+        transform: scale(1.0)translateY(-1%)
+      }
+    }
+
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      animation: float linear infinite;
+      opacity: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 1400px; /* Increased to allow a much larger logo */
+      padding: 0 2rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: rgba(212, 175, 55, .12);
+      border: 1px solid rgba(212, 175, 55, .3);
+      padding: .45rem 1.2rem;
+      border-radius: 30px;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      animation: fadeUp .8s ease both;
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .hero-badge span {
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .hero-title {
+      margin-bottom: 1rem;
+      animation: fadeUp .8s .2s ease both;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-logo-img {
+      max-width: min(1300px, 98vw); /* Increased from 920px to make it huge */
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 30px rgba(0, 0, 0, 0.7)) brightness(1.08) contrast(1.05);
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .hero-logo-img:hover {
+      transform: scale(1.03);
+      filter: drop-shadow(0 8px 40px rgba(212, 175, 55, 0.35)) brightness(1.12) contrast(1.05);
+    }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      color: var(--gold-light);
+      font-style: italic;
+      letter-spacing: .06em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp .8s .35s ease both;
+    }
+
+    .hero-sub {
+      font-size: .9rem;
+      color: rgba(245, 232, 208, .75);
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto 2.8rem;
+      font-weight: 300;
+      animation: fadeUp .8s .5s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp .8s .65s ease both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--saffron));
+      color: var(--black);
+      padding: .85rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all .3s;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, .3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 35px rgba(212, 175, 55, .5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      padding: .85rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: .85rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid rgba(212, 175, 55, .5);
+      cursor: pointer;
+      transition: all .3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-outline:hover {
+      background: rgba(212, 175, 55, .1);
+      border-color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, .2);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, .07);
+      color: var(--cream);
+      padding: .85rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: .85rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, .15);
+      cursor: pointer;
+      transition: all .3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, .12);
+      transform: translateY(-3px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      text-align: center;
+      animation: fadeUp 1s 1s ease both;
+    }
+
+    .hero-scroll span {
+      font-size: .68rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: .7rem;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 45px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      margin: 0 auto;
+      animation: scrollAnim 2s infinite;
+    }
+
+    @keyframes scrollAnim {
+
+      0%,
+      100% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scaleY(.6);
+        opacity: .4;
+      }
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 3rem;
+      right: 4rem;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      animation: fadeUp 1s .8s ease both;
+    }
+
+    .stat-item {
+      text-align: right;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: .68rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: .2rem;
+    }
+
+    /* SECTIONS COMMON */
+    section {
+      padding: 6rem 4rem;
+    }
+
+    .section-label {
+      font-size: .72rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: .95rem;
+      line-height: 1.8;
+      max-width: 600px;
+      font-weight: 300;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      background: linear-gradient(135deg, var(--gold-dark), var(--saffron-dark));
+      padding: .8rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 25s linear infinite;
+    }
+
+    .marquee-track span {
+      font-size: .75rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--black);
+      font-weight: 700;
+      padding: 0 2.5rem;
+    }
+
+    .marquee-track span::before {
+      content: '✦';
+      margin-right: 2.5rem;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+
+    .about-images {
+      position: relative;
+      height: 600px;
+    }
+
+    .about-img-main {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 72%;
+      height: 78%;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .5);
+    }
+
+    .about-img-sec {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 55%;
+      height: 52%;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 3px solid var(--black-soft);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+    }
+
+    .about-img-accent {
+      position: absolute;
+      top: 50%;
+      left: 40%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, var(--gold), var(--saffron));
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 40px rgba(212, 175, 55, .4);
+      z-index: 3;
+    }
+
+    .about-img-accent .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--black);
+      line-height: 1;
+    }
+
+    .about-img-accent .lbl {
+      font-size: .55rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, .7);
+      font-weight: 700;
+      margin-top: .2rem;
+      text-align: center;
+    }
+
+    .about-content .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .feature-card {
+      background: rgba(212, 175, 55, .05);
+      border: 1px solid rgba(212, 175, 55, .15);
+      padding: 1.2rem;
+      border-radius: 10px;
+      transition: all .3s;
+    }
+
+    .feature-card:hover {
+      background: rgba(212, 175, 55, .1);
+      border-color: rgba(212, 175, 55, .35);
+      transform: translateY(-3px);
+    }
+
+    .feature-icon {
+      margin-bottom: 1rem;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+    }
+    
+    .feature-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--gold);
+      fill: none;
+      filter: drop-shadow(0 2px 8px rgba(212,175,55,0.3));
+    }
+
+    .feature-title {
+      font-weight: 600;
+      font-size: .85rem;
+      color: var(--gold);
+      margin-bottom: .3rem;
+    }
+
+    .feature-desc {
+      font-size: .78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .divider-line {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), var(--saffron));
+      margin: 1.5rem 0;
+      border-radius: 1px;
+    }
+
+    /* MENU */
+    .menu-section {
+      background: linear-gradient(180deg, var(--black) 0%, #0f0b07 50%, var(--black) 100%);
+    }
+
+    .menu-tabs {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+      background: rgba(255, 255, 255, .03);
+      padding: .5rem;
+      border-radius: 50px;
+      border: 1px solid rgba(212, 175, 55, .1);
+      width: fit-content;
+    }
+
+    .menu-tab {
+      padding: .6rem 1.5rem;
+      border-radius: 40px;
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      transition: all .3s;
+    }
+
+    .menu-tab.active {
+      background: linear-gradient(135deg, var(--gold), var(--saffron));
+      color: var(--black);
+    }
+
+    .menu-tab:hover:not(.active) {
+      color: var(--gold);
+    }
+
+    .menu-panel {
+      display: none;
+      animation: fadeIn .5s ease;
+    }
+
+    .menu-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .food-card {
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(212, 175, 55, .12);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all .4s;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .food-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, .5), 0 0 0 1px rgba(212, 175, 55, .3);
+      border-color: rgba(212, 175, 55, .4);
+    }
+
+    .food-card-img {
+      height: 190px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .food-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .food-card:hover .food-card-img img {
+      transform: scale(1.08);
+    }
+
+    .veg-badge {
+      position: absolute;
+      top: .7rem;
+      left: .7rem;
+      background: rgba(0, 120, 0, .85);
+      border: 1.5px solid #00AA00;
+      width: 20px;
+      height: 20px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .veg-dot {
+      width: 9px;
+      height: 9px;
+      background: #00CC00;
+      border-radius: 50%;
+    }
+
+    .food-card-body {
+      padding: 1.1rem;
+    }
+
+    .food-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: .35rem;
+    }
+
+    .food-desc {
+      font-size: .75rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: .8rem;
+    }
+
+    .food-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .food-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .add-btn {
+      background: linear-gradient(135deg, var(--gold), var(--saffron));
+      border: none;
+      color: var(--black);
+      padding: .4rem 1rem;
+      border-radius: 20px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: all .3s;
+    }
+
+    .add-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, .4);
+    }
+
+    .menu-banner {
+      background: linear-gradient(135deg, rgba(212, 175, 55, .15), rgba(255, 107, 0, .1));
+      border: 1px solid rgba(212, 175, 55, .3);
+      border-radius: 12px;
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .menu-banner-icon {
+      font-size: 1.8rem;
+    }
+
+    .menu-banner-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    /* SPECIALS */
+    .specials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .special-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      height: 380px;
+      cursor: pointer;
+    }
+
+    .special-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s;
+    }
+
+    .special-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .special-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, .85) 0%, rgba(0, 0, 0, .2) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.8rem;
+    }
+
+    .special-tag {
+      background: linear-gradient(135deg, var(--gold), var(--saffron));
+      color: var(--black);
+      padding: .3rem .9rem;
+      border-radius: 20px;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      width: fit-content;
+      margin-bottom: .7rem;
+    }
+
+    .special-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .4rem;
+    }
+
+    .special-price {
+      color: var(--gold);
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    /* EXPERIENCE */
+    .exp-section {
+      background: var(--black-soft);
+    }
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .exp-card {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: rgba(212, 175, 55, .04);
+      border: 1px solid rgba(212, 175, 55, .12);
+      border-radius: 14px;
+      transition: all .4s;
+    }
+
+    .exp-card:hover {
+      background: rgba(212, 175, 55, .09);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .3);
+    }
+
+    .exp-icon {
+      margin-bottom: 1.2rem;
+      color: var(--gold);
+      display: flex;
+      justify-content: center;
+    }
+    
+    .exp-icon svg {
+      width: 42px;
+      height: 42px;
+      stroke: var(--gold);
+      fill: none;
+      filter: drop-shadow(0 4px 15px rgba(212,175,55,0.4));
+    }
+
+    .exp-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .exp-suffix {
+      font-size: 1.2rem;
+      color: var(--saffron);
+    }
+
+    .exp-label {
+      font-size: .78rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: .5rem;
+    }
+
+    /* GALLERY */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(5) {
+      grid-column: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 200px;
+      transition: transform .5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      transition: background .3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      background: rgba(212, 175, 55, .18);
+    }
+
+    .gallery-icon {
+      font-size: 2rem;
+      color: white;
+      opacity: 0;
+      transform: scale(.7);
+      transition: all .3s;
+    }
+
+    .gallery-item:hover .gallery-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-section {
+      background: linear-gradient(180deg, var(--black-soft) 0%, var(--black) 100%);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .review-card {
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(212, 175, 55, .12);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: all .4s;
+    }
+
+    .review-card:hover {
+      background: rgba(212, 175, 55, .06);
+      transform: translateY(-5px);
+      border-color: rgba(212, 175, 55, .3);
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: .1em;
+      margin-bottom: 1rem;
+    }
+
+    .review-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+    }
+
+    .reviewer-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(212, 175, 55, .3);
+    }
+
+    .reviewer-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .reviewer-name {
+      font-weight: 600;
+      font-size: .88rem;
+      color: var(--white);
+    }
+
+    .reviewer-tag {
+      font-size: .72rem;
+      color: var(--text-muted);
+    }
+
+    /* TIMING */
+    .timing-section {
+      background: linear-gradient(135deg, rgba(212, 175, 55, .08), rgba(255, 107, 0, .05));
+    }
+
+    .timing-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .timing-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .timing-card {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(212, 175, 55, .15);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all .3s;
+    }
+
+    .timing-card:hover {
+      border-color: rgba(212, 175, 55, .4);
+      background: rgba(212, 175, 55, .08);
+    }
+
+    .timing-days {
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--white);
+    }
+
+    .timing-time {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .timing-badge {
+      background: rgba(0, 200, 0, .15);
+      border: 1px solid rgba(0, 200, 0, .3);
+      color: #00cc00;
+      font-size: .65rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .25rem .7rem;
+      border-radius: 20px;
+    }
+
+    /* CONTACT / MAP */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .contact-icon-wrap {
+      width: 44px;
+      height: 44px;
+      background: rgba(212, 175, 55, .1);
+      border: 1px solid rgba(212, 175, 55, .25);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: .3rem;
+    }
+
+    .contact-value {
+      color: var(--white);
+      font-size: .9rem;
+      line-height: 1.6;
+    }
+
+    .map-frame {
+      height: 350px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, .15);
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: invert(.9) hue-rotate(180deg) brightness(.85) contrast(.85);
+    }
+
+    /* WHATSAPP FLOAT */
+    .wa-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 900;
+      background: #25D366;
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(37, 211, 102, .4);
+      animation: waPulse 3s infinite;
+    }
+
+    @keyframes waPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 8px 30px rgba(37, 211, 102, .4);
+      }
+
+      50% {
+        box-shadow: 0 8px 50px rgba(37, 211, 102, .6), 0 0 0 10px rgba(37, 211, 102, .1);
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(180deg, #080808 0%, #050505 100%);
+      border-top: 1px solid rgba(212, 175, 55, .12);
+      padding: 5rem 4rem 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .footer-brand p {
+      font-size: .82rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-top: .8rem;
+      max-width: 260px;
+    }
+
+    .social-row {
+      display: flex;
+      gap: .8rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(212, 175, 55, .1);
+      border: 1px solid rgba(212, 175, 55, .2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--gold);
+      text-decoration: none;
+      transition: all .3s;
+    }
+
+    .social-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+      transform: translateY(-3px);
+    }
+
+    .footer-col h4 {
+      font-size: .75rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+    }
+
+    .footer-col ul a {
+      font-size: .82rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    .footer-col ul a:hover {
+      color: var(--gold);
+    }
+
+    .timing-list {
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+
+    .timing-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .8rem;
+    }
+
+    .timing-row .day {
+      color: var(--text-muted);
+    }
+
+    .timing-row .time {
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .06);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-size: .75rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom span {
+      color: var(--gold);
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .95);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: rgba(255, 255, 255, .1);
+      border: none;
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: all .3s;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(212, 175, 55, .3);
+    }
+
+    /* QUANTITY SELECTOR */
+    .qty-controls {
+      display: none;
+      align-items: center;
+      gap: .8rem;
+      background: rgba(212, 175, 55, .1);
+      padding: .3rem .8rem;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, .3);
+    }
+
+    .qty-controls.active {
+      display: flex;
+    }
+
+    .qty-btn {
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0 .3rem;
+      transition: transform .2s;
+    }
+
+    .qty-btn:hover {
+      transform: scale(1.3);
+    }
+
+    .qty-num {
+      color: var(--white);
+      font-weight: 700;
+      font-size: .85rem;
+      min-width: 15px;
+      text-align: center;
+    }
+
+    /* CART DRAWER */
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 100%;
+      max-width: 400px;
+      height: 100vh;
+      background: var(--black-soft);
+      z-index: 2000;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, .8);
+      transition: right .5s cubic-bezier(.16, 1, .3, 1);
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid rgba(212, 175, 55, .15);
+    }
+
+    .cart-drawer.open {
+      right: 0;
+    }
+
+    .cart-header {
+      padding: 2rem;
+      border-bottom: 1px solid rgba(212, 175, 55, .1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin: 0;
+    }
+
+    .close-cart {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color .3s;
+    }
+
+    .close-cart:hover {
+      color: var(--gold);
+    }
+
+    .cart-items-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .cart-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, .03);
+      padding: 1rem;
+      border-radius: 12px;
+      animation: slideIn .4s ease both;
+      border: 1px solid rgba(255, 255, 255, .05);
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .item-info .item-name {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--white);
+      display: block;
+      margin-bottom: .2rem;
+    }
+
+    .item-info .item-price-each {
+      font-size: .75rem;
+      color: var(--text-muted);
+    }
+
+    .cart-footer {
+      padding: 2rem;
+      background: rgba(0, 0, 0, .3);
+      border-top: 1px solid rgba(212, 175, 55, .1);
+    }
+
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .total-label {
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--text-muted);
+    }
+
+    .total-amt {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .order-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold), var(--saffron));
+      color: var(--black);
+      border: none;
+      padding: 1.1rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: .9rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .3s;
+      box-shadow: 0 8px 25px rgba(212, 175, 55, .3);
+    }
+
+    .order-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(212, 175, 55, .5);
+    }
+
+    .empty-cart-msg {
+      text-align: center;
+      color: var(--text-muted);
+      margin-top: 4rem;
+      font-style: italic;
+    }
+
+    /* CART FLOAT */
+    .cart-float {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, var(--gold), var(--saffron));
+      color: var(--black);
+      padding: .9rem .6rem;
+      border-radius: 12px 0 0 12px;
+      cursor: pointer;
+      z-index: 800;
+      transition: all .3s;
+      box-shadow: -4px 0 20px rgba(212, 175, 55, .3);
+    }
+
+    .cart-count {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      display: block;
+      line-height: 1;
+    }
+
+    .cart-label {
+      font-size: .55rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.4);
+      }
+    }
+
+    @keyframes float {
+      0% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(0deg);
+      }
+
+      10% {
+        opacity: .6;
+      }
+
+      90% {
+        opacity: .2;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-20px) rotate(360deg);
+      }
+    }
+
+    /* STEAM EFFECT */
+    .steam-wrap {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .steam {
+      position: absolute;
+      bottom: 0;
+      width: 8px;
+      border-radius: 50% 50% 0 0;
+      animation: steam 3s ease-in infinite;
+      background: rgba(255, 255, 255, .6);
+      filter: blur(3px);
+    }
+
+    .steam:nth-child(1) {
+      left: -10px;
+      animation-delay: 0s;
+    }
+
+    .steam:nth-child(2) {
+      left: 5px;
+      animation-delay: .5s;
+    }
+
+    .steam:nth-child(3) {
+      left: 20px;
+      animation-delay: 1s;
+    }
+
+    @keyframes steam {
+      0% {
+        height: 0;
+        opacity: .7;
+        transform: translateY(0) scaleX(1);
+      }
+
+      100% {
+        height: 50px;
+        opacity: 0;
+        transform: translateY(-50px) scaleX(2);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px) {
+      section {
+        padding: 4rem 2.5rem;
+      }
+
+      nav {
+        padding: 1rem 2.5rem;
+      }
+
+      nav.scrolled {
+        padding: .8rem 2.5rem;
+      }
+
+      .about-grid,
+      .timing-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .about-images {
+        height: 350px;
+      }
+
+      .specials,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .exp-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-stats {
+        display: none;
+      }
+    }
+
+    @media(max-width:768px) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 10, 10, .97);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        backdrop-filter: blur(20px);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-mobile-btn {
+        display: flex;
+      }
+
+      .hero-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
+      .gallery-item:nth-child(5) {
+        grid-column: span 1;
+      }
+
+      .specials {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .menu-tabs {
+        justify-content: center;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: .8rem;
+        text-align: center;
+      }
+
+      body {
+        cursor: auto;
+      }
+
+      .cursor,
+      .cursor-ring {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-emblem">
+        <span class="srv-text">SRV</span>
+      </div>
+      <span>Restaurant</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#timings">Timings</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://wa.me/919008804385?text=I'd like to reserve a table" class="nav-cta" target="_blank">Reserve
+          Table</a></li>
+    </ul>
+    <div class="nav-mobile-btn" id="mobileBtn" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- CART FLOAT -->
+  <div class="cart-float" id="cartFloat" onclick="toggleCart()">
+    <span class="cart-count" id="cartCount">0</span>
+    <span class="cart-label">🛒 Cart</span>
+  </div>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Your Selection</h3>
+      <button class="close-cart" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items-list" id="cartItemsList">
+      <div class="empty-cart-msg">Your cart is empty</div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span class="total-label">Subtotal</span>
+        <span class="total-amt" id="cartTotal">₹0</span>
+      </div>
+      <p
+        style="font-size: 0.7rem; color: var(--text-muted); margin-bottom: 1rem; text-align: center; font-style: italic;">
+        Delivery handled by our partners at Zomato</p>
+      <button class="order-btn" id="placeOrderBtn" onclick="placeOrder()">Order on Zomato</button>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-image"></div>
+    <div class="hero-bg"></div>
+    <canvas class="hero-particles" id="particleCanvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="hero-badge-dot"></span>
+        <span>Pure Vegetarian · Premium Dining</span>
+      </div>
+      <h1 class="hero-title">
+        <img src="logo.png" alt="Sri Raghavendra Vaibhava" class="hero-logo-img">
+      </h1>
+      <p class="hero-tagline">Tradition, Taste & Premium Dining</p>
+      <p class="hero-sub">Experience authentic vegetarian breakfast, meals, chats, snacks, juices, tea, coffee, and
+        unforgettable flavors — served with hygiene, quality, and love.</p>
+      <div class="hero-btns">
+        <a href="#menu" class="btn-primary">Explore Menu</a>
+        <a href="https://wa.me/919008804385?text=I'd like to reserve a table" class="btn-outline"
+          target="_blank">Reserve Table</a>
+        <a href="https://wa.me/919008804385?text=I'd like to place an order" class="btn-ghost" target="_blank">Order
+          Online</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll to discover</span>
+      <div class="scroll-line"></div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Happy Guests Daily</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Menu Items</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Pure Vegetarian</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Authentic South Indian Taste</span>
+      <span>Pure Vegetarian</span>
+      <span>AC & Non-AC Dining</span>
+      <span>Freshly Prepared Daily</span>
+      <span>Family Friendly</span>
+      <span>Premium Hygiene</span>
+      <span>Filter Coffee</span>
+      <span>Unlimited Meals</span>
+      <span>Authentic South Indian Taste</span>
+      <span>Pure Vegetarian</span>
+      <span>AC & Non-AC Dining</span>
+      <span>Freshly Prepared Daily</span>
+      <span>Family Friendly</span>
+      <span>Premium Hygiene</span>
+      <span>Filter Coffee</span>
+      <span>Unlimited Meals</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" style="background:var(--black);">
+    <div class="section-label reveal">Our Story</div>
+    <div class="about-grid">
+      <div class="about-images reveal">
+        <img class="about-img-main" src="assets/images/about_main_premium.png" alt="Restaurant dining">
+        <img class="about-img-sec" src="assets/images/about_sec_premium.png" alt="South Indian food">
+
+      </div>
+      <div class="about-content reveal">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">Where Every Meal<br>Feels Like <em>Home</em></h2>
+        <div class="divider-line"></div>
+        <p class="section-sub" style="margin-bottom:1rem;">Sri Raghavendra Vaibhava is a premium vegetarian restaurant
+          known for authentic taste, hygienic preparation, quality ingredients, and warm hospitality.</p>
+        <p style="color:var(--text-muted);font-size:.88rem;line-height:1.8;">We proudly serve delicious breakfast,
+          lunch, dinner, chats, snacks, juices, tea, and coffee in both AC and Non-AC dining spaces — designed for
+          comfort and cherished family dining experiences.</p>
+        <div class="features">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+            </div>
+            <div class="feature-title">100% Pure Vegetarian</div>
+            <div class="feature-desc">Every dish crafted with pure ingredients and traditional recipes</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            </div>
+            <div class="feature-title">Hygienic Kitchen</div>
+            <div class="feature-desc">FSSAI certified, spotlessly clean food preparation</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m10 20-3-3 3-3"/><path d="M2 17h14a3 3 0 0 0 0-6H9"/><path d="m14 4 3 3-3 3"/><path d="M22 7H8a3 3 0 0 0 0 6h6"/></svg>
+            </div>
+            <div class="feature-title">AC & Non-AC Dining</div>
+            <div class="feature-desc">Choose your comfort — both halls beautifully designed</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="feature-title">Family Atmosphere</div>
+            <div class="feature-desc">A warm, welcoming space for every occasion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE STATS -->
+  <section class="exp-section">
+    <div style="text-align:center;margin-bottom:1rem;">
+      <div class="section-label reveal" style="justify-content:center;">Why Choose Us</div>
+      <h2 class="section-title reveal" style="text-align:center;">The <em>Numbers</em> Tell Our Story</h2>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <div class="exp-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+        </div>
+        <div class="exp-num"><span class="counter" data-target="500">0</span><span class="exp-suffix">+</span></div>
+        <div class="exp-label">Guests Served Daily</div>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-icon">⭐</div>
+        <div class="exp-num"><span class="counter" data-target="50">0</span><span class="exp-suffix">+</span></div>
+        <div class="exp-label">Menu Varieties</div>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-icon">😊</div>
+        <div class="exp-num"><span class="counter" data-target="98">0</span><span class="exp-suffix">%</span></div>
+        <div class="exp-label">Customer Satisfaction</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="menu-section">
+    <div class="section-label reveal">Our Offerings</div>
+    <h2 class="section-title reveal">Crafted with Love,<br>Served with <em>Pride</em></h2>
+    <p class="section-sub reveal">Every dish tells a story of tradition, passion, and premium quality.</p>
+
+    <div class="service-type-tabs" style="display:flex; justify-content:center; gap:1rem; margin-bottom:1.5rem;">
+      <button class="service-type-btn active" id="btn-ac" onclick="switchServiceType('ac')" style="padding:.6rem 2rem; border-radius:40px; font-weight:700; font-size:.9rem; letter-spacing:.1em; cursor:pointer; transition:all .3s; background:linear-gradient(135deg,var(--gold),var(--saffron)); color:var(--black); border:1px solid var(--gold);">❄️ AC</button>
+      <button class="service-type-btn" id="btn-self" onclick="switchServiceType('self')" style="padding:.6rem 2rem; border-radius:40px; font-weight:700; font-size:.9rem; letter-spacing:.1em; cursor:pointer; transition:all .3s; background:rgba(255,255,255,0.03); color:var(--gold); border:1px solid rgba(212,175,55,0.3);">🚶 SELF SERVICE</button>
+    </div>
+
+    <div class="menu-tabs-scroll" id="menuTabs" style="display:flex; overflow-x:auto; white-space:nowrap; gap:1rem; padding-bottom:1rem; margin-bottom:2rem; scrollbar-width:thin; scrollbar-color:var(--gold) var(--black-soft);">
+      <!-- Tabs generated dynamically -->
+    </div>
+
+    <div class="menu-grid" id="menuItemsGrid">
+      <!-- Items generated dynamically -->
+    </div>
+</section>
+  <!-- CHEF SPECIALS -->
+  <section style="background:var(--black-soft);padding:5rem 4rem;">
+    <div class="section-label reveal">Chef's Recommendations</div>
+    <h2 class="section-title reveal">Today's <em>Specials</em></h2>
+    <div class="specials reveal">
+      <div class="special-card">
+        <img src="assets/images/south_indian_meals_premium.png" alt="South Indian Meals">
+        <div class="special-overlay">
+          <div class="special-tag">🌟 Chef's Pick</div>
+          <div class="special-name">Traditional Thali</div>
+          <div class="special-price">₹120 · Unlimited</div>
+        </div>
+      </div>
+      <div class="special-card">
+        <img src="assets/images/dosa_special_premium.png" alt="Dosa">
+        <div class="special-overlay">
+          <div class="special-tag">🔥 Most Loved</div>
+          <div class="special-name">Paper Roast Dosa</div>
+          <div class="special-price">₹80 · Extra Crispy</div>
+        </div>
+      </div>
+      <div class="special-card">
+        <img src="assets/images/filter_coffee_premium.png" alt="Filter Coffee">
+        <div class="special-overlay">
+          <div class="special-tag">☕ Must Try</div>
+          <div class="special-name">Filter Kaapi</div>
+          <div class="special-price">₹25 · Pure Decoction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" style="background:var(--black);">
+    <div class="section-label reveal">Visual Journey</div>
+    <h2 class="section-title reveal">A Feast for the <em>Eyes</em></h2>
+    <p class="section-sub reveal">Step inside and experience the warmth, beauty, and soul of Sri Raghavendra Vaibhava.
+    </p>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" onclick="openLightbox(\'assets/images/hero_bg_premium.png\')">
+        <img src="assets/images/hero_bg_premium.png" alt="Restaurant">
+        <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(\'assets/images/about_main_premium.png\')">
+        <img src="assets/images/about_main_premium.png" alt="Dining">
+        <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(\'assets/images/dosa_special_premium.png\')">
+        <img src="assets/images/dosa_special_premium.png" alt="Dosa">
+        <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(\'assets/images/idli_premium.png\')">
+        <img src="assets/images/idli_premium.png" alt="Idli">
+        <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(\'assets/images/paneer_tikka_masala_premium.png\')">
+        <img src="assets/images/paneer_tikka_masala_premium.png" alt="Paneer">
+        <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(\'assets/images/filter_coffee_premium.png\')">
+        <img src="assets/images/filter_coffee_premium.png" alt="Coffee">
+        <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(\'assets/images/gallery_snacks_premium.png\')">
+        <img src="assets/images/gallery_snacks_premium.png" alt="Snacks">
+        <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="section-label reveal" style="justify-content:center;">Guest Reviews</div>
+    <h2 class="section-title reveal" style="text-align:center;">What Our <em>Guests</em> Say</h2>
+    <div class="testimonials-grid">
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"The best vegetarian restaurant experience I've ever had. The masala dosa here is
+          something else — crispy, golden and absolutely divine. The filter coffee is unforgettable!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar"><img src="assets/images/avatar_ramesh_premium.png" alt="Reviewer"></div>
+          <div>
+            <div class="reviewer-name">Ramesh Kumar</div>
+            <div class="reviewer-tag">Regular Guest · Bangalore</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Very hygienic and incredibly tasty food. The unlimited meals are a steal — so much
+          variety, so much love in every bite. The AC dining hall is comfortable and clean."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar"><img src="assets/images/avatar_priya_premium.png" alt="Reviewer"></div>
+          <div>
+            <div class="reviewer-name">Priya Venkatesh</div>
+            <div class="reviewer-tag">Food Blogger</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Perfect family restaurant with excellent ambiance. We brought our entire family for
+          Sunday lunch — the food, service and atmosphere were all top-notch. Will definitely return!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar"><img src="assets/images/avatar_suresh_premium.png" alt="Reviewer"></div>
+          <div>
+            <div class="reviewer-name">Suresh & Family</div>
+            <div class="reviewer-tag">Family Visit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMINGS -->
+  <section id="timings" class="timing-section">
+    <div class="timing-wrap">
+      <div class="reveal">
+        <div class="section-label">Visit Us</div>
+        <h2 class="section-title">Open Every Day,<br>Ready to <em>Serve You</em></h2>
+        <div class="divider-line"></div>
+        <p class="section-sub">Walk in or call ahead. We're here from early morning breakfast to a satisfying dinner.
+        </p>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="https://wa.me/919008804385?text=Reserve table" target="_blank" class="btn-primary">Reserve a
+            Table</a>
+          <a href="tel:+919008804385" class="btn-outline">Call Us Now</a>
+        </div>
+      </div>
+      <div class="timing-cards reveal">
+        <div class="timing-card">
+          <div>
+            <div class="timing-days">Monday – Saturday</div>
+            <div style="font-size:.75rem;color:var(--text-muted);margin-top:.2rem;">All meals available</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="timing-time">6:30 AM – 10:00 PM</div>
+            <div class="timing-badge" style="margin-top:.4rem;">Open Now</div>
+          </div>
+        </div>
+        <div class="timing-card">
+          <div>
+            <div class="timing-days">Sunday</div>
+            <div style="font-size:.75rem;color:var(--text-muted);margin-top:.2rem;">Breakfast & Lunch</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="timing-time">6:30 AM – 7:00 PM</div>
+            <div class="timing-badge">Limited Hours</div>
+          </div>
+        </div>
+        <div
+          style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:1.5rem;display:flex;gap:1rem;align-items:center;">
+          <div style="font-size:2rem;">📞</div>
+          <div>
+            <div
+              style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.3rem;">
+              Reservations & Orders</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);font-weight:700;">+91
+              9008804385</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="background:var(--black);">
+    <div class="section-label reveal">Find Us</div>
+    <h2 class="section-title reveal">Visit Us & <em>Dine In</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <div class="contact-icon-wrap">📍</div>
+          <div>
+            <div class="contact-label">Our Address</div>
+            <div class="contact-value">Sri Raghavendra Vaibhava Restaurant,<br>Main Road, Bangalore, Karnataka</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-wrap">📞</div>
+          <div>
+            <div class="contact-label">Phone / WhatsApp</div>
+            <div class="contact-value"><a href="tel:+919008804385" style="color:var(--gold);text-decoration:none;">+91
+                9008804385</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-wrap">🕐</div>
+          <div>
+            <div class="contact-label">Opening Hours</div>
+            <div class="contact-value">Mon–Sat: 6:30 AM – 10:00 PM<br>Sunday: 6:30 AM – 7:00 PM</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-wrap">🅿️</div>
+          <div>
+            <div class="contact-label">Parking</div>
+            <div class="contact-value">Free parking available for guests</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;margin-top:.5rem;">
+          <a href="https://wa.me/919008804385" target="_blank" class="btn-primary"
+            style="font-size:.78rem;padding:.7rem 1.5rem;">WhatsApp Order</a>
+          <a href="tel:+919008804385" class="btn-outline" style="font-size:.78rem;padding:.7rem 1.5rem;">Call to
+            Reserve</a>
+        </div>
+      </div>
+      <div class="map-frame reveal">
+        <iframe
+          src="https://www.google.com/maps?q=Sri+Raghavendra+vaibhav,+5,+6th+A+Cross+Rd,+Koramangala+3+Block,+Koramangala,+Bengaluru,+Karnataka+560034&output=embed"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">Sri Raghavendra Vaibhava</div>
+        <div
+          style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">
+          Pure Vegetarian Restaurant</div>
+        <p>Serving authentic South Indian vegetarian cuisine with love, hygiene, and a premium dining experience since
+          2009.</p>
+        <div class="social-row">
+          <a href="#" class="social-btn" title="Instagram">📸</a>
+          <a href="#" class="social-btn" title="Facebook">📘</a>
+          <a href="https://wa.me/919008804385" class="social-btn" title="WhatsApp">💬</a>
+          <a href="#" class="social-btn" title="YouTube">🎬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Menu</h4>
+        <ul>
+          <li><a href="#"
+              onclick="switchTab('curries');document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Curries</a>
+          </li>
+          <li><a href="#"
+              onclick="switchTab('rice-noodles');document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Rice
+              & Noodles</a></li>
+          <li><a href="#"
+              onclick="switchTab('biryani-meals');document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Biryani
+              & Meals</a></li>
+          <li><a href="#"
+              onclick="switchTab('beverages');document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Beverages</a>
+          </li>
+          <li><a href="#"
+              onclick="switchTab('desserts');document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Desserts</a>
+          </li>
+          <li><a href="#"
+              onclick="switchTab('chats');document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Chats</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Opening Hours</h4>
+        <div class="timing-list">
+          <div class="timing-row"><span class="day">Monday</span><span class="time">6:30AM – 10PM</span></div>
+          <div class="timing-row"><span class="day">Tuesday</span><span class="time">6:30AM – 10PM</span></div>
+          <div class="timing-row"><span class="day">Wednesday</span><span class="time">6:30AM – 10PM</span></div>
+          <div class="timing-row"><span class="day">Thursday</span><span class="time">6:30AM – 10PM</span></div>
+          <div class="timing-row"><span class="day">Friday</span><span class="time">6:30AM – 10PM</span></div>
+          <div class="timing-row"><span class="day">Saturday</span><span class="time">6:30AM – 10PM</span></div>
+          <div class="timing-row"><span class="day" style="color:var(--gold);">Sunday</span><span class="time"
+              style="color:var(--saffron);">6:30AM – 7PM</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 <span>Sri Raghavendra Vaibhava</span>. All Rights Reserved. Pure Vegetarian · Premium Dining</p>
+      <p>Made with <span>❤️</span> for food lovers everywhere</p>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/919008804385?text=Hello! I'd like to order or reserve a table." class="wa-float"
+    target="_blank" title="Order on WhatsApp">💬</a>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="Gallery">
+  </div>
+
+  <script src="menu.js?v=21"></script>
+  <script>
+    // CURSOR
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx - 5 + 'px'; cursor.style.top = my - 5 + 'px';
+    });
+    function animRing() {
+      rx += (mx - rx) * .1; ry += (my - ry) * .1;
+      ring.style.left = rx - 18 + 'px'; ring.style.top = ry - 18 + 'px';
+      requestAnimationFrame(animRing);
+    }
+    animRing();
+    document.querySelectorAll('a,button,.food-card,.gallery-item').forEach(el => {
+      el.addEventListener('mouseenter', () => { ring.style.width = '50px'; ring.style.height = '50px'; ring.style.borderColor = 'var(--saffron)'; });
+      el.addEventListener('mouseleave', () => { ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'var(--gold)'; });
+    });
+
+    // NAV SCROLL
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 60) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+
+    // MOBILE NAV
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+
+    let currentServiceType = 'ac';
+    let currentCategory = '';
+
+    function switchServiceType(type) {
+      currentServiceType = type;
+      const btnAc = document.getElementById('btn-ac');
+      const btnSelf = document.getElementById('btn-self');
+      
+      if(type === 'ac') {
+        btnAc.style.background = 'linear-gradient(135deg,var(--gold),var(--saffron))';
+        btnAc.style.color = 'var(--black)';
+        btnAc.style.borderColor = 'var(--gold)';
+        
+        btnSelf.style.background = 'rgba(255,255,255,0.03)';
+        btnSelf.style.color = 'var(--gold)';
+        btnSelf.style.borderColor = 'rgba(212,175,55,0.3)';
+      } else {
+        btnSelf.style.background = 'linear-gradient(135deg,var(--gold),var(--saffron))';
+        btnSelf.style.color = 'var(--black)';
+        btnSelf.style.borderColor = 'var(--gold)';
+        
+        btnAc.style.background = 'rgba(255,255,255,0.03)';
+        btnAc.style.color = 'var(--gold)';
+        btnAc.style.borderColor = 'rgba(212,175,55,0.3)';
+      }
+      
+      // Re-render items if a category is selected
+      if (currentCategory) {
+        renderItems(currentCategory);
+      }
+    }
+
+    // Generate Menu Tabs
+    function generateMenuTabs() {
+      const tabsContainer = document.getElementById('menuTabs');
+      tabsContainer.innerHTML = '';
+      menuData.forEach((catData, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'menu-tab' + (index === 0 ? ' active' : '');
+        btn.innerText = catData.category;
+        btn.onclick = () => switchTab(catData.category);
+        tabsContainer.appendChild(btn);
+      });
+      if(menuData.length > 0) {
+        switchTab(menuData[0].category);
+      }
+    }
+
+    // MENU TABS
+    function switchTab(category) {
+      currentCategory = category;
+      // Update active class on tabs
+      document.querySelectorAll('.menu-tab').forEach(t => {
+        if(t.innerText === category) t.classList.add('active');
+        else t.classList.remove('active');
+      });
+      renderItems(category);
+    }
+
+    function renderItems(category) {
+      const grid = document.getElementById('menuItemsGrid');
+      grid.innerHTML = '';
+      const catData = menuData.find(c => c.category === category);
+      if(!catData) return;
+
+      catData.items.forEach(item => {
+        const price = currentServiceType === 'ac' ? item.ac_price : item.self_price;
+        const idName = item.name.replace(/\s+/g, '-');
+        const card = document.createElement('div');
+        card.className = 'food-card';
+        // Handle images
+        let imgSrc = item.image;
+        if (imgSrc === 'placeholder.png') {
+          imgSrc = 'logo.png';
+        }
+        card.innerHTML = `
+            <div class="food-card-img">
+              <img src="${imgSrc}" alt="${item.name}" loading="lazy">
+              <div class="veg-badge"><div class="veg-dot"></div></div>
+            </div>
+            <div class="food-card-body">
+              <div class="food-name">${item.name}</div>
+              <div class="food-price">₹${price}</div>
+              <div class="food-actions">
+                <button class="add-btn" onclick="addToCart(this, '${item.name}', ${price})">Add</button>
+                <div class="qty-controls" data-item="${item.name}">
+                  <button class="qty-btn" onclick="updateQty('${item.name}', -1)">-</button>
+                  <span class="qty-num">0</span>
+                  <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
+                </div>
+              </div>
+            </div>
+        `;
+        grid.appendChild(card);
+      });
+      
+      // Update UI for existing cart items
+      updateCartUI();
+    }
+    
+
+
+    // CART SYSTEM
+    let cart = {};
+
+    function toggleCart() {
+      const drawer = document.getElementById('cartDrawer');
+      drawer.classList.toggle('open');
+    }
+
+    function addToCart(btn, name) {
+      // Get price from sibling span
+      const priceText = btn.previousElementSibling.textContent;
+      const price = parseInt(priceText.replace('₹', ''));
+
+      if (!cart[name]) {
+        cart[name] = { price: price, qty: 1 };
+
+        // UI Update: Swap Add button for Qty controls
+        btn.style.display = 'none';
+        const controls = btn.nextElementSibling;
+        controls.classList.add('active');
+        controls.querySelector('.qty-num').textContent = 1;
+
+        updateCartUI();
+      }
+    }
+
+    function updateQty(name, delta) {
+      if (cart[name]) {
+        cart[name].qty += delta;
+
+        if (cart[name].qty <= 0) {
+          delete cart[name];
+
+          // UI Reset: Swap back to Add button
+          const controls = document.querySelector(`.qty-controls[data-item="${name}"]`);
+          if (controls) {
+            controls.classList.remove('active');
+            controls.previousElementSibling.style.display = 'block';
+          }
+        } else {
+          const controls = document.querySelector(`.qty-controls[data-item="${name}"]`);
+          if (controls) controls.querySelector('.qty-num').textContent = cart[name].qty;
+        }
+
+        updateCartUI();
+      }
+    }
+
+    function updateCartUI() {
+      const list = document.getElementById('cartItemsList');
+      const countEl = document.getElementById('cartCount');
+      const totalEl = document.getElementById('cartTotal');
+      const float = document.getElementById('cartFloat');
+
+      let total = 0;
+      let count = 0;
+      let itemsHTML = '';
+
+      for (const [name, data] of Object.entries(cart)) {
+        total += data.price * data.qty;
+        count += data.qty;
+        itemsHTML += `
+      <div class="cart-item-row">
+        <div class="item-info">
+          <span class="item-name">${name}</span>
+          <span class="item-price-each">₹${data.price} × ${data.qty}</span>
+        </div>
+        <div class="qty-controls active" data-item="${name}">
+          <button class="qty-btn" onclick="updateQty('${name}', -1)">−</button>
+          <span class="qty-num">${data.qty}</span>
+          <button class="qty-btn" onclick="updateQty('${name}', 1)">+</button>
+        </div>
+      </div>
+    `;
+      }
+
+      if (count === 0) {
+        list.innerHTML = '<div class="empty-cart-msg">Your cart is empty</div>';
+      } else {
+        list.innerHTML = itemsHTML;
+        // Animation for cart float
+        float.style.transform = 'translateY(-50%) scale(1.1)';
+        setTimeout(() => float.style.transform = 'translateY(-50%) scale(1)', 200);
+      }
+
+      countEl.textContent = count;
+      totalEl.textContent = `₹${total}`;
+    }
+
+    function placeOrder() {
+      if (Object.keys(cart).length === 0) {
+        alert("Please add some items to your cart first!");
+        return;
+      }
+
+      // Official Zomato Restaurant Link
+      const zomatoLink = "https://www.zomato.com/bangalore/sri-raghavendra-vaibhava-koramangala-3rd-block-bangalore/order";
+
+      if (confirm("We will now take you to Zomato to complete your delivery order. Ready?")) {
+        window.open(zomatoLink, '_blank');
+      }
+    }
+
+    // LIGHTBOX
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // SCROLL REVEAL
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // Initialize menu on load
+    if (typeof menuData !== 'undefined') {
+      generateMenuTabs();
+    }
+
+    // COUNTERS
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const el = e.target;
+          const target = parseInt(el.dataset.target);
+          let count = 0;
+          const step = Math.max(1, Math.floor(target / 60));
+          const timer = setInterval(() => {
+            count = Math.min(count + step, target);
+            el.textContent = count;
+            if (count >= target) clearInterval(timer);
+          }, 25);
+          counterObs.unobserve(el);
+        }
+      });
+    }, { threshold: .5 });
+    document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+    // PARTICLE CANVAS
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    const particles = [];
+    for (let i = 0; i < 60; i++) {
+      particles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        r: Math.random() * 2 + .5,
+        vx: (Math.random() - .5) * .3,
+        vy: -Math.random() * .5 - .2,
+        a: Math.random() * .6 + .1,
+        color: Math.random() > .5 ? '212,175,55' : '255,107,0'
+      });
+    }
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color},${p.a})`;
+        ctx.fill();
+        p.x += p.vx; p.y += p.vy;
+        if (p.y < -10) p.y = canvas.height + 10;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  </script>
+</body>
+
+</html>
