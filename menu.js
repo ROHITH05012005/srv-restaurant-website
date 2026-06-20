@@ -352,7 +352,7 @@ const menuData = [
                 "name": "Menthe Dosa",
                 "self_price": 80,
                 "ac_price": 95,
-                "image": "logo.png"
+                "image": "assets/images/menthe_dosa_ai.png"
             },
             {
                 "name": "Palak Dosa",
