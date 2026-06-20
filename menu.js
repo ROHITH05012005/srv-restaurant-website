@@ -434,43 +434,43 @@ const menuData = [
                 "name": "Paneer Tikka",
                 "self_price": 210,
                 "ac_price": 225,
-                "image": "logo.png"
+                "image": "assets/images/paneer_tikka_ai.png"
             },
             {
                 "name": "Aloo Tikka",
                 "self_price": 190,
                 "ac_price": 200,
-                "image": "logo.png"
+                "image": "assets/images/aloo_tikka_ai.png"
             },
             {
                 "name": "Veg Sheekh Kebab",
                 "self_price": 190,
                 "ac_price": 200,
-                "image": "logo.png"
+                "image": "assets/images/veg_sheekh_kebab_ai.png"
             },
             {
                 "name": "Mushroom Tikka",
                 "self_price": 210,
                 "ac_price": 225,
-                "image": "logo.png"
+                "image": "assets/images/mushroom_tikka_ai.png"
             },
             {
                 "name": "Gobi Tikka",
                 "self_price": 180,
                 "ac_price": 200,
-                "image": "logo.png"
+                "image": "assets/images/gobi_tikka_ai.png"
             },
             {
                 "name": "Harabara Kebab",
                 "self_price": 190,
                 "ac_price": 200,
-                "image": "logo.png"
+                "image": "assets/images/harabara_kebab_ai.png"
             },
             {
                 "name": "Special Veg Platter",
                 "self_price": 240,
                 "ac_price": 280,
-                "image": "logo.png"
+                "image": "assets/images/special_veg_platter_ai.png"
             }
         ]
     },
@@ -481,79 +481,79 @@ const menuData = [
                 "name": "Gobi Manchurian",
                 "self_price": 110,
                 "ac_price": 140,
-                "image": "logo.png"
+                "image": "assets/images/gobi_manchurian_ai.png"
             },
             {
                 "name": "Baby Corn Manchurian",
                 "self_price": 130,
                 "ac_price": 150,
-                "image": "logo.png"
+                "image": "assets/images/baby_corn_manchurian_ai.png"
             },
             {
                 "name": "Mushroom Manchurian",
                 "self_price": 140,
                 "ac_price": 170,
-                "image": "logo.png"
+                "image": "assets/images/mushroom_manchurian_ai.png"
             },
             {
                 "name": "Paneer Manchurian",
                 "self_price": 150,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/paneer_manchurian_ai.png"
             },
             {
                 "name": "Veg 65",
                 "self_price": 120,
                 "ac_price": 140,
-                "image": "logo.png"
+                "image": "assets/images/veg_65_ai.png"
             },
             {
                 "name": "Gobi 65",
                 "self_price": 120,
                 "ac_price": 150,
-                "image": "logo.png"
+                "image": "assets/images/gobi_65_ai.png"
             },
             {
                 "name": "Baby Corn 65",
                 "self_price": 130,
                 "ac_price": 160,
-                "image": "logo.png"
+                "image": "assets/images/baby_corn_65_ai.png"
             },
             {
                 "name": "Mushroom 65",
                 "self_price": 140,
                 "ac_price": 170,
-                "image": "logo.png"
+                "image": "assets/images/mushroom_65_ai.png"
             },
             {
                 "name": "Paneer 65",
                 "self_price": 150,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/paneer_65_ai.png"
             },
             {
                 "name": "Crispy Veg",
                 "self_price": 140,
                 "ac_price": 160,
-                "image": "logo.png"
+                "image": "assets/images/crispy_veg_ai.png"
             },
             {
                 "name": "Crispy Corn",
                 "self_price": 140,
                 "ac_price": 160,
-                "image": "logo.png"
+                "image": "assets/images/crispy_corn_ai.png"
             },
             {
                 "name": "Crispy Baby Corn",
                 "self_price": 150,
                 "ac_price": 170,
-                "image": "logo.png"
+                "image": "assets/images/crispy_baby_corn_ai.png"
             },
             {
                 "name": "Crispy Mushroom",
                 "self_price": 160,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/crispy_mushroom_ai.png"
             },
             {
                 "name": "Crispy Paneer",
