@@ -304,13 +304,13 @@ const menuData = [
                 "name": "Rava Masala Dosa",
                 "self_price": 100,
                 "ac_price": 125,
-                "image": "logo.png"
+                "image": "assets/images/rava_masala_dosa.png"
             },
             {
                 "name": "Rava Onion Masala Dosa",
                 "self_price": 110,
                 "ac_price": 125,
-                "image": "logo.png"
+                "image": "assets/images/rava_onion_masala_dosa.png"
             },
             {
                 "name": "Open Butter Masala Dosa",
