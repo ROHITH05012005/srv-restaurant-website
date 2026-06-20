@@ -369,61 +369,61 @@ const menuData = [
                 "name": "Tomato Soup",
                 "self_price": 90,
                 "ac_price": 90,
-                "image": "logo.png"
+                "image": "assets/images/tomato_soup_ai.png"
             },
             {
                 "name": "Cream of Veg Soup",
                 "self_price": 85,
                 "ac_price": 95,
-                "image": "logo.png"
+                "image": "assets/images/cream_of_veg_soup_ai.png"
             },
             {
                 "name": "Sweet Corn Soup",
                 "self_price": 85,
                 "ac_price": 95,
-                "image": "logo.png"
+                "image": "assets/images/sweet_corn_soup_ai.png"
             },
             {
                 "name": "Hot & Sour Soup",
                 "self_price": 90,
                 "ac_price": 90,
-                "image": "logo.png"
+                "image": "assets/images/hot_and_sour_soup_ai.png"
             },
             {
                 "name": "Manchow Clear Soup",
                 "self_price": 95,
                 "ac_price": 100,
-                "image": "logo.png"
+                "image": "assets/images/manchow_clear_soup_ai.png"
             },
             {
                 "name": "Veg Clear Soup",
                 "self_price": 85,
                 "ac_price": 100,
-                "image": "logo.png"
+                "image": "assets/images/veg_clear_soup_ai.png"
             },
             {
                 "name": "Lemon Coriander Soup",
                 "self_price": 80,
                 "ac_price": 100,
-                "image": "logo.png"
+                "image": "assets/images/lemon_coriander_soup_ai.png"
             },
             {
                 "name": "Cream of Mushroom",
                 "self_price": 90,
                 "ac_price": 100,
-                "image": "logo.png"
+                "image": "assets/images/cream_of_mushroom_ai.png"
             },
             {
                 "name": "Schezwan Palak Soup",
                 "self_price": 90,
                 "ac_price": 110,
-                "image": "logo.png"
+                "image": "assets/images/schezwan_palak_soup_ai.png"
             },
             {
                 "name": "French Onion Soup",
                 "self_price": 90,
                 "ac_price": 110,
-                "image": "logo.png"
+                "image": "assets/images/french_onion_soup_ai.png"
             }
         ]
     },
