@@ -1428,34 +1428,34 @@ const menuData = [
         "category": "Ice Cream",
         "items": [
             {
-                "name": "Vanilla",
+                "name": "Vanilla Ice Cream",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "assets/images/vanilla_ai.jpg"
+                "image": "assets/images/vanilla_ice_cream_ai.jpg"
             },
             {
-                "name": "Strawberry",
+                "name": "Strawberry Ice Cream",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "assets/images/strawberry_ai.jpg"
+                "image": "assets/images/strawberry_ice_cream_ai.jpg"
             },
             {
-                "name": "Butterscotch",
+                "name": "Butterscotch Ice Cream",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/butterscotch_ai.jpg"
+                "image": "assets/images/butterscotch_ice_cream_ai.jpg"
             },
             {
-                "name": "Chocolate",
+                "name": "Chocolate Ice Cream",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/chocolate_ai.jpg"
+                "image": "assets/images/chocolate_ice_cream_ai.jpg"
             },
             {
-                "name": "Pista",
+                "name": "Pista Ice Cream",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/pista_ai.jpg"
+                "image": "assets/images/pista_ice_cream_ai.jpg"
             }
         ]
     },
