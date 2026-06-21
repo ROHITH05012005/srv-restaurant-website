@@ -642,7 +642,7 @@ const menuData = [
                 "name": "Mushroom Biryani",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "logo.png"
+                "image": "assets/images/mushroom_biryani_ai.png"
             }
         ]
     },
@@ -653,19 +653,19 @@ const menuData = [
                 "name": "Roasted Papad",
                 "self_price": 20,
                 "ac_price": 30,
-                "image": "logo.png"
+                "image": "assets/images/roasted_papad_ai.png"
             },
             {
                 "name": "Masala Papad",
                 "self_price": 40,
                 "ac_price": 50,
-                "image": "logo.png"
+                "image": "assets/images/masala_papad_ai.png"
             },
             {
                 "name": "Fry Papad",
                 "self_price": 25,
                 "ac_price": 35,
-                "image": "logo.png"
+                "image": "assets/images/fry_papad_ai.png"
             }
         ]
     },
@@ -676,7 +676,7 @@ const menuData = [
                 "name": "Gobi Dry",
                 "self_price": 140,
                 "ac_price": 170,
-                "image": "logo.png"
+                "image": "assets/images/gobi_dry_ai.png"
             },
             {
                 "name": "Veg Kolhapuri Dry",

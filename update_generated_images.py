@@ -6,7 +6,11 @@ import subprocess
 
 # The images we successfully generated
 generated_images = {
-    'Neer Dosa': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\neer_dosa_1781963812891.png'
+    'Mushroom Biryani': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\mushroom_biryani_1782079900025.png',
+    'Roasted Papad': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\roasted_papad_1782079911778.png',
+    'Masala Papad': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\masala_papad_1782079922106.png',
+    'Fry Papad': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\fry_papad_1782079931727.png',
+    'Gobi Dry': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\gobi_dry_1782079941050.png'
 }
 
 target_dir = os.path.join('assets', 'images')
@@ -59,7 +63,7 @@ if updated_count > 0:
     
     # Git add, commit, push
     subprocess.run(['git', 'add', '-A'], check=True)
-    subprocess.run(['git', 'commit', '-m', f'Add premium image for Neer Dosa'], check=True)
+    subprocess.run(['git', 'commit', '-m', f'Add 5 new images starting from Mushroom Biryani'], check=True)
     subprocess.run(['git', 'push', 'origin', 'main'], check=True)
     print("Pushed to GitHub")
 else:
