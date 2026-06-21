@@ -1398,12 +1398,7 @@ const menuData = [
                 "ac_price": 60,
                 "image": "assets/images/gulab_jamun_ai.jpg"
             },
-            {
-                "name": "Carrot Halwa",
-                "self_price": 50,
-                "ac_price": 70,
-                "image": "assets/images/carrot_halwa_ai_v2.jpg"
-            },
+
             {
                 "name": "Gajar Halwa",
                 "self_price": 50,
