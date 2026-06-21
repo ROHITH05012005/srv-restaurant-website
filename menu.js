@@ -1402,7 +1402,7 @@ const menuData = [
                 "name": "Carrot Halwa",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "assets/images/carrot_halwa_ai.jpg"
+                "image": "assets/images/carrot_halwa_ai_v2.jpg"
             },
             {
                 "name": "Gajar Halwa",
