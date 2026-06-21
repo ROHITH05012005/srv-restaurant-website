@@ -1466,25 +1466,25 @@ const menuData = [
                 "name": "Vanilla Shake",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "logo.png"
+                "image": "assets/images/vanilla_shake_ai.jpg"
             },
             {
                 "name": "Strawberry Shake",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "logo.png"
+                "image": "assets/images/strawberry_shake_ai.jpg"
             },
             {
                 "name": "Chocolate Shake",
                 "self_price": 100,
                 "ac_price": 130,
-                "image": "logo.png"
+                "image": "assets/images/chocolate_shake_ai.jpg"
             },
             {
                 "name": "Butterscotch Shake",
                 "self_price": 100,
                 "ac_price": 130,
-                "image": "logo.png"
+                "image": "assets/images/butterscotch_shake_ai.jpg"
             }
         ]
     },
@@ -1495,13 +1495,13 @@ const menuData = [
                 "name": "Fruit Salad",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "logo.png"
+                "image": "assets/images/fruit_salad_ai.jpg"
             },
             {
                 "name": "Fruit Salad with Ice Cream",
                 "self_price": 120,
                 "ac_price": 160,
-                "image": "logo.png"
+                "image": "assets/images/fruit_salad_with_ice_cream_ai.jpg"
             }
         ]
     },
@@ -1512,25 +1512,25 @@ const menuData = [
                 "name": "Gadbad Ice Cream",
                 "self_price": 120,
                 "ac_price": 160,
-                "image": "logo.png"
+                "image": "assets/images/gadbad_ice_cream_ai.jpg"
             },
             {
                 "name": "Dry Fruit Delight",
                 "self_price": 140,
                 "ac_price": 190,
-                "image": "logo.png"
+                "image": "assets/images/dry_fruit_delight_ai.jpg"
             },
             {
                 "name": "Special Ice Cream",
                 "self_price": 130,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/special_ice_cream_ai.jpg"
             },
             {
                 "name": "Banana Split",
                 "self_price": 150,
                 "ac_price": 200,
-                "image": "logo.png"
+                "image": "assets/images/banana_split_ai.jpg"
             }
         ]
     }
