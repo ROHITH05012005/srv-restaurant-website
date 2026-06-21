@@ -747,7 +747,7 @@ const menuData = [
                 "name": "Garlic Naan",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/garlic_naan_ai.png"
             },
             {
                 "name": "Kulcha",
