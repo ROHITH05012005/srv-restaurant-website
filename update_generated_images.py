@@ -6,11 +6,16 @@ import subprocess
 
 # The images we successfully generated
 generated_images = {
-    'Mushroom Biryani': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\mushroom_biryani_1782079900025.png',
-    'Roasted Papad': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\roasted_papad_1782079911778.png',
-    'Masala Papad': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\masala_papad_1782079922106.png',
-    'Fry Papad': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\fry_papad_1782079931727.png',
-    'Gobi Dry': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\gobi_dry_1782079941050.png'
+    'Veg Kolhapuri Dry': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\veg_kolhapuri_dry_1782080065264.png',
+    'Veg Kadai Dry': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\veg_kadai_dry_1782080076005.png',
+    'Paneer Butter Masala Dry': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\paneer_butter_masala_dry_1782080087892.png',
+    'Paneer Kadai Dry': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\paneer_kadai_dry_1782080099277.png',
+    'Mushroom Masala Dry': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\mushroom_masala_dry_1782080110988.png',
+    'Mushroom Kadai Dry': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\mushroom_kadai_dry_1782080123210.png',
+    'Tandoori Roti': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\tandoori_roti_1782080135551.png',
+    'Butter Roti': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\butter_roti_1782080147499.png',
+    'Plain Naan': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\plain_naan_1782080158935.png',
+    'Butter Naan': r'C:\Users\rohib\.gemini\antigravity\brain\2b1c2472-a251-42d1-a670-0c347bc524f3\butter_naan_1782080170007.png'
 }
 
 target_dir = os.path.join('assets', 'images')
@@ -63,7 +68,7 @@ if updated_count > 0:
     
     # Git add, commit, push
     subprocess.run(['git', 'add', '-A'], check=True)
-    subprocess.run(['git', 'commit', '-m', f'Add 5 new images starting from Mushroom Biryani'], check=True)
+    subprocess.run(['git', 'commit', '-m', f'Add 10 new images'], check=True)
     subprocess.run(['git', 'push', 'origin', 'main'], check=True)
     print("Pushed to GitHub")
 else:

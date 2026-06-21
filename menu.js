@@ -682,37 +682,37 @@ const menuData = [
                 "name": "Veg Kolhapuri Dry",
                 "self_price": 150,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/veg_kolhapuri_dry_ai.png"
             },
             {
                 "name": "Veg Kadai Dry",
                 "self_price": 150,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/veg_kadai_dry_ai.png"
             },
             {
                 "name": "Paneer Butter Masala Dry",
                 "self_price": 180,
                 "ac_price": 220,
-                "image": "logo.png"
+                "image": "assets/images/paneer_butter_masala_dry_ai.png"
             },
             {
                 "name": "Paneer Kadai Dry",
                 "self_price": 180,
                 "ac_price": 220,
-                "image": "logo.png"
+                "image": "assets/images/paneer_kadai_dry_ai.png"
             },
             {
                 "name": "Mushroom Masala Dry",
                 "self_price": 170,
                 "ac_price": 200,
-                "image": "logo.png"
+                "image": "assets/images/mushroom_masala_dry_ai.png"
             },
             {
                 "name": "Mushroom Kadai Dry",
                 "self_price": 170,
                 "ac_price": 200,
-                "image": "logo.png"
+                "image": "assets/images/mushroom_kadai_dry_ai.png"
             }
         ]
     },
@@ -723,25 +723,25 @@ const menuData = [
                 "name": "Tandoori Roti",
                 "self_price": 25,
                 "ac_price": 30,
-                "image": "logo.png"
+                "image": "assets/images/tandoori_roti_ai.png"
             },
             {
                 "name": "Butter Roti",
                 "self_price": 30,
                 "ac_price": 40,
-                "image": "logo.png"
+                "image": "assets/images/butter_roti_ai.png"
             },
             {
                 "name": "Plain Naan",
                 "self_price": 40,
                 "ac_price": 50,
-                "image": "logo.png"
+                "image": "assets/images/plain_naan_ai.png"
             },
             {
                 "name": "Butter Naan",
                 "self_price": 50,
                 "ac_price": 60,
-                "image": "logo.png"
+                "image": "assets/images/butter_naan_ai.png"
             },
             {
                 "name": "Garlic Naan",
