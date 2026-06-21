@@ -1396,31 +1396,31 @@ const menuData = [
                 "name": "Gulab Jamun",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "logo.png"
+                "image": "assets/images/gulab_jamun_ai.jpg"
             },
             {
                 "name": "Carrot Halwa",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/carrot_halwa_ai.jpg"
             },
             {
                 "name": "Gajar Halwa",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/gajar_halwa_ai.jpg"
             },
             {
                 "name": "Kesari Bath",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "logo.png"
+                "image": "assets/images/kesari_bath_ai.jpg"
             },
             {
                 "name": "Special Sweet",
                 "self_price": 60,
                 "ac_price": 90,
-                "image": "logo.png"
+                "image": "assets/images/special_sweet_ai.jpg"
             }
         ]
     },
@@ -1431,31 +1431,31 @@ const menuData = [
                 "name": "Vanilla",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "logo.png"
+                "image": "assets/images/vanilla_ai.jpg"
             },
             {
                 "name": "Strawberry",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "logo.png"
+                "image": "assets/images/strawberry_ai.jpg"
             },
             {
                 "name": "Butterscotch",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/butterscotch_ai.jpg"
             },
             {
                 "name": "Chocolate",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/chocolate_ai.jpg"
             },
             {
                 "name": "Pista",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/pista_ai.jpg"
             }
         ]
     },
