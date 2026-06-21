@@ -1321,19 +1321,19 @@ const menuData = [
                 "name": "Chikoo Shake",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "logo.png"
+                "image": "assets/images/chikoo_shake_ai.jpg"
             },
             {
                 "name": "Mango Shake",
                 "self_price": 100,
                 "ac_price": 130,
-                "image": "logo.png"
+                "image": "assets/images/mango_shake_ai.jpg"
             },
             {
                 "name": "Dry Fruit Shake",
                 "self_price": 120,
                 "ac_price": 160,
-                "image": "logo.png"
+                "image": "assets/images/dry_fruit_shake_ai.jpg"
             }
         ]
     },
@@ -1344,19 +1344,19 @@ const menuData = [
                 "name": "Sweet Lassi",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "logo.png"
+                "image": "assets/images/sweet_lassi_ai.jpg"
             },
             {
                 "name": "Salt Lassi",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "logo.png"
+                "image": "assets/images/salt_lassi_ai.jpg"
             },
             {
                 "name": "Special Lassi",
                 "self_price": 80,
                 "ac_price": 110,
-                "image": "logo.png"
+                "image": "assets/images/special_lassi_ai.jpg"
             }
         ]
     },
@@ -1367,25 +1367,25 @@ const menuData = [
                 "name": "Lemon Soda",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "logo.png"
+                "image": "assets/images/lemon_soda_ai.jpg"
             },
             {
                 "name": "Sweet Lime Soda",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/sweet_lime_soda_ai.jpg"
             },
             {
                 "name": "Salt Soda",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "logo.png"
+                "image": "assets/images/salt_soda_ai.jpg"
             },
             {
                 "name": "Masala Soda",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/masala_soda_ai.jpg"
             }
         ]
     },
@@ -1398,7 +1398,6 @@ const menuData = [
                 "ac_price": 60,
                 "image": "assets/images/gulab_jamun_ai.jpg"
             },
-
             {
                 "name": "Gajar Halwa",
                 "self_price": 50,
