@@ -859,25 +859,25 @@ const menuData = [
                 "name": "Palak Paneer",
                 "self_price": 160,
                 "ac_price": 220,
-                "image": "logo.png"
+                "image": "assets/images/palak_paneer_ai.jpg"
             },
             {
                 "name": "Mushroom Masala",
                 "self_price": 150,
                 "ac_price": 200,
-                "image": "logo.png"
+                "image": "assets/images/mushroom_masala_ai.jpg"
             },
             {
                 "name": "Mushroom Kadai",
                 "self_price": 150,
                 "ac_price": 200,
-                "image": "logo.png"
+                "image": "assets/images/mushroom_kadai_ai.jpg"
             },
             {
                 "name": "Mix Veg Curry",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/mix_veg_curry_ai.jpg"
             }
         ]
     },
@@ -888,31 +888,31 @@ const menuData = [
                 "name": "Paneer Butter Masala Special",
                 "self_price": 180,
                 "ac_price": 240,
-                "image": "logo.png"
+                "image": "assets/images/paneer_butter_masala_special_ai.jpg"
             },
             {
                 "name": "Paneer Tikka Masala",
                 "self_price": 180,
                 "ac_price": 240,
-                "image": "logo.png"
+                "image": "assets/images/paneer_tikka_masala_ai.jpg"
             },
             {
                 "name": "Mushroom Pepper Dry",
                 "self_price": 170,
                 "ac_price": 220,
-                "image": "logo.png"
+                "image": "assets/images/mushroom_pepper_dry_ai.jpg"
             },
             {
                 "name": "Veg Tawa Fry",
                 "self_price": 160,
                 "ac_price": 200,
-                "image": "logo.png"
+                "image": "assets/images/veg_tawa_fry_ai.jpg"
             },
             {
                 "name": "SRV Special Veg",
                 "self_price": 180,
                 "ac_price": 240,
-                "image": "logo.png"
+                "image": "assets/images/srv_special_veg_ai.jpg"
             }
         ]
     },
@@ -923,61 +923,61 @@ const menuData = [
                 "name": "Veg Fried Rice",
                 "self_price": 120,
                 "ac_price": 150,
-                "image": "logo.png"
+                "image": "assets/images/veg_fried_rice_ai.jpg"
             },
             {
                 "name": "Schezwan Fried Rice",
                 "self_price": 130,
                 "ac_price": 160,
-                "image": "logo.png"
+                "image": "assets/images/schezwan_fried_rice_ai.jpg"
             },
             {
                 "name": "Gobi Fried Rice",
                 "self_price": 130,
                 "ac_price": 160,
-                "image": "logo.png"
+                "image": "assets/images/gobi_fried_rice_ai.jpg"
             },
             {
                 "name": "Mushroom Fried Rice",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/mushroom_fried_rice_ai.jpg"
             },
             {
                 "name": "Paneer Fried Rice",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "logo.png"
+                "image": "assets/images/paneer_fried_rice_ai.jpg"
             },
             {
                 "name": "Veg Noodles",
                 "self_price": 120,
                 "ac_price": 150,
-                "image": "logo.png"
+                "image": "assets/images/veg_noodles_ai.jpg"
             },
             {
                 "name": "Schezwan Noodles",
                 "self_price": 130,
                 "ac_price": 160,
-                "image": "logo.png"
+                "image": "assets/images/schezwan_noodles_ai.jpg"
             },
             {
                 "name": "Gobi Noodles",
                 "self_price": 130,
                 "ac_price": 160,
-                "image": "logo.png"
+                "image": "assets/images/gobi_noodles_ai.jpg"
             },
             {
                 "name": "Mushroom Noodles",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/mushroom_noodles_ai.jpg"
             },
             {
                 "name": "Paneer Noodles",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "logo.png"
+                "image": "assets/images/paneer_noodles_ai.jpg"
             }
         ]
     },
@@ -988,19 +988,19 @@ const menuData = [
                 "name": "Fried Rice + Manchurian",
                 "self_price": 170,
                 "ac_price": 220,
-                "image": "logo.png"
+                "image": "assets/images/fried_rice__manchurian_ai.jpg"
             },
             {
                 "name": "Noodles + Manchurian",
                 "self_price": 170,
                 "ac_price": 220,
-                "image": "logo.png"
+                "image": "assets/images/noodles__manchurian_ai.jpg"
             },
             {
                 "name": "Fried Rice + Noodles + Manchurian",
                 "self_price": 220,
                 "ac_price": 280,
-                "image": "logo.png"
+                "image": "assets/images/fried_rice__noodles__manchurian_ai.jpg"
             }
         ]
     },
@@ -1011,31 +1011,31 @@ const menuData = [
                 "name": "Dragon Paneer",
                 "self_price": 170,
                 "ac_price": 220,
-                "image": "logo.png"
+                "image": "assets/images/dragon_paneer_ai.jpg"
             },
             {
                 "name": "Dragon Mushroom",
                 "self_price": 160,
                 "ac_price": 200,
-                "image": "logo.png"
+                "image": "assets/images/dragon_mushroom_ai.jpg"
             },
             {
                 "name": "Dragon Baby Corn",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "logo.png"
+                "image": "assets/images/dragon_baby_corn_ai.jpg"
             },
             {
                 "name": "Hong Kong Noodles",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "logo.png"
+                "image": "assets/images/hong_kong_noodles_ai.jpg"
             },
             {
                 "name": "American Chopsuey",
                 "self_price": 160,
                 "ac_price": 220,
-                "image": "logo.png"
+                "image": "assets/images/american_chopsuey_ai.jpg"
             }
         ]
     },
@@ -1046,19 +1046,19 @@ const menuData = [
                 "name": "South Meals",
                 "self_price": 100,
                 "ac_price": 140,
-                "image": "logo.png"
+                "image": "assets/images/south_meals_ai.jpg"
             },
             {
                 "name": "Special Meals",
                 "self_price": 150,
                 "ac_price": 200,
-                "image": "logo.png"
+                "image": "assets/images/special_meals_ai.jpg"
             },
             {
                 "name": "Mini Meals",
                 "self_price": 80,
                 "ac_price": 120,
-                "image": "logo.png"
+                "image": "assets/images/mini_meals_ai.jpg"
             }
         ]
     },
@@ -1069,31 +1069,31 @@ const menuData = [
                 "name": "Extra Curry",
                 "self_price": 30,
                 "ac_price": 40,
-                "image": "logo.png"
+                "image": "assets/images/extra_curry_ai.jpg"
             },
             {
                 "name": "Extra Sambar",
                 "self_price": 20,
                 "ac_price": 30,
-                "image": "logo.png"
+                "image": "assets/images/extra_sambar_ai.jpg"
             },
             {
                 "name": "Extra Chutney",
                 "self_price": 20,
                 "ac_price": 30,
-                "image": "logo.png"
+                "image": "assets/images/extra_chutney_ai.jpg"
             },
             {
                 "name": "Curd",
                 "self_price": 30,
                 "ac_price": 40,
-                "image": "logo.png"
+                "image": "assets/images/curd_ai.jpg"
             },
             {
                 "name": "Pickle",
                 "self_price": 10,
                 "ac_price": 20,
-                "image": "logo.png"
+                "image": "assets/images/pickle_ai.jpg"
             }
         ]
     },
@@ -1104,7 +1104,7 @@ const menuData = [
                 "name": "Veg Dum Biryani",
                 "self_price": 150,
                 "ac_price": 190,
-                "image": "logo.png"
+                "image": "assets/images/veg_dum_biryani_ai.jpg"
             },
             {
                 "name": "Paneer Dum Biryani",
