@@ -800,13 +800,13 @@ const menuData = [
                 "name": "Veg Salad",
                 "self_price": 70,
                 "ac_price": 90,
-                "image": "logo.png"
+                "image": "assets/images/veg_salad_ai.png"
             },
             {
                 "name": "Green Salad",
                 "self_price": 70,
                 "ac_price": 90,
-                "image": "logo.png"
+                "image": "assets/images/green_salad_ai.png"
             }
         ]
     },
@@ -853,7 +853,7 @@ const menuData = [
                 "name": "Kadai Paneer",
                 "self_price": 160,
                 "ac_price": 220,
-                "image": "logo.png"
+                "image": "assets/images/kadai_paneer_ai.png"
             },
             {
                 "name": "Palak Paneer",
