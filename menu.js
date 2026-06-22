@@ -753,25 +753,25 @@ const menuData = [
                 "name": "Kulcha",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/kulcha_ai.png"
             },
             {
                 "name": "Butter Kulcha",
                 "self_price": 70,
                 "ac_price": 80,
-                "image": "logo.png"
+                "image": "assets/images/butter_kulcha_ai.png"
             },
             {
                 "name": "Paratha",
                 "self_price": 60,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/paratha_ai.png"
             },
             {
                 "name": "Butter Paratha",
                 "self_price": 70,
                 "ac_price": 80,
-                "image": "logo.png"
+                "image": "assets/images/butter_paratha_ai.png"
             }
         ]
     },
@@ -782,19 +782,19 @@ const menuData = [
                 "name": "Plain Raitha",
                 "self_price": 50,
                 "ac_price": 70,
-                "image": "logo.png"
+                "image": "assets/images/plain_raitha_ai.png"
             },
             {
                 "name": "Onion Raitha",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "logo.png"
+                "image": "assets/images/onion_raitha_ai.png"
             },
             {
                 "name": "Cucumber Raitha",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "logo.png"
+                "image": "assets/images/cucumber_raitha_ai.png"
             },
             {
                 "name": "Veg Salad",
@@ -817,37 +817,37 @@ const menuData = [
                 "name": "Veg Kurma",
                 "self_price": 130,
                 "ac_price": 170,
-                "image": "logo.png"
+                "image": "assets/images/veg_kurma_ai.png"
             },
             {
                 "name": "Veg Kolhapuri",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/veg_kolhapuri_ai.png"
             },
             {
                 "name": "Veg Kadai",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/veg_kadai_ai.png"
             },
             {
                 "name": "Veg Hyderabadi",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/veg_hyderabadi_ai.png"
             },
             {
                 "name": "Veg Handi",
                 "self_price": 140,
                 "ac_price": 180,
-                "image": "logo.png"
+                "image": "assets/images/veg_handi_ai.png"
             },
             {
                 "name": "Paneer Butter Masala",
                 "self_price": 160,
                 "ac_price": 220,
-                "image": "logo.png"
+                "image": "assets/images/paneer_butter_masala_ai.png"
             },
             {
                 "name": "Kadai Paneer",
