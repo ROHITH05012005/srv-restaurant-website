@@ -1247,40 +1247,40 @@ const menuData = [
         "category": "Juice",
         "items": [
             {
-                "name": "Sweet Lime",
+                "name": "Sweet Lime Juice",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "assets/images/sweet_lime_ai.jpg"
+                "image": "assets/images/sweet_lime_juice_ai.jpg"
             },
             {
-                "name": "Orange",
+                "name": "Orange Juice",
                 "self_price": 70,
                 "ac_price": 90,
-                "image": "assets/images/orange_ai.jpg"
+                "image": "assets/images/orange_juice_ai.jpg"
             },
             {
-                "name": "Pineapple",
+                "name": "Pineapple Juice",
                 "self_price": 70,
                 "ac_price": 90,
-                "image": "assets/images/pineapple_ai.jpg"
+                "image": "assets/images/pineapple_juice_ai.jpg"
             },
             {
-                "name": "Watermelon",
+                "name": "Watermelon Juice",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "assets/images/watermelon_ai.jpg"
+                "image": "assets/images/watermelon_juice_ai.jpg"
             },
             {
-                "name": "Grape",
+                "name": "Grape Juice",
                 "self_price": 70,
                 "ac_price": 90,
-                "image": "assets/images/grape_ai.jpg"
+                "image": "assets/images/grape_juice_ai.jpg"
             },
             {
-                "name": "Mosambi",
+                "name": "Mosambi Juice",
                 "self_price": 60,
                 "ac_price": 80,
-                "image": "assets/images/mosambi_ai.jpg"
+                "image": "assets/images/mosambi_juice_ai.jpg"
             },
             {
                 "name": "Apple Juice",
@@ -1289,10 +1289,10 @@ const menuData = [
                 "image": "assets/images/apple_juice_ai.jpg"
             },
             {
-                "name": "Pomegranate",
+                "name": "Pomegranate Juice",
                 "self_price": 90,
                 "ac_price": 120,
-                "image": "assets/images/pomegranate_ai.jpg"
+                "image": "assets/images/pomegranate_juice_ai.jpg"
             }
         ]
     },
