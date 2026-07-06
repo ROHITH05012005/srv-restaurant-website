@@ -2055,7 +2055,7 @@
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#timings">Timings</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#" id="navAdminBtn" onclick="toggleAdminLogin()" style="color:var(--gold);">Admin Login</a></li>
+      <li><a href="admin.html" id="navAdminBtn" onclick="return toggleAdminLogin(event)" style="color:var(--gold);">Admin Login</a></li>
       <li><a href="https://wa.me/919008804385?text=I'd like to reserve a table" class="nav-cta" target="_blank">Reserve
           Table</a></li>
     </ul>
@@ -3137,21 +3137,29 @@
       if (localStorage.getItem('gh_pat')) {
         document.body.classList.add('admin-mode');
         const btn = document.getElementById('navAdminBtn');
-        if (btn) btn.innerText = "Admin Logout";
+        if (btn) {
+          btn.innerText = "Admin Logout";
+          btn.href = "#";
+        }
       }
     }
     initAdminMode();
 
-    function toggleAdminLogin() {
+    function toggleAdminLogin(e) {
       if (localStorage.getItem('gh_pat')) {
+        if (e) e.preventDefault();
         if (confirm("You are currently logged in as Admin. Do you want to logout?")) {
           localStorage.removeItem('gh_pat');
           document.body.classList.remove('admin-mode');
-          document.getElementById('navAdminBtn').innerText = "Admin Login";
+          const btn = document.getElementById('navAdminBtn');
+          if (btn) {
+            btn.innerText = "Admin Login";
+            btn.href = "admin.html";
+          }
         }
-      } else {
-        window.location.href = 'admin.html';
+        return false;
       }
+      return true;
     }
   </script>
 
