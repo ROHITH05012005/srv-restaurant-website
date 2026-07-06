@@ -2818,34 +2818,161 @@
     }
     drawParticles();
 
+    let currentEditItem = null;
+
+    function getGithubToken() {
+      let token = localStorage.getItem('gh_pat');
+      if (!token) {
+        token = prompt("Admin Authentication\n\nPlease enter your GitHub Personal Access Token (PAT) to authorize changes. It will be saved securely in your browser:");
+        if (token) {
+          localStorage.setItem('gh_pat', token);
+        }
+      }
+      return token;
+    }
+
+    function openAdminModal(title, bodyText) {
+      document.getElementById('adminModalTitle').innerText = title;
+      document.getElementById('adminModalBody').innerText = bodyText;
+      document.getElementById('adminModalSpinner').style.display = 'none';
+      document.getElementById('adminModal').style.display = 'block';
+    }
+
+    function closeAdminModal() {
+      document.getElementById('adminModal').style.display = 'none';
+      currentEditItem = null;
+    }
+
     function editItemImage(itemName) {
-      const newUrl = prompt("Enter new image URL or path for " + itemName + ":", "assets/images/");
-      if (newUrl !== null && newUrl.trim() !== "") {
+      currentEditItem = itemName;
+      openAdminModal("Paste Image", "Press CTRL+V to paste your image for " + itemName + ".");
+    }
+
+    window.addEventListener('paste', async e => {
+      if (!currentEditItem) return;
+      if (document.getElementById('adminModal').style.display === 'none') return;
+
+      const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+      let blob = null;
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf("image") === 0) {
+          blob = items[i].getAsFile();
+          break;
+        }
+      }
+      if (!blob) {
+        alert("No image found in clipboard. Please copy an image and try again.");
+        return;
+      }
+
+      const token = getGithubToken();
+      if (!token) return;
+
+      document.getElementById('adminModalBody').innerText = "Uploading image to GitHub... Please wait.";
+      document.getElementById('adminModalSpinner').style.display = 'block';
+
+      try {
+        const base64Data = await convertBlobToBase64(blob);
+        const b64 = base64Data.split(',')[1]; 
+        
+        const safeName = currentEditItem.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+        const extension = blob.type.split('/')[1] || 'png';
+        const imagePath = `assets/images/${safeName}_${Date.now()}.${extension}`;
+
+        await uploadFileToGithub(imagePath, b64, `Update image for ${currentEditItem}`, token);
+
+        document.getElementById('adminModalBody').innerText = "Updating menu.js... Please wait.";
+
         for (let cat of menuData) {
-          let item = cat.items.find(i => i.name === itemName);
+          let item = cat.items.find(i => i.name === currentEditItem);
           if (item) {
-            item.image = newUrl.trim();
+            item.image = imagePath;
             break;
           }
         }
         renderItems(currentCategory);
+
+        const jsContent = "const menuData = " + JSON.stringify(menuData, null, 4) + ";\n";
+        const jsBase64 = btoa(unescape(encodeURIComponent(jsContent)));
+        await uploadFileToGithub('menu.js', jsBase64, `Update menu.js for ${currentEditItem}`, token, true);
+
+        document.getElementById('adminModalBody').innerText = "Success! The image is saved. Netlify will update the live site shortly.";
+        document.getElementById('adminModalSpinner').style.display = 'none';
+        
+      } catch (err) {
+        console.error(err);
+        document.getElementById('adminModalBody').innerText = "Error: " + err.message;
+        document.getElementById('adminModalSpinner').style.display = 'none';
+        if (err.message.includes('401')) {
+          localStorage.removeItem('gh_pat'); 
+          document.getElementById('adminModalBody').innerText += "\nInvalid token. Please try again.";
+        }
       }
+    });
+
+    function convertBlobToBase64(blob) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onerror = reject;
+        reader.onload = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+      });
     }
 
-    function downloadMenuJS() {
-      const jsContent = "const menuData = " + JSON.stringify(menuData, null, 4) + ";\n";
-      const blob = new Blob([jsContent], { type: "text/javascript" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = "menu.js";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+    async function uploadFileToGithub(path, base64Content, message, token, getSha = false) {
+      const owner = "ROHITH05012005";
+      const repo = "srv-restaurant-website";
+      const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+      
+      let sha = null;
+      if (getSha) {
+        const res = await fetch(url, { headers: { "Authorization": `token ${token}` } });
+        if (res.ok) {
+          const data = await res.json();
+          sha = data.sha;
+        }
+      }
+
+      const body = { message: message, content: base64Content, branch: "main" };
+      if (sha) body.sha = sha;
+
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(`GitHub API Error: ${response.status} - ${errData.message}`);
+      }
+      return await response.json();
+    }
+
+    function toggleAdminLogin() {
+      const token = prompt("Admin Authentication\n\nPlease enter your GitHub Personal Access Token (PAT):");
+      if (token) {
+        localStorage.setItem('gh_pat', token);
+        alert("Token saved securely in your browser. You can now use the Edit Image buttons.");
+      }
     }
   </script>
-  <button id="saveMenuBtn" onclick="downloadMenuJS()">💾 Save menu.js</button>
+
+  <style>
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
+  <div id="adminModal" class="modal" style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.8);">
+    <div class="modal-content" style="background:#141414; margin: 15% auto; padding: 20px; border: 1px solid var(--gold); width: 80%; max-width:500px; border-radius:10px; color:white; text-align:center;">
+      <h3 id="adminModalTitle" style="color:var(--gold); margin-bottom:15px;">Admin Action</h3>
+      <div id="adminModalBody" style="margin-bottom:20px;">Press CTRL+V to paste your image here.</div>
+      <div id="adminModalSpinner" style="display:none; margin-bottom:20px;">
+        <div class="spinner" style="border: 4px solid #f3f3f3; border-top: 4px solid var(--gold); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+      </div>
+      <button onclick="closeAdminModal()" style="background:var(--gold); color:var(--black); border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">Cancel / Close</button>
+    </div>
+  </div>
+
+  <button id="saveMenuBtn" onclick="toggleAdminLogin()" style="background:var(--black-soft); border: 1px solid var(--gold); color:var(--gold);">🔑 Admin Login</button>
 </body>
 
 </html>
