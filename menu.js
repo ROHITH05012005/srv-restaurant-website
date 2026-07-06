@@ -1527,5 +1527,9 @@ const menuData = [
                 "image": "assets/images/banana_split_ai.jpg"
             }
         ]
+    },
+    {
+        "category": "special",
+        "items": []
     }
 ];
