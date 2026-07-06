@@ -1530,6 +1530,13 @@ const menuData = [
     },
     {
         "category": "special",
-        "items": []
+        "items": [
+            {
+                "name": "pizza",
+                "self_price": 100,
+                "ac_price": 150,
+                "image": "logo.png"
+            }
+        ]
     }
 ];
