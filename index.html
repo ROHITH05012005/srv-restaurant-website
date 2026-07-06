@@ -2802,6 +2802,11 @@
       // Official Zomato Restaurant Link
       const zomatoLink = "https://www.zomato.com/bangalore/sri-raghavendra-vaibhava-koramangala-3rd-block-bangalore/order";
 
+      if (confirm("We will now take you to Zomato to complete your delivery order. Ready?")) {
+        window.open(zomatoLink, '_blank');
+      }
+    }
+
     function renderSpecials() {
       if (typeof specialsData === 'undefined') return;
       const container = document.getElementById('specialsContainer');
