@@ -1559,7 +1559,7 @@ const specialsData = [
     {
         "name": "Kesrai bath",
         "price": 65,
-        "desc": "seet",
+        "desc": "sweet",
         "tag": "Must Try",
         "image": "assets/images/filter_coffee_premium.png"
     }
