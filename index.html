@@ -1950,6 +1950,42 @@
         display: none;
       }
     }
+    .edit-img-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 10;
+    }
+    .food-card-img:hover .edit-img-btn {
+      opacity: 1;
+    }
+    #saveMenuBtn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+      transition: transform 0.3s;
+    }
+    #saveMenuBtn:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 
@@ -2580,6 +2616,7 @@
             <div class="food-card-img">
               <img src="${imgSrc}" alt="${item.name}" loading="lazy">
               <div class="veg-badge"><div class="veg-dot"></div></div>
+              <button class="edit-img-btn" onclick="editItemImage('${item.name.replace(/'/g, "\\'")}')">✏️ Edit Image</button>
             </div>
             <div class="food-card-body">
               <div class="food-name">${item.name}</div>
@@ -2780,7 +2817,35 @@
       requestAnimationFrame(drawParticles);
     }
     drawParticles();
+
+    function editItemImage(itemName) {
+      const newUrl = prompt("Enter new image URL or path for " + itemName + ":", "assets/images/");
+      if (newUrl !== null && newUrl.trim() !== "") {
+        for (let cat of menuData) {
+          let item = cat.items.find(i => i.name === itemName);
+          if (item) {
+            item.image = newUrl.trim();
+            break;
+          }
+        }
+        renderItems(currentCategory);
+      }
+    }
+
+    function downloadMenuJS() {
+      const jsContent = "const menuData = " + JSON.stringify(menuData, null, 4) + ";\n";
+      const blob = new Blob([jsContent], { type: "text/javascript" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = "menu.js";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
   </script>
+  <button id="saveMenuBtn" onclick="downloadMenuJS()">💾 Save menu.js</button>
 </body>
 
 </html>
