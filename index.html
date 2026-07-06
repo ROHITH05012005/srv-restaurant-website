@@ -1964,28 +1964,15 @@
       opacity: 0;
       transition: opacity 0.3s;
       z-index: 10;
+      display: none;
     }
-    .food-card-img:hover .edit-img-btn {
+    body.admin-mode .edit-img-btn {
+      display: block;
+    }
+    body.admin-mode .food-card-img:hover .edit-img-btn {
       opacity: 1;
     }
-    #saveMenuBtn {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background: var(--gold);
-      color: var(--black);
-      border: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 1000;
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-      transition: transform 0.3s;
-    }
-    #saveMenuBtn:hover {
-      transform: scale(1.05);
-    }
+
   </style>
 </head>
 
@@ -2008,6 +1995,7 @@
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#timings">Timings</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="#" id="navAdminBtn" onclick="toggleAdminLogin()" style="color:var(--gold);">Admin Login</a></li>
       <li><a href="https://wa.me/919008804385?text=I'd like to reserve a table" class="nav-cta" target="_blank">Reserve
           Table</a></li>
     </ul>
@@ -2949,11 +2937,30 @@
       return await response.json();
     }
 
+    function initAdminMode() {
+      if (localStorage.getItem('gh_pat')) {
+        document.body.classList.add('admin-mode');
+        const btn = document.getElementById('navAdminBtn');
+        if (btn) btn.innerText = "Admin Logout";
+      }
+    }
+    initAdminMode();
+
     function toggleAdminLogin() {
-      const token = prompt("Admin Authentication\n\nPlease enter your GitHub Personal Access Token (PAT):");
-      if (token) {
-        localStorage.setItem('gh_pat', token);
-        alert("Token saved securely in your browser. You can now use the Edit Image buttons.");
+      if (localStorage.getItem('gh_pat')) {
+        if (confirm("You are currently logged in as Admin. Do you want to logout?")) {
+          localStorage.removeItem('gh_pat');
+          document.body.classList.remove('admin-mode');
+          document.getElementById('navAdminBtn').innerText = "Admin Login";
+        }
+      } else {
+        const token = prompt("Admin Authentication\n\nPlease enter your GitHub Personal Access Token (PAT):");
+        if (token) {
+          localStorage.setItem('gh_pat', token);
+          document.body.classList.add('admin-mode');
+          document.getElementById('navAdminBtn').innerText = "Admin Logout";
+          alert("Logged in successfully! You can now use the Edit Image buttons on the menu items.");
+        }
       }
     }
   </script>
@@ -2971,8 +2978,6 @@
       <button onclick="closeAdminModal()" style="background:var(--gold); color:var(--black); border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">Cancel / Close</button>
     </div>
   </div>
-
-  <button id="saveMenuBtn" onclick="toggleAdminLogin()" style="background:var(--black-soft); border: 1px solid var(--gold); color:var(--gold);">🔑 Admin Login</button>
 </body>
 
 </html>
