@@ -1540,3 +1540,28 @@ const menuData = [
         ]
     }
 ];
+
+const specialsData = [
+    {
+        name: "Traditional Thali",
+        price: 120,
+        desc: "Unlimited",
+        tag: "? Chef's Pick",
+        image: "assets/images/south_indian_meals_premium.png"
+    },
+    {
+        name: "Paper Roast Dosa",
+        price: 80,
+        desc: "Extra Crispy",
+        tag: "?? Most Loved",
+        image: "assets/images/dosa_special_premium.png"
+    },
+    {
+        name: "Filter Kaapi",
+        price: 25,
+        desc: "Pure Decoction",
+        tag: "? Must Try",
+        image: "assets/images/filter_coffee_premium.png"
+    }
+];
+

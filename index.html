@@ -2009,6 +2009,22 @@
       white-space: nowrap;
       margin-left: 10px;
     }
+    body.admin-mode .admin-only-btn {
+      display: inline-block !important;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 100;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .admin-only-btn { display: none !important; }
   </style>
 </head>
 
@@ -2138,9 +2154,14 @@
     <div class="section-label reveal">Our Story</div>
     <div class="about-grid">
       <div class="about-images reveal">
-        <img class="about-img-main" src="assets/images/about_main_premium.png" alt="Restaurant dining">
-        <img class="about-img-sec" src="assets/images/about_sec_premium.png" alt="South Indian food">
-
+        <div class="about-img-main" style="position:relative;">
+          <img src="assets/images/about_main_premium.png" alt="Restaurant dining" style="width:100%;height:100%;object-fit:cover;">
+          <button class="admin-only-btn" onclick="editStaticImage('assets/images/about_main_premium.png')">✏️ Edit Image</button>
+        </div>
+        <div class="about-img-sec" style="position:absolute; bottom:-10%; left:-10%; width:50%; border-radius:12px; overflow:hidden;">
+          <img src="assets/images/about_sec_premium.png" alt="South Indian food" style="width:100%;height:100%;object-fit:cover;">
+          <button class="admin-only-btn" onclick="editStaticImage('assets/images/about_sec_premium.png')">✏️ Edit Image</button>
+        </div>
       </div>
       <div class="about-content reveal">
         <div class="section-label">About Us</div>
@@ -2236,31 +2257,8 @@
   <section style="background:var(--black-soft);padding:5rem 4rem;">
     <div class="section-label reveal">Chef's Recommendations</div>
     <h2 class="section-title reveal">Today's <em>Specials</em></h2>
-    <div class="specials reveal">
-      <div class="special-card">
-        <img src="assets/images/south_indian_meals_premium.png" alt="South Indian Meals">
-        <div class="special-overlay">
-          <div class="special-tag">🌟 Chef's Pick</div>
-          <div class="special-name">Traditional Thali</div>
-          <div class="special-price">₹120 · Unlimited</div>
-        </div>
-      </div>
-      <div class="special-card">
-        <img src="assets/images/dosa_special_premium.png" alt="Dosa">
-        <div class="special-overlay">
-          <div class="special-tag">🔥 Most Loved</div>
-          <div class="special-name">Paper Roast Dosa</div>
-          <div class="special-price">₹80 · Extra Crispy</div>
-        </div>
-      </div>
-      <div class="special-card">
-        <img src="assets/images/filter_coffee_premium.png" alt="Filter Coffee">
-        <div class="special-overlay">
-          <div class="special-tag">☕ Must Try</div>
-          <div class="special-name">Filter Kaapi</div>
-          <div class="special-price">₹25 · Pure Decoction</div>
-        </div>
-      </div>
+    <div class="specials reveal" id="specialsContainer">
+      <!-- Generated Dynamically -->
     </div>
   </section>
 
@@ -2271,32 +2269,39 @@
     <p class="section-sub reveal">Step inside and experience the warmth, beauty, and soul of Sri Raghavendra Vaibhava.
     </p>
     <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-item" onclick="openLightbox(\'assets/images/hero_bg_premium.png\')">
+      <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/hero_bg_premium.png')">
         <img src="assets/images/hero_bg_premium.png" alt="Restaurant">
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/hero_bg_premium.png')">✏️ Edit</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox(\'assets/images/about_main_premium.png\')">
+      <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/about_main_premium.png')">
         <img src="assets/images/about_main_premium.png" alt="Dining">
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/about_main_premium.png')">✏️ Edit</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox(\'assets/images/dosa_special_premium.png\')">
+      <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/dosa_special_premium.png')">
         <img src="assets/images/dosa_special_premium.png" alt="Dosa">
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/dosa_special_premium.png')">✏️ Edit</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox(\'assets/images/idli_premium.png\')">
+      <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/idli_premium.png')">
         <img src="assets/images/idli_premium.png" alt="Idli">
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/idli_premium.png')">✏️ Edit</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox(\'assets/images/paneer_tikka_masala_premium.png\')">
+      <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/paneer_tikka_masala_premium.png')">
         <img src="assets/images/paneer_tikka_masala_premium.png" alt="Paneer">
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/paneer_tikka_masala_premium.png')">✏️ Edit</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox(\'assets/images/filter_coffee_premium.png\')">
+      <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/filter_coffee_premium.png')">
         <img src="assets/images/filter_coffee_premium.png" alt="Coffee">
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/filter_coffee_premium.png')">✏️ Edit</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox(\'assets/images/gallery_snacks_premium.png\')">
+      <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/gallery_snacks_premium.png')">
         <img src="assets/images/gallery_snacks_premium.png" alt="Snacks">
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/gallery_snacks_premium.png')">✏️ Edit</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
     </div>
@@ -2422,12 +2427,6 @@
           Pure Vegetarian Restaurant</div>
         <p>Serving authentic South Indian vegetarian cuisine with love, hygiene, and a premium dining experience since
           2009.</p>
-        <div class="social-row">
-          <a href="#" class="social-btn" title="Instagram">📸</a>
-          <a href="#" class="social-btn" title="Facebook">📘</a>
-          <a href="https://wa.me/919008804385" class="social-btn" title="WhatsApp">💬</a>
-          <a href="#" class="social-btn" title="YouTube">🎬</a>
-        </div>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
@@ -2481,10 +2480,6 @@
       <p>Made with <span>❤️</span> for food lovers everywhere</p>
     </div>
   </footer>
-
-  <!-- WHATSAPP FLOAT -->
-  <a href="https://wa.me/919008804385?text=Hello! I'd like to order or reserve a table." class="wa-float"
-    target="_blank" title="Order on WhatsApp">💬</a>
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
@@ -2752,6 +2747,32 @@
       }
     }
 
+    function renderSpecials() {
+      if (typeof specialsData === 'undefined') return;
+      const container = document.getElementById('specialsContainer');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      specialsData.forEach(sp => {
+        container.innerHTML += `
+          <div class="special-card">
+            <div style="position:relative; height:250px;">
+              <img src="${sp.image}" alt="${sp.name}" style="width:100%;height:100%;object-fit:cover;">
+              <button class="admin-only-btn" onclick="editItemImage('${sp.name.replace(/'/g, "\\'")}')">✏️ Edit Image</button>
+            </div>
+            <div class="special-overlay">
+              <div class="special-tag">${sp.tag}</div>
+              <div class="special-name">${sp.name}</div>
+              <div class="special-price">
+                ₹${sp.price} · ${sp.desc} 
+                <button class="admin-only-btn" onclick="editSpecialDetails('${sp.name.replace(/'/g, "\\'")}')" style="position:static; transform:none; display:inline-block !important; margin-left:10px;">✏️ Edit</button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
     // LIGHTBOX
     function openLightbox(src) {
       document.getElementById('lightboxImg').src = src;
@@ -2772,6 +2793,9 @@
     // Initialize menu on load
     if (typeof menuData !== 'undefined') {
       generateMenuTabs();
+    }
+    if (typeof specialsData !== 'undefined') {
+      renderSpecials();
     }
 
     // COUNTERS
@@ -2860,7 +2884,10 @@
       document.getElementById('adminModalSpinner').style.display = 'block';
 
       try {
-        const jsContent = "const menuData = " + JSON.stringify(menuData, null, 4) + ";\n";
+        let jsContent = "const menuData = " + JSON.stringify(menuData, null, 4) + ";\n";
+        if (typeof specialsData !== 'undefined') {
+          jsContent += "\nconst specialsData = " + JSON.stringify(specialsData, null, 4) + ";\n";
+        }
         const jsBase64 = btoa(unescape(encodeURIComponent(jsContent)));
         await uploadFileToGithub('menu.js', jsBase64, message, token, true);
         
@@ -2869,6 +2896,7 @@
         
         // Re-render
         generateMenuTabs();
+        if (typeof renderSpecials === 'function') renderSpecials();
         
       } catch (err) {
         console.error(err);
@@ -2879,6 +2907,35 @@
           document.getElementById('adminModalBody').innerText += "\nInvalid token. Please try again.";
         }
       }
+    }
+
+    function editStaticImage(imagePath) {
+      currentEditItem = 'STATIC:' + imagePath;
+      openAdminModal("Paste Image", "Press CTRL+V to paste your new image. It will replace the existing one exactly.");
+    }
+
+    function editSpecialDetails(specialName) {
+      let foundSpecial = specialsData.find(s => s.name === specialName);
+      if (!foundSpecial) return;
+
+      const newName = prompt("Edit Special Name:", foundSpecial.name);
+      if (newName === null) return; 
+
+      const newPrice = prompt("Edit Price:", foundSpecial.price);
+      if (newPrice === null) return; 
+
+      const newDesc = prompt("Edit Description (e.g. Unlimited):", foundSpecial.desc);
+      if (newDesc === null) return;
+
+      const newTag = prompt("Edit Tag (e.g. ⭐ Chef's Pick):", foundSpecial.tag);
+      if (newTag === null) return;
+
+      foundSpecial.name = newName.trim();
+      foundSpecial.price = parseInt(newPrice) || 0;
+      foundSpecial.desc = newDesc.trim();
+      foundSpecial.tag = newTag.trim();
+
+      saveMenuToGithub(`Edit special details: ${foundSpecial.name}`);
     }
 
     function addNewCategory() {
@@ -2972,6 +3029,14 @@
         const base64Data = await convertBlobToBase64(blob);
         const b64 = base64Data.split(',')[1]; 
         
+        if (currentEditItem.startsWith('STATIC:')) {
+          const staticPath = currentEditItem.split(':')[1];
+          await uploadFileToGithub(staticPath, b64, `Update static image ${staticPath}`, token, true);
+          document.getElementById('adminModalBody').innerText = "Success! Image updated. Netlify will publish it shortly.";
+          document.getElementById('adminModalSpinner').style.display = 'none';
+          return;
+        }
+
         const safeName = currentEditItem.replace(/[^a-z0-9]/gi, '_').toLowerCase();
         const extension = blob.type.split('/')[1] || 'png';
         const imagePath = `assets/images/${safeName}_${Date.now()}.${extension}`;
@@ -2980,21 +3045,38 @@
 
         document.getElementById('adminModalBody').innerText = "Updating menu.js... Please wait.";
 
+        let foundInMenu = false;
         for (let cat of menuData) {
           let item = cat.items.find(i => i.name === currentEditItem);
           if (item) {
             item.image = imagePath;
+            foundInMenu = true;
             break;
           }
         }
-        renderItems(currentCategory);
+        
+        if (!foundInMenu && typeof specialsData !== 'undefined') {
+          let sp = specialsData.find(s => s.name === currentEditItem);
+          if (sp) {
+            sp.image = imagePath;
+            foundInMenu = true;
+          }
+        }
 
-        const jsContent = "const menuData = " + JSON.stringify(menuData, null, 4) + ";\n";
-        const jsBase64 = btoa(unescape(encodeURIComponent(jsContent)));
-        await uploadFileToGithub('menu.js', jsBase64, `Update menu.js for ${currentEditItem}`, token, true);
+        if (foundInMenu) {
+          let jsContent = "const menuData = " + JSON.stringify(menuData, null, 4) + ";\n";
+          if (typeof specialsData !== 'undefined') {
+            jsContent += "\nconst specialsData = " + JSON.stringify(specialsData, null, 4) + ";\n";
+          }
+          const jsBase64 = btoa(unescape(encodeURIComponent(jsContent)));
+          await uploadFileToGithub('menu.js', jsBase64, `Update image for ${currentEditItem}`, token, true);
+        }
 
-        document.getElementById('adminModalBody').innerText = "Success! The image is saved. Netlify will update the live site shortly.";
+        document.getElementById('adminModalBody').innerText = "Success! Image updated. Netlify will publish it shortly.";
         document.getElementById('adminModalSpinner').style.display = 'none';
+        
+        generateMenuTabs();
+        if (typeof renderSpecials === 'function') renderSpecials();
         
       } catch (err) {
         console.error(err);
