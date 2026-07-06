@@ -2068,6 +2068,18 @@
     .about-img-sec img {
       animation: floatAnim 8s ease-in-out infinite reverse;
     }
+
+    /* LOGO GLOW */
+    .nav-logo span {
+      position: relative;
+    }
+    .nav-logo:hover span {
+      animation: logoGlow 1.5s infinite alternate;
+    }
+    @keyframes logoGlow {
+      from { text-shadow: 0 0 10px rgba(212,175,55,0.2); }
+      to { text-shadow: 0 0 20px rgba(212,175,55,0.8), 0 0 35px rgba(212,175,55,0.6); }
+    }
   </style>
 </head>
 
@@ -2673,6 +2685,11 @@
             </div>
         `;
         grid.appendChild(card);
+        if (typeof VanillaTilt !== 'undefined') {
+          VanillaTilt.init(card, {
+            max: 12, speed: 400, glare: true, "max-glare": 0.15, scale: 1.03
+          });
+        }
       });
       
       const addItemCard = document.createElement('div');
@@ -2785,19 +2802,14 @@
       // Official Zomato Restaurant Link
       const zomatoLink = "https://www.zomato.com/bangalore/sri-raghavendra-vaibhava-koramangala-3rd-block-bangalore/order";
 
-      if (confirm("We will now take you to Zomato to complete your delivery order. Ready?")) {
-        window.open(zomatoLink, '_blank');
-      }
-    }
-
     function renderSpecials() {
       if (typeof specialsData === 'undefined') return;
       const container = document.getElementById('specialsContainer');
       if (!container) return;
       
-      container.innerHTML = '';
+      let htmlStr = '';
       specialsData.forEach(sp => {
-        container.innerHTML += `
+        htmlStr += `
           <div class="special-card">
             <div style="position:relative; height:250px;">
               <img src="${sp.image}" alt="${sp.name}" style="width:100%;height:100%;object-fit:cover;">
@@ -2807,13 +2819,20 @@
               <div class="special-tag">${sp.tag}</div>
               <div class="special-name">${sp.name}</div>
               <div class="special-price">
-                ₹${sp.price} · ${sp.desc} 
+                ₹${sp.price} • ${sp.desc} 
                 <button class="edit-details-btn" onclick="editSpecialDetails('${sp.name.replace(/'/g, "\\'")}')" style="margin-left:10px;">✏️</button>
               </div>
             </div>
           </div>
         `;
       });
+      container.innerHTML = htmlStr;
+      
+      if (typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(container.querySelectorAll('.special-card'), {
+          max: 10, speed: 400, glare: true, "max-glare": 0.2, scale: 1.03
+        });
+      }
     }
 
     // LIGHTBOX
@@ -3212,6 +3231,7 @@
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 </body>
 
 </html>
