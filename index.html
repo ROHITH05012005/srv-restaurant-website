@@ -2928,15 +2928,22 @@
       return token;
     }
 
-    function openAdminModal(title, bodyText) {
+    function openAdminModal(title, bodyText, showFileInput = false) {
       document.getElementById('adminModalTitle').innerText = title;
       document.getElementById('adminModalBody').innerText = bodyText;
       document.getElementById('adminModalSpinner').style.display = 'none';
+      const fileInput = document.getElementById('adminFileInput');
+      if (fileInput) {
+        fileInput.style.display = showFileInput ? 'block' : 'none';
+        fileInput.value = '';
+      }
       document.getElementById('adminModal').style.display = 'block';
     }
 
     function closeAdminModal() {
       document.getElementById('adminModal').style.display = 'none';
+      const fileInput = document.getElementById('adminFileInput');
+      if (fileInput) fileInput.style.display = 'none';
       currentEditItem = null;
     }
 
@@ -2975,7 +2982,7 @@
 
     function editStaticImage(imagePath) {
       currentEditItem = 'STATIC:' + imagePath;
-      openAdminModal("Paste Image", "Press CTRL+V to paste your new image. It will replace the existing one exactly.");
+      openAdminModal("Upload Image", "Select an image file or press CTRL+V to paste your new image.", true);
     }
 
     function editSpecialDetails(specialName) {
@@ -3063,31 +3070,17 @@
 
     function editItemImage(itemName) {
       currentEditItem = itemName;
-      openAdminModal("Paste Image", "Press CTRL+V to paste your image for " + itemName + ".");
+      openAdminModal("Upload Image", "Select an image file or press CTRL+V to paste your image for " + itemName + ".", true);
     }
 
-    window.addEventListener('paste', async e => {
-      if (!currentEditItem) return;
-      if (document.getElementById('adminModal').style.display === 'none') return;
-
-      const items = (e.clipboardData || e.originalEvent.clipboardData).items;
-      let blob = null;
-      for (let i = 0; i < items.length; i++) {
-        if (items[i].type.indexOf("image") === 0) {
-          blob = items[i].getAsFile();
-          break;
-        }
-      }
-      if (!blob) {
-        alert("No image found in clipboard. Please copy an image and try again.");
-        return;
-      }
-
+    async function processAdminImageUpload(blob) {
       const token = getGithubToken();
       if (!token) return;
 
       document.getElementById('adminModalBody').innerText = "Uploading image to GitHub... Please wait.";
       document.getElementById('adminModalSpinner').style.display = 'block';
+      const fileInput = document.getElementById('adminFileInput');
+      if (fileInput) fileInput.style.display = 'none';
 
       try {
         const base64Data = await convertBlobToBase64(blob);
@@ -3133,7 +3126,7 @@
             jsContent += "\nconst specialsData = " + JSON.stringify(specialsData, null, 4) + ";\n";
           }
           const jsBase64 = btoa(unescape(encodeURIComponent(jsContent)));
-          await uploadFileToGithub('menu.js', jsBase64, `Update image for ${currentEditItem}`, token, true);
+          await uploadFileToGithub('menu.js', jsBase64, `Update image link for ${currentEditItem}`, token, true);
         }
 
         document.getElementById('adminModalBody').innerText = "Success! Image updated. Netlify will publish it shortly.";
@@ -3151,6 +3144,36 @@
           document.getElementById('adminModalBody').innerText += "\nInvalid token. Please try again.";
         }
       }
+    }
+
+    async function handleAdminFileUpload(event) {
+      if (!currentEditItem) return;
+      if (document.getElementById('adminModal').style.display === 'none') return;
+      
+      const file = event.target.files[0];
+      if (!file) return;
+      
+      await processAdminImageUpload(file);
+    }
+
+    window.addEventListener('paste', async e => {
+      if (!currentEditItem) return;
+      if (document.getElementById('adminModal').style.display === 'none') return;
+
+      const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+      let blob = null;
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf("image") === 0) {
+          blob = items[i].getAsFile();
+          break;
+        }
+      }
+      if (!blob) {
+        alert("No image found in clipboard. Please copy an image and try again.");
+        return;
+      }
+
+      await processAdminImageUpload(blob);
     });
 
     function convertBlobToBase64(blob) {
@@ -3229,6 +3252,7 @@
     <div class="modal-content" style="background:#141414; margin: 15% auto; padding: 20px; border: 1px solid var(--gold); width: 80%; max-width:500px; border-radius:10px; color:white; text-align:center;">
       <h3 id="adminModalTitle" style="color:var(--gold); margin-bottom:15px;">Admin Action</h3>
       <div id="adminModalBody" style="margin-bottom:20px;">Press CTRL+V to paste your image here.</div>
+      <input type="file" id="adminFileInput" accept="image/*" style="display:none; margin: 0 auto 20px auto; color: var(--gold);" onchange="handleAdminFileUpload(event)">
       <div id="adminModalSpinner" style="display:none; margin-bottom:20px;">
         <div class="spinner" style="border: 4px solid #f3f3f3; border-top: 4px solid var(--gold); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
       </div>
