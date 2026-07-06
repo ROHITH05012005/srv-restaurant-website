@@ -1972,7 +1972,43 @@
     body.admin-mode .food-card-img:hover .edit-img-btn {
       opacity: 1;
     }
-
+    .edit-details-btn, .add-item-card, .add-category-btn {
+      display: none;
+    }
+    body.admin-mode .edit-details-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 2px 5px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      margin-left: 10px;
+    }
+    body.admin-mode .add-item-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed var(--gold);
+      background: rgba(212, 175, 55, 0.05);
+      cursor: pointer;
+      min-height: 250px;
+      border-radius: 12px;
+    }
+    body.admin-mode .add-category-btn {
+      display: inline-block;
+      background: var(--black-soft);
+      color: var(--gold);
+      border: 1px dashed var(--gold);
+      padding: 0.6rem 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      white-space: nowrap;
+      margin-left: 10px;
+    }
   </style>
 </head>
 
@@ -2563,13 +2599,24 @@
       tabsContainer.innerHTML = '';
       menuData.forEach((catData, index) => {
         const btn = document.createElement('button');
-        btn.className = 'menu-tab' + (index === 0 ? ' active' : '');
+        btn.className = 'menu-tab';
+        if (!currentCategory && index === 0) btn.classList.add('active');
+        if (currentCategory === catData.category) btn.classList.add('active');
         btn.innerText = catData.category;
         btn.onclick = () => switchTab(catData.category);
         tabsContainer.appendChild(btn);
       });
-      if(menuData.length > 0) {
+      
+      const addCatBtn = document.createElement('button');
+      addCatBtn.className = 'add-category-btn';
+      addCatBtn.innerText = '+ Add Category';
+      addCatBtn.onclick = addNewCategory;
+      tabsContainer.appendChild(addCatBtn);
+
+      if(menuData.length > 0 && !currentCategory) {
         switchTab(menuData[0].category);
+      } else if (currentCategory) {
+        switchTab(currentCategory);
       }
     }
 
@@ -2597,7 +2644,7 @@
         card.className = 'food-card';
         // Handle images
         let imgSrc = item.image;
-        if (imgSrc === 'placeholder.png') {
+        if (imgSrc === 'placeholder.png' || !imgSrc) {
           imgSrc = 'logo.png';
         }
         card.innerHTML = `
@@ -2608,13 +2655,16 @@
             </div>
             <div class="food-card-body">
               <div class="food-name">${item.name}</div>
-              <div class="food-price">₹${price}</div>
+              <div class="food-price">
+                ₹${price}
+                <button class="edit-details-btn" onclick="editItemDetails('${item.name.replace(/'/g, "\\'")}')">✏️ Edit</button>
+              </div>
               <div class="food-actions">
-                <button class="add-btn" onclick="addToCart(this, '${item.name}', ${price})">Add</button>
+                <button class="add-btn" onclick="addToCart(this, '${item.name.replace(/'/g, "\\'")}', ${price})">Add</button>
                 <div class="qty-controls" data-item="${item.name}">
-                  <button class="qty-btn" onclick="updateQty('${item.name}', -1)">-</button>
+                  <button class="qty-btn" onclick="updateQty('${item.name.replace(/'/g, "\\'")}', -1)">-</button>
                   <span class="qty-num">0</span>
-                  <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
+                  <button class="qty-btn" onclick="updateQty('${item.name.replace(/'/g, "\\'")}', 1)">+</button>
                 </div>
               </div>
             </div>
@@ -2622,6 +2672,12 @@
         grid.appendChild(card);
       });
       
+      const addItemCard = document.createElement('div');
+      addItemCard.className = 'food-card add-item-card';
+      addItemCard.onclick = () => addNewItem(category);
+      addItemCard.innerHTML = `<div style="font-size:2rem; color:var(--gold); margin-bottom:10px;">+</div><div style="color:var(--gold); font-weight:bold;">Add New Item</div>`;
+      grid.appendChild(addItemCard);
+
       // Update UI for existing cart items
       updateCartUI();
     }
@@ -2829,6 +2885,94 @@
     function closeAdminModal() {
       document.getElementById('adminModal').style.display = 'none';
       currentEditItem = null;
+    }
+
+    async function saveMenuToGithub(message) {
+      const token = getGithubToken();
+      if (!token) return;
+
+      openAdminModal("Saving Changes", "Updating menu.js on GitHub... Please wait.");
+      document.getElementById('adminModalSpinner').style.display = 'block';
+
+      try {
+        const jsContent = "const menuData = " + JSON.stringify(menuData, null, 4) + ";\n";
+        const jsBase64 = btoa(unescape(encodeURIComponent(jsContent)));
+        await uploadFileToGithub('menu.js', jsBase64, message, token, true);
+        
+        document.getElementById('adminModalBody').innerText = "Success! The menu is saved. Netlify will update the live site shortly.";
+        document.getElementById('adminModalSpinner').style.display = 'none';
+        
+        // Re-render
+        generateMenuTabs();
+        
+      } catch (err) {
+        console.error(err);
+        document.getElementById('adminModalBody').innerText = "Error: " + err.message;
+        document.getElementById('adminModalSpinner').style.display = 'none';
+        if (err.message.includes('401')) {
+          localStorage.removeItem('gh_pat'); 
+          document.getElementById('adminModalBody').innerText += "\nInvalid token. Please try again.";
+        }
+      }
+    }
+
+    function addNewCategory() {
+      const catName = prompt("Enter new Category Name:");
+      if (!catName || catName.trim() === "") return;
+      
+      if (menuData.find(c => c.category.toLowerCase() === catName.toLowerCase())) {
+        alert("Category already exists!");
+        return;
+      }
+      
+      menuData.push({ category: catName.trim(), items: [] });
+      saveMenuToGithub(`Add new category: ${catName.trim()}`);
+    }
+
+    function addNewItem(category) {
+      const itemName = prompt(`Add new item to ${category}\n\nEnter Item Name:`);
+      if (!itemName || itemName.trim() === "") return;
+      
+      const selfPrice = prompt("Enter Self-Service Price (Numbers only):", "0");
+      if (selfPrice === null) return;
+      
+      const acPrice = prompt("Enter AC Price (Numbers only):", "0");
+      if (acPrice === null) return;
+      
+      const catData = menuData.find(c => c.category === category);
+      if (catData) {
+        catData.items.push({
+          name: itemName.trim(),
+          self_price: parseInt(selfPrice) || 0,
+          ac_price: parseInt(acPrice) || 0,
+          image: "logo.png"
+        });
+        saveMenuToGithub(`Add new item: ${itemName.trim()} to ${category}`);
+      }
+    }
+
+    function editItemDetails(itemName) {
+      let foundItem = null;
+      for (let cat of menuData) {
+        let itm = cat.items.find(i => i.name === itemName);
+        if (itm) { foundItem = itm; break; }
+      }
+      if (!foundItem) return;
+
+      const newName = prompt("Edit Item Name:", foundItem.name);
+      if (newName === null) return; 
+
+      const newSelfPrice = prompt("Edit Self-Service Price:", foundItem.self_price);
+      if (newSelfPrice === null) return; 
+
+      const newAcPrice = prompt("Edit AC Price:", foundItem.ac_price);
+      if (newAcPrice === null) return; 
+
+      foundItem.name = newName.trim();
+      foundItem.self_price = parseInt(newSelfPrice) || 0;
+      foundItem.ac_price = parseInt(newAcPrice) || 0;
+
+      saveMenuToGithub(`Edit item details: ${foundItem.name}`);
     }
 
     function editItemImage(itemName) {
