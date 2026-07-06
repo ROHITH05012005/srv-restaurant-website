@@ -1535,7 +1535,7 @@ const menuData = [
                 "name": "pizza",
                 "self_price": 100,
                 "ac_price": 150,
-                "image": "logo.png"
+                "image": "assets/images/pizza_1783363584692.png"
             }
         ]
     }
