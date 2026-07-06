@@ -1408,7 +1408,7 @@ const menuData = [
                 "name": "Kesari Bath",
                 "self_price": 40,
                 "ac_price": 60,
-                "image": "assets/images/kesari_bath_1783362262558.png"
+                "image": "assets/images/kesari_bath_1783363240079.png"
             },
             {
                 "name": "Special Sweet",
