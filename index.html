@@ -465,7 +465,7 @@
       letter-spacing: .2em;
       text-transform: uppercase;
       color: var(--text-muted);
-      display: block;
+      display: flex;
       margin-bottom: .7rem;
     }
 
@@ -790,7 +790,7 @@
     }
 
     .menu-panel.active {
-      display: block;
+      display: flex;
     }
 
     @keyframes fadeIn {
@@ -1641,7 +1641,7 @@
       font-size: .9rem;
       font-weight: 600;
       color: var(--white);
-      display: block;
+      display: flex;
       margin-bottom: .2rem;
     }
 
@@ -1725,7 +1725,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.4rem;
       font-weight: 900;
-      display: block;
+      display: flex;
       line-height: 1;
     }
 
@@ -1954,20 +1954,24 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      background: rgba(0, 0, 0, 0.7);
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      padding: 5px 10px;
-      border-radius: 5px;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 1rem;
       opacity: 0;
       transition: opacity 0.3s;
       z-index: 10;
       display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
     body.admin-mode .edit-img-btn {
-      display: block;
+      display: flex;
     }
     body.admin-mode .food-card-img:hover .edit-img-btn {
       opacity: 1;
@@ -2010,19 +2014,23 @@
       margin-left: 10px;
     }
     body.admin-mode .admin-only-btn {
-      display: inline-block !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 10px;
+      left: 10px;
+      transform: none;
       z-index: 100;
       background: var(--gold);
       color: var(--black);
       border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
     .admin-only-btn { display: none !important; }
   </style>
@@ -2156,11 +2164,11 @@
       <div class="about-images reveal">
         <div class="about-img-main" style="position:relative;">
           <img src="assets/images/about_main_premium.png" alt="Restaurant dining" style="width:100%;height:100%;object-fit:cover;">
-          <button class="admin-only-btn" onclick="editStaticImage('assets/images/about_main_premium.png')">✏️ Edit Image</button>
+          <button class="admin-only-btn" onclick="editStaticImage('assets/images/about_main_premium.png')">✏️</button>
         </div>
         <div class="about-img-sec" style="position:absolute; bottom:-10%; left:-10%; width:50%; border-radius:12px; overflow:hidden;">
           <img src="assets/images/about_sec_premium.png" alt="South Indian food" style="width:100%;height:100%;object-fit:cover;">
-          <button class="admin-only-btn" onclick="editStaticImage('assets/images/about_sec_premium.png')">✏️ Edit Image</button>
+          <button class="admin-only-btn" onclick="editStaticImage('assets/images/about_sec_premium.png')">✏️</button>
         </div>
       </div>
       <div class="about-content reveal">
@@ -2271,37 +2279,37 @@
     <div class="gallery-grid" id="galleryGrid">
       <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/hero_bg_premium.png')">
         <img src="assets/images/hero_bg_premium.png" alt="Restaurant">
-        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/hero_bg_premium.png')">✏️ Edit</button>
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/hero_bg_premium.png')">✏️</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
       <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/about_main_premium.png')">
         <img src="assets/images/about_main_premium.png" alt="Dining">
-        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/about_main_premium.png')">✏️ Edit</button>
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/about_main_premium.png')">✏️</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
       <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/dosa_special_premium.png')">
         <img src="assets/images/dosa_special_premium.png" alt="Dosa">
-        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/dosa_special_premium.png')">✏️ Edit</button>
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/dosa_special_premium.png')">✏️</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
       <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/idli_premium.png')">
         <img src="assets/images/idli_premium.png" alt="Idli">
-        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/idli_premium.png')">✏️ Edit</button>
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/idli_premium.png')">✏️</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
       <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/paneer_tikka_masala_premium.png')">
         <img src="assets/images/paneer_tikka_masala_premium.png" alt="Paneer">
-        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/paneer_tikka_masala_premium.png')">✏️ Edit</button>
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/paneer_tikka_masala_premium.png')">✏️</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
       <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/filter_coffee_premium.png')">
         <img src="assets/images/filter_coffee_premium.png" alt="Coffee">
-        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/filter_coffee_premium.png')">✏️ Edit</button>
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/filter_coffee_premium.png')">✏️</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
       <div class="gallery-item" onclick="if(!document.body.classList.contains('admin-mode')) openLightbox('assets/images/gallery_snacks_premium.png')">
         <img src="assets/images/gallery_snacks_premium.png" alt="Snacks">
-        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/gallery_snacks_premium.png')">✏️ Edit</button>
+        <button class="admin-only-btn" onclick="event.stopPropagation(); editStaticImage('assets/images/gallery_snacks_premium.png')">✏️</button>
         <div class="gallery-overlay"><span class="gallery-icon">🔍</span></div>
       </div>
     </div>
@@ -2611,13 +2619,13 @@
             <div class="food-card-img">
               <img src="${imgSrc}" alt="${item.name}" loading="lazy">
               <div class="veg-badge"><div class="veg-dot"></div></div>
-              <button class="edit-img-btn" onclick="editItemImage('${item.name.replace(/'/g, "\\'")}')">✏️ Edit Image</button>
+              <button class="edit-img-btn" onclick="editItemImage('${item.name.replace(/'/g, "\\'")}')">✏️</button>
             </div>
             <div class="food-card-body">
               <div class="food-name">${item.name}</div>
               <div class="food-price">
                 ₹${price}
-                <button class="edit-details-btn" onclick="editItemDetails('${item.name.replace(/'/g, "\\'")}')">✏️ Edit</button>
+                <button class="edit-details-btn" onclick="editItemDetails('${item.name.replace(/'/g, "\\'")}')">✏️</button>
               </div>
               <div class="food-actions">
                 <button class="add-btn" onclick="addToCart(this, '${item.name.replace(/'/g, "\\'")}', ${price})">Add</button>
@@ -2758,14 +2766,14 @@
           <div class="special-card">
             <div style="position:relative; height:250px;">
               <img src="${sp.image}" alt="${sp.name}" style="width:100%;height:100%;object-fit:cover;">
-              <button class="admin-only-btn" onclick="editItemImage('${sp.name.replace(/'/g, "\\'")}')">✏️ Edit Image</button>
+              <button class="admin-only-btn" onclick="editItemImage('${sp.name.replace(/'/g, "\\'")}')">✏️</button>
             </div>
             <div class="special-overlay">
               <div class="special-tag">${sp.tag}</div>
               <div class="special-name">${sp.name}</div>
               <div class="special-price">
                 ₹${sp.price} · ${sp.desc} 
-                <button class="admin-only-btn" onclick="editSpecialDetails('${sp.name.replace(/'/g, "\\'")}')" style="position:static; transform:none; display:inline-block !important; margin-left:10px;">✏️ Edit</button>
+                <button class="edit-details-btn" onclick="editSpecialDetails('${sp.name.replace(/'/g, "\\'")}')" style="margin-left:10px;">✏️</button>
               </div>
             </div>
           </div>
