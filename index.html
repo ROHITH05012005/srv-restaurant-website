@@ -2951,7 +2951,7 @@
       const token = getGithubToken();
       if (!token) return;
 
-      openAdminModal("Saving Changes", "Updating menu.js on GitHub... Please wait.");
+      openAdminModal("Saving Changes", "Saving updates...");
       document.getElementById('adminModalSpinner').style.display = 'block';
 
       try {
@@ -2962,7 +2962,7 @@
         const jsBase64 = btoa(unescape(encodeURIComponent(jsContent)));
         await uploadFileToGithub('menu.js', jsBase64, message, token, true);
         
-        document.getElementById('adminModalBody').innerText = "Success! The menu is saved. Netlify will update the live site shortly.";
+        document.getElementById('adminModalBody').innerText = "Success! Updates saved.";
         document.getElementById('adminModalSpinner').style.display = 'none';
         
         // Re-render
@@ -3077,7 +3077,7 @@
       const token = getGithubToken();
       if (!token) return;
 
-      document.getElementById('adminModalBody').innerText = "Uploading image to GitHub... Please wait.";
+      document.getElementById('adminModalBody').innerText = "Uploading image...";
       document.getElementById('adminModalSpinner').style.display = 'block';
       const fileInput = document.getElementById('adminFileInput');
       if (fileInput) fileInput.style.display = 'none';
@@ -3089,7 +3089,7 @@
         if (currentEditItem.startsWith('STATIC:')) {
           const staticPath = currentEditItem.split(':')[1];
           await uploadFileToGithub(staticPath, b64, `Update static image ${staticPath}`, token, true);
-          document.getElementById('adminModalBody').innerText = "Success! Image updated. Netlify will publish it shortly.";
+          document.getElementById('adminModalBody').innerText = "Success! Image updated.";
           document.getElementById('adminModalSpinner').style.display = 'none';
           return;
         }
@@ -3100,7 +3100,7 @@
 
         await uploadFileToGithub(imagePath, b64, `Update image for ${currentEditItem}`, token);
 
-        document.getElementById('adminModalBody').innerText = "Updating menu.js... Please wait.";
+        document.getElementById('adminModalBody').innerText = "Updating menu...";
 
         let foundInMenu = false;
         for (let cat of menuData) {
@@ -3129,7 +3129,7 @@
           await uploadFileToGithub('menu.js', jsBase64, `Update image link for ${currentEditItem}`, token, true);
         }
 
-        document.getElementById('adminModalBody').innerText = "Success! Image updated. Netlify will publish it shortly.";
+        document.getElementById('adminModalBody').innerText = "Success! Image updated.";
         document.getElementById('adminModalSpinner').style.display = 'none';
         
         generateMenuTabs();
