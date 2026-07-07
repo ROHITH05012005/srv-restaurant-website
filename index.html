@@ -3006,8 +3006,8 @@
         document.getElementById('adminModalBody').innerText = "Success! Updates saved.";
         document.getElementById('adminModalSpinner').style.display = 'none';
         
-        // Re-render
-        generateMenuTabs();
+        // Surgically re-render only the current tab, no full page rebuild
+        if (currentCategory) renderItems(currentCategory);
         if (typeof renderSpecials === 'function') renderSpecials();
         
       } catch (err) {
@@ -3211,7 +3211,10 @@
         document.getElementById('adminModalBody').innerText = "Success! Image updated.";
         document.getElementById('adminModalSpinner').style.display = 'none';
         
-        generateMenuTabs();
+        // Update only the specific image src in the DOM — no full page rebuild
+        document.querySelectorAll(`img[alt="${currentEditItem}"]`).forEach(img => {
+          img.src = imagePath + '?t=' + Date.now();
+        });
         if (typeof renderSpecials === 'function') renderSpecials();
         
       } catch (err) {
