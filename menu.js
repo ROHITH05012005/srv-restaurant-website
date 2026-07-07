@@ -37,6 +37,12 @@ const menuData = [
                 "self_price": 20,
                 "ac_price": 40,
                 "image": "assets/images/horlicks_premium.png"
+            },
+            {
+                "name": "Cold Tea",
+                "self_price": 45,
+                "ac_price": 60,
+                "image": "logo.png"
             }
         ]
     },
