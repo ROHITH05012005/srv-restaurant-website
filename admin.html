@@ -143,6 +143,8 @@
     <a href="index.html" class="btn-back">Return to Website</a>
   </div>
 
+  <!-- Include CryptoJS for secure decryption -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   <script>
     // If already logged in, redirect to index
     if (localStorage.getItem('gh_pat')) {
@@ -153,17 +155,27 @@
       const username = document.getElementById('loginUsername').value.trim().toLowerCase();
       const password = document.getElementById('loginPassword').value.trim();
       
-      if (username === 'admin' && password === 'admin123') {
-        // Obfuscated and split token to prevent automated secret scanners
-        const t1 = "ghp_JCgOl9Gv";
-        const t2 = "6A9cZOymsxo";
-        const t3 = "2POUU3AmGK";
-        const t4 = "j4Pr18r";
-        const token = t1 + t2 + t3 + t4;
-        localStorage.setItem('gh_pat', token);
+      if (username !== 'admin') {
+        document.getElementById('loginError').style.display = 'block';
+        return;
+      }
+
+      // The GitHub PAT is encrypted using the admin password as the key.
+      // This ensures the PAT is NEVER stored in plain text in the source code.
+      const encryptedPat = "U2FsdGVkX19bDUW8OcHZN7GC/o/zjuVDMs4AYFF/LTXu+GBCMr0UpMk/pi3zCNqRN0wqkZRomn/y6RBITjoG6Q==";
+      
+      try {
+        const decryptedBytes = CryptoJS.AES.decrypt(encryptedPat, password);
+        const decryptedPat = decryptedBytes.toString(CryptoJS.enc.Utf8);
         
-        window.location.href = 'index.html';
-      } else {
+        // If decryption is successful and valid
+        if (decryptedPat.startsWith('ghp_') || decryptedPat.startsWith('github_pat_')) {
+          localStorage.setItem('gh_pat', decryptedPat);
+          window.location.href = 'index.html';
+        } else {
+          throw new Error("Invalid decryption");
+        }
+      } catch (e) {
         document.getElementById('loginError').style.display = 'block';
       }
     }

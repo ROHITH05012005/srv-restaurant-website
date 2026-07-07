@@ -3021,6 +3021,44 @@
       }
     }
 
+
+    let currentEditFormCallback = null;
+
+    function openEditFormModal(title, fields, onSave) {
+      document.getElementById('editFormTitle').innerText = title;
+      const fieldsContainer = document.getElementById('editFormFields');
+      fieldsContainer.innerHTML = '';
+      
+      fields.forEach(f => {
+        const div = document.createElement('div');
+        div.style.marginBottom = '15px';
+        div.innerHTML = `
+          <label style="display:block; color:var(--gold); margin-bottom:5px; font-size:0.85rem; text-transform:uppercase;">${f.label}</label>
+          <input type="${f.type || 'text'}" id="editField_${f.id}" value="${f.value || ''}" placeholder="${f.placeholder || ''}" style="width:100%; padding:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(212,175,55,0.3); border-radius:5px; color:white; outline:none; font-family:'Raleway', sans-serif;">
+        `;
+        fieldsContainer.appendChild(div);
+      });
+
+      currentEditFormCallback = onSave;
+      document.getElementById('editFormSaveBtn').onclick = () => {
+        const result = {};
+        fields.forEach(f => {
+          result[f.id] = document.getElementById(`editField_${f.id}`).value;
+        });
+        closeEditFormModal();
+        if (currentEditFormCallback) {
+          currentEditFormCallback(result);
+        }
+      };
+
+      document.getElementById('editFormModal').style.display = 'block';
+    }
+
+    function closeEditFormModal() {
+      document.getElementById('editFormModal').style.display = 'none';
+      currentEditFormCallback = null;
+    }
+
     function editStaticImage(imagePath) {
       currentEditItem = 'STATIC:' + imagePath;
       openAdminModal("Upload Image", "Select an image file or press CTRL+V to paste your new image.", true);
@@ -3030,59 +3068,60 @@
       let foundSpecial = specialsData.find(s => s.name === specialName);
       if (!foundSpecial) return;
 
-      const newName = prompt("Edit Special Name:", foundSpecial.name);
-      if (newName === null) return; 
+      openEditFormModal(`Edit Special: ${foundSpecial.name}`, [
+        { id: 'newName', label: 'Special Name', type: 'text', value: foundSpecial.name },
+        { id: 'newPrice', label: 'Price', type: 'number', value: foundSpecial.price },
+        { id: 'newDesc', label: 'Description (e.g. Unlimited)', type: 'text', value: foundSpecial.desc },
+        { id: 'newTag', label: 'Tag (e.g. ⭐ Chef\'s Pick)', type: 'text', value: foundSpecial.tag }
+      ], (data) => {
+        if (!data.newName || data.newName.trim() === "") return;
 
-      const newPrice = prompt("Edit Price:", foundSpecial.price);
-      if (newPrice === null) return; 
+        foundSpecial.name = data.newName.trim();
+        foundSpecial.price = parseInt(data.newPrice) || 0;
+        foundSpecial.desc = data.newDesc.trim();
+        foundSpecial.tag = data.newTag.trim();
 
-      const newDesc = prompt("Edit Description (e.g. Unlimited):", foundSpecial.desc);
-      if (newDesc === null) return;
-
-      const newTag = prompt("Edit Tag (e.g. ⭐ Chef's Pick):", foundSpecial.tag);
-      if (newTag === null) return;
-
-      foundSpecial.name = newName.trim();
-      foundSpecial.price = parseInt(newPrice) || 0;
-      foundSpecial.desc = newDesc.trim();
-      foundSpecial.tag = newTag.trim();
-
-      saveMenuToGithub(`Edit special details: ${foundSpecial.name}`);
+        saveMenuToGithub(`Edit special details: ${foundSpecial.name}`);
+      });
     }
 
     function addNewCategory() {
-      const catName = prompt("Enter new Category Name:");
-      if (!catName || catName.trim() === "") return;
-      
-      if (menuData.find(c => c.category.toLowerCase() === catName.toLowerCase())) {
-        alert("Category already exists!");
-        return;
-      }
-      
-      menuData.push({ category: catName.trim(), items: [] });
-      saveMenuToGithub(`Add new category: ${catName.trim()}`);
+      openEditFormModal("Add New Category", [
+        { id: 'catName', label: 'Category Name', type: 'text', placeholder: 'e.g. Desserts' }
+      ], (data) => {
+        const catName = data.catName;
+        if (!catName || catName.trim() === "") return;
+        
+        if (menuData.find(c => c.category.toLowerCase() === catName.toLowerCase())) {
+          alert("Category already exists!");
+          return;
+        }
+        
+        menuData.push({ category: catName.trim(), items: [] });
+        saveMenuToGithub(`Add new category: ${catName.trim()}`);
+      });
     }
 
     function addNewItem(category) {
-      const itemName = prompt(`Add new item to ${category}\n\nEnter Item Name:`);
-      if (!itemName || itemName.trim() === "") return;
-      
-      const selfPrice = prompt("Enter Self-Service Price (Numbers only):", "0");
-      if (selfPrice === null) return;
-      
-      const acPrice = prompt("Enter AC Price (Numbers only):", "0");
-      if (acPrice === null) return;
-      
-      const catData = menuData.find(c => c.category === category);
-      if (catData) {
-        catData.items.push({
-          name: itemName.trim(),
-          self_price: parseInt(selfPrice) || 0,
-          ac_price: parseInt(acPrice) || 0,
-          image: "logo.png"
-        });
-        saveMenuToGithub(`Add new item: ${itemName.trim()} to ${category}`);
-      }
+      openEditFormModal(`Add Item to ${category}`, [
+        { id: 'itemName', label: 'Item Name', type: 'text', placeholder: 'e.g. Masala Dosa' },
+        { id: 'selfPrice', label: 'Self-Service Price', type: 'number', value: '0' },
+        { id: 'acPrice', label: 'AC Price', type: 'number', value: '0' }
+      ], (data) => {
+        const itemName = data.itemName;
+        if (!itemName || itemName.trim() === "") return;
+        
+        const catData = menuData.find(c => c.category === category);
+        if (catData) {
+          catData.items.push({
+            name: itemName.trim(),
+            self_price: parseInt(data.selfPrice) || 0,
+            ac_price: parseInt(data.acPrice) || 0,
+            image: "logo.png"
+          });
+          saveMenuToGithub(`Add new item: ${itemName.trim()} to ${category}`);
+        }
+      });
     }
 
     function editItemDetails(itemName) {
@@ -3093,20 +3132,19 @@
       }
       if (!foundItem) return;
 
-      const newName = prompt("Edit Item Name:", foundItem.name);
-      if (newName === null) return; 
+      openEditFormModal(`Edit ${foundItem.name}`, [
+        { id: 'newName', label: 'Item Name', type: 'text', value: foundItem.name },
+        { id: 'newSelfPrice', label: 'Self-Service Price', type: 'number', value: foundItem.self_price },
+        { id: 'newAcPrice', label: 'AC Price', type: 'number', value: foundItem.ac_price }
+      ], (data) => {
+        if (!data.newName || data.newName.trim() === "") return;
+        
+        foundItem.name = data.newName.trim();
+        foundItem.self_price = parseInt(data.newSelfPrice) || 0;
+        foundItem.ac_price = parseInt(data.newAcPrice) || 0;
 
-      const newSelfPrice = prompt("Edit Self-Service Price:", foundItem.self_price);
-      if (newSelfPrice === null) return; 
-
-      const newAcPrice = prompt("Edit AC Price:", foundItem.ac_price);
-      if (newAcPrice === null) return; 
-
-      foundItem.name = newName.trim();
-      foundItem.self_price = parseInt(newSelfPrice) || 0;
-      foundItem.ac_price = parseInt(newAcPrice) || 0;
-
-      saveMenuToGithub(`Edit item details: ${foundItem.name}`);
+        saveMenuToGithub(`Edit item details: ${foundItem.name}`);
+      });
     }
 
     function editItemImage(itemName) {
@@ -3289,6 +3327,19 @@
   <style>
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
+
+  <!-- Edit Form Modal -->
+  <div id="editFormModal" class="modal" style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.8);">
+    <div class="modal-content" style="background:#141414; margin: 10% auto; padding: 30px; border: 1px solid var(--gold); width: 90%; max-width:500px; border-radius:10px; color:white;">
+      <h3 id="editFormTitle" style="color:var(--gold); margin-bottom:20px; text-align:center; font-family:'Playfair Display', serif; font-size:1.5rem;">Edit Details</h3>
+      <div id="editFormFields"></div>
+      <div style="display:flex; justify-content:space-between; margin-top:20px;">
+        <button onclick="closeEditFormModal()" style="background:transparent; color:var(--text-muted); border:1px solid rgba(255,255,255,0.1); padding:10px 20px; border-radius:5px; cursor:pointer; width:48%;">Cancel</button>
+        <button id="editFormSaveBtn" style="background:linear-gradient(135deg, var(--gold), var(--saffron)); color:var(--black); border:none; padding:10px 20px; border-radius:5px; cursor:pointer; width:48%; font-weight:bold;">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
   <div id="adminModal" class="modal" style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.8);">
     <div class="modal-content" style="background:#141414; margin: 15% auto; padding: 20px; border: 1px solid var(--gold); width: 80%; max-width:500px; border-radius:10px; color:white; text-align:center;">
       <h3 id="adminModalTitle" style="color:var(--gold); margin-bottom:15px;">Admin Action</h3>
