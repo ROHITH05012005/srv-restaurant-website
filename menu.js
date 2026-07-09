@@ -36,7 +36,7 @@ const menuData = [
                 "name": "Horlicks / Bournvita",
                 "self_price": 20,
                 "ac_price": 40,
-                "image": "assets/images/horlicks_premium.png"
+                "image": "assets/images/horlicks___bournvita_1783625932750.jpeg"
             },
             {
                 "name": "Cold Tea",
@@ -1571,4 +1571,4 @@ const specialsData = [
     }
 ];
 
-const siteVersion = 1783625732369;
+const siteVersion = 1783625934364;
