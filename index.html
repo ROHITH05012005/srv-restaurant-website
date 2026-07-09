@@ -2588,6 +2588,14 @@
     var script = document.createElement('script');
     script.src = 'menu.js?v=' + Date.now();
     script.onload = function() {
+      if (typeof siteVersion !== 'undefined') {
+        document.querySelectorAll('img[src^="assets/images/"]').forEach(img => {
+          let currentSrc = img.getAttribute('src');
+          if (currentSrc && !currentSrc.includes('?v=')) {
+            img.src = currentSrc + '?v=' + siteVersion;
+          }
+        });
+      }
       if (typeof menuData !== 'undefined' && typeof generateMenuTabs === 'function') {
         generateMenuTabs();
       }
@@ -3007,6 +3015,7 @@
         if (typeof specialsData !== 'undefined') {
           jsContent += "\nconst specialsData = " + JSON.stringify(specialsData, null, 4) + ";\n";
         }
+        jsContent += "\nconst siteVersion = " + Date.now() + ";\n";
         const jsBase64 = btoa(unescape(encodeURIComponent(jsContent)));
         await uploadFileToGithub('menu.js', jsBase64, message, token, true);
         
@@ -3175,6 +3184,15 @@
         if (currentEditItem.startsWith('STATIC:')) {
           const staticPath = currentEditItem.split(':')[1];
           await uploadFileToGithub(staticPath, b64, `Update static image ${staticPath}`, token, true);
+          
+          let jsContent = "const menuData = " + JSON.stringify(menuData, null, 4) + ";\n";
+          if (typeof specialsData !== 'undefined') {
+            jsContent += "\nconst specialsData = " + JSON.stringify(specialsData, null, 4) + ";\n";
+          }
+          jsContent += "\nconst siteVersion = " + Date.now() + ";\n";
+          const jsBase64 = btoa(unescape(encodeURIComponent(jsContent)));
+          await uploadFileToGithub('menu.js', jsBase64, `Update siteVersion for static image`, token, true);
+
           document.getElementById('adminModalBody').innerText = "Success! Image updated.";
           document.getElementById('adminModalSpinner').style.display = 'none';
           document.querySelectorAll(`img[src*="${staticPath}"]`).forEach(img => img.src = base64Data);
@@ -3212,6 +3230,7 @@
           if (typeof specialsData !== 'undefined') {
             jsContent += "\nconst specialsData = " + JSON.stringify(specialsData, null, 4) + ";\n";
           }
+          jsContent += "\nconst siteVersion = " + Date.now() + ";\n";
           const jsBase64 = btoa(unescape(encodeURIComponent(jsContent)));
           await uploadFileToGithub('menu.js', jsBase64, `Update image link for ${currentEditItem}`, token, true);
         }
