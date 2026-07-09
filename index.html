@@ -3177,6 +3177,7 @@
           await uploadFileToGithub(staticPath, b64, `Update static image ${staticPath}`, token, true);
           document.getElementById('adminModalBody').innerText = "Success! Image updated.";
           document.getElementById('adminModalSpinner').style.display = 'none';
+          document.querySelectorAll(`img[src*="${staticPath}"]`).forEach(img => img.src = base64Data);
           return;
         }
 
@@ -3218,10 +3219,10 @@
         document.getElementById('adminModalBody').innerText = "Success! Image updated.";
         document.getElementById('adminModalSpinner').style.display = 'none';
         
-        // Update only the specific image src in the DOM — no full page rebuild
-        document.querySelectorAll(`img[alt="${currentEditItem}"]`).forEach(img => {
-          img.src = imagePath + '?t=' + Date.now();
-        });
+        // Update only the specific image src in the DOM using the raw base64 data for an instant update.
+        // This avoids the broken image icon while waiting 60s for GitHub Pages to deploy the actual file.
+        document.querySelectorAll(`img[alt="${currentEditItem}"]`).forEach(img => img.src = base64Data);
+        
         if (typeof renderSpecials === 'function') renderSpecials();
         
       } catch (err) {
