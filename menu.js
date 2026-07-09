@@ -6,7 +6,7 @@ const menuData = [
                 "name": "Tea / Coffee",
                 "self_price": 15,
                 "ac_price": 30,
-                "image": "assets/images/tea___coffee_1783623337485.png"
+                "image": "assets/images/filter_coffee_new.png"
             },
             {
                 "name": "Ginger Coffee",
@@ -42,7 +42,7 @@ const menuData = [
                 "name": "Cold Tea",
                 "self_price": 45,
                 "ac_price": 60,
-                "image": "logo.png"
+                "image": "assets/images/cold_tea_1783623550309.png"
             }
         ]
     },
