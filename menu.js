@@ -42,7 +42,7 @@ const menuData = [
                 "name": "Cold Tea",
                 "self_price": 45,
                 "ac_price": 60,
-                "image": "assets/images/cold_tea_1783599586081.jpeg"
+                "image": "assets/images/cold_tea_1783599621418.jpeg"
             }
         ]
     },
