@@ -2583,7 +2583,20 @@
     <img id="lightboxImg" src="" alt="Gallery">
   </div>
 
-  <script>document.write('<scr'+'ipt src="menu.js?v='+Date.now()+'"><\/scr'+'ipt>');</script>
+  <script>
+    // Load menu.js with a cache-busting timestamp dynamically
+    var script = document.createElement('script');
+    script.src = 'menu.js?v=' + Date.now();
+    script.onload = function() {
+      if (typeof menuData !== 'undefined' && typeof generateMenuTabs === 'function') {
+        generateMenuTabs();
+      }
+      if (typeof specialsData !== 'undefined' && typeof renderSpecials === 'function') {
+        renderSpecials();
+      }
+    };
+    document.head.appendChild(script);
+  </script>
   <script>
     // CURSOR
     const cursor = document.getElementById('cursor');
@@ -2898,13 +2911,7 @@
     }, { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-    // Initialize menu on load
-    if (typeof menuData !== 'undefined') {
-      generateMenuTabs();
-    }
-    if (typeof specialsData !== 'undefined') {
-      renderSpecials();
-    }
+    // Menu initialization is now handled by the menu.js script onload callback
 
     // COUNTERS
     const counterObs = new IntersectionObserver((entries) => {
