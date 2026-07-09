@@ -52,6 +52,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   <style>
     :root {
       --gold: #D4AF37;
@@ -2977,11 +2978,22 @@
     let currentEditItem = null;
 
     function getGithubToken() {
-      let token = localStorage.getItem('gh_pat');
-      if (!token) {
+      let encryptedToken = localStorage.getItem('gh_pat');
+      if (!encryptedToken) {
         alert("You must be logged in as Admin to perform this action.");
+        return null;
       }
-      return token;
+      try {
+        const bytes = CryptoJS.AES.decrypt(encryptedToken, 'srv_admin_secret_key');
+        const token = bytes.toString(CryptoJS.enc.Utf8);
+        if (!token) throw new Error("Invalid token");
+        return token;
+      } catch (err) {
+        alert("Admin session invalid. Please log in again.");
+        localStorage.removeItem('gh_pat');
+        window.location.href = 'admin.html';
+        return null;
+      }
     }
 
     function openAdminModal(title, bodyText, showFileInput = false) {
