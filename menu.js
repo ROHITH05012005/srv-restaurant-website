@@ -1570,3 +1570,5 @@ const specialsData = [
         "image": "assets/images/filter_coffee_premium.png"
     }
 ];
+
+const siteVersion = 1783625732369;
