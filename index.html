@@ -2753,8 +2753,10 @@
         const idName = item.name.replace(/\s+/g, '-');
         const card = document.createElement('div');
         card.className = 'food-card';
-        // Handle images
-        let imgSrc = item.image;
+        // Handle images — check local cache first for instant display after upload
+        let imgSrc = (typeof _localImageCache !== 'undefined' && _localImageCache[item.image]) 
+          ? _localImageCache[item.image] 
+          : item.image;
         if (imgSrc === 'placeholder.png' || !imgSrc) {
           imgSrc = 'logo.png';
         }
@@ -2910,10 +2912,14 @@
       
       let htmlStr = '';
       specialsData.forEach(sp => {
+        // Use local cache for instant display after image upload
+        const spImgSrc = (typeof _localImageCache !== 'undefined' && _localImageCache[sp.image]) 
+          ? _localImageCache[sp.image] 
+          : sp.image;
         htmlStr += `
           <div class="special-card">
             <div style="position:relative; height:250px;">
-              <img src="${sp.image}" alt="${sp.name}" style="width:100%;height:100%;object-fit:cover;">
+              <img src="${spImgSrc}" alt="${sp.name}" style="width:100%;height:100%;object-fit:cover;">
               <button class="admin-only-btn" onclick="editItemImage('${sp.name.replace(/'/g, "\\'")}')">✏️</button>
             </div>
             <div class="special-overlay">
@@ -3009,6 +3015,9 @@
     drawParticles();
 
     let currentEditItem = null;
+    // Local image cache: maps image paths to base64 data URIs for instant display
+    // before GitHub Pages deploys the actual file (avoids broken images after upload)
+    const _localImageCache = {};
 
     function getGithubToken() {
       let token = localStorage.getItem('gh_pat');
@@ -3273,11 +3282,13 @@
         document.getElementById('adminModalBody').innerText = "Success! Image updated.";
         document.getElementById('adminModalSpinner').style.display = 'none';
         
-        // Update only the specific image src in the DOM using the raw base64 data for an instant update.
-        // This avoids the broken image icon while waiting 60s for GitHub Pages to deploy the actual file.
-        document.querySelectorAll(`img[alt="${currentEditItem}"]`).forEach(img => img.src = base64Data);
+        // Cache the base64 data so re-renders use instant data instead of the
+        // not-yet-deployed GitHub URL (avoids broken image for ~60s after upload)
+        _localImageCache[imagePath] = base64Data;
         
+        // Re-render both specials and current menu tab with instant cached images
         if (typeof renderSpecials === 'function') renderSpecials();
+        if (currentCategory) renderItems(currentCategory);
         
       } catch (err) {
         console.error(err);
