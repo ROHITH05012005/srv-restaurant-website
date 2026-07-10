@@ -2054,6 +2054,37 @@
       font-size: 0.7rem;
       margin-left: 10px;
     }
+    .delete-item-btn, .delete-category-btn {
+      display: none;
+    }
+    body.admin-mode .delete-item-btn {
+      display: inline-block;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 2px 5px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      margin-left: 5px;
+    }
+    body.admin-mode .delete-category-btn {
+      display: inline-block;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      line-height: 16px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 0.6rem;
+      margin-left: -12px;
+      margin-right: 8px;
+      vertical-align: middle;
+      z-index: 5;
+    }
     body.admin-mode .add-item-card {
       display: flex;
       flex-direction: column;
@@ -2735,6 +2766,17 @@
         btn.innerText = catData.category;
         btn.onclick = () => switchTab(catData.category);
         tabsContainer.appendChild(btn);
+
+        // Delete button for category (only in admin-mode)
+        const delBtn = document.createElement('button');
+        delBtn.className = 'delete-category-btn';
+        delBtn.innerText = '✕';
+        delBtn.title = `Delete ${catData.category}`;
+        delBtn.onclick = (e) => {
+          e.stopPropagation();
+          deleteCategory(catData.id, catData.category);
+        };
+        tabsContainer.appendChild(delBtn);
       });
       
       const addCatBtn = document.createElement('button');
@@ -2790,6 +2832,7 @@
               <div class="food-price">
                 ₹${price}
                 <button class="edit-details-btn" onclick="editItemDetails('${item.name.replace(/'/g, "\\'")}')">✏️</button>
+                <button class="delete-item-btn" onclick="deleteItem('${item.name.replace(/'/g, "\\'")}')">🗑️</button>
               </div>
               <div class="food-actions">
                 <button class="add-btn" onclick="addToCart(this, '${item.name.replace(/'/g, "\\'")}', ${price})">Add</button>
@@ -2829,10 +2872,12 @@
       drawer.classList.toggle('open');
     }
 
-    function addToCart(btn, name) {
-      // Get price from sibling span
-      const priceText = btn.previousElementSibling.textContent;
-      const price = parseInt(priceText.replace('₹', ''));
+    function addToCart(btn, name, price) {
+      if (price === undefined || isNaN(price)) {
+        // Fallback: parse from food-price sibling
+        const priceEl = btn.closest('.food-card-body').querySelector('.food-price');
+        price = parseInt(priceEl.textContent.replace(/[^\d]/g, '')) || 0;
+      }
 
       if (!cart[name]) {
         cart[name] = { price: price, qty: 1 };
@@ -3175,6 +3220,55 @@
         }
         document.getElementById('adminModalSpinner').style.display = 'none';
       });
+    }
+
+    async function deleteCategory(catId, catName) {
+      if (!confirm(`Are you sure you want to delete the category "${catName}" and all of its items?`)) return;
+      if (!await checkAdminStatus()) return;
+
+      openAdminModal("Deleting...", `Deleting category "${catName}"...`);
+      document.getElementById('adminModalSpinner').style.display = 'block';
+
+      const { error } = await supabaseClient.from('categories').delete().eq('id', catId);
+
+      if (error) {
+          document.getElementById('adminModalBody').innerText = "Error: " + error.message;
+      } else {
+          document.getElementById('adminModalBody').innerText = "Category Deleted!";
+          currentCategory = null; // reset category view
+          await loadMenuDataFromSupabase();
+      }
+      document.getElementById('adminModalSpinner').style.display = 'none';
+    }
+
+    async function deleteItem(itemName) {
+      if (!confirm(`Are you sure you want to delete the item "${itemName}"?`)) return;
+      if (!await checkAdminStatus()) return;
+
+      openAdminModal("Deleting...", `Deleting item "${itemName}"...`);
+      document.getElementById('adminModalSpinner').style.display = 'block';
+
+      // Find item ID
+      let foundItem = null;
+      for (let cat of menuData) {
+        let itm = cat.items.find(i => i.name === itemName);
+        if (itm) { foundItem = itm; break; }
+      }
+      if (!foundItem) {
+        alert("Item not found locally.");
+        closeAdminModal();
+        return;
+      }
+
+      const { error } = await supabaseClient.from('menu_items').delete().eq('id', foundItem.id);
+
+      if (error) {
+          document.getElementById('adminModalBody').innerText = "Error: " + error.message;
+      } else {
+          document.getElementById('adminModalBody').innerText = "Item Deleted!";
+          await loadMenuDataFromSupabase();
+      }
+      document.getElementById('adminModalSpinner').style.display = 'none';
     }
 
     function editItemDetails(itemName) {
