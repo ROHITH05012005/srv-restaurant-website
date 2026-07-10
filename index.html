@@ -53,6 +53,9 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabaseClient.js?v=5"></script>
   <style>
     :root {
       --gold: #D4AF37;
@@ -2618,26 +2621,42 @@
   </div>
 
   <script>
-    // Load menu.js with a cache-busting timestamp dynamically
-    var script = document.createElement('script');
-    script.src = 'menu.js?v=' + Date.now();
-    script.onload = function() {
-      if (typeof siteVersion !== 'undefined') {
-        document.querySelectorAll('img[src^="assets/images/"]').forEach(img => {
-          let currentSrc = img.getAttribute('src');
-          if (currentSrc && !currentSrc.includes('?v=')) {
-            img.src = currentSrc + '?v=' + siteVersion;
-          }
+    // Load menu data dynamically from Supabase
+    async function loadMenuDataFromSupabase() {
+      try {
+        const { data: categories, error: catErr } = await supabaseClient.from('categories').select('*').order('sort_order', { ascending: true });
+        const { data: items, error: itemErr } = await supabaseClient.from('menu_items').select('*');
+
+        if (catErr) throw catErr;
+        if (itemErr) throw itemErr;
+
+        window.menuData = categories.map(cat => {
+            return {
+                id: cat.id,
+                category: cat.name,
+                items: items.filter(i => i.category_id === cat.id).map(i => ({
+                    id: i.id,
+                    name: i.name,
+                    self_price: i.self_price,
+                    ac_price: i.ac_price,
+                    image: i.image_url ? (i.image_url.startsWith('assets') ? i.image_url : supabaseClient.storage.from('menu-images').getPublicUrl(i.image_url).data.publicUrl) : 'logo.png'
+                }))
+            };
         });
+
+        // Initialize UI
+        if (typeof generateMenuTabs === 'function') {
+          generateMenuTabs();
+        }
+        if (typeof specialsData !== 'undefined' && typeof renderSpecials === 'function') {
+          renderSpecials();
+        }
+      } catch (err) {
+        console.error("Error loading menu from Supabase:", err);
       }
-      if (typeof menuData !== 'undefined' && typeof generateMenuTabs === 'function') {
-        generateMenuTabs();
-      }
-      if (typeof specialsData !== 'undefined' && typeof renderSpecials === 'function') {
-        renderSpecials();
-      }
-    };
-    document.head.appendChild(script);
+    }
+    
+    loadMenuDataFromSupabase();
   </script>
   <script>
     // CURSOR
@@ -3019,13 +3038,14 @@
     // before GitHub Pages deploys the actual file (avoids broken images after upload)
     const _localImageCache = {};
 
-    function getGithubToken() {
-      let token = localStorage.getItem('gh_pat');
-      if (!token) {
+    
+    async function checkAdminStatus() {
+      const { data } = await supabaseClient.auth.getSession();
+      if (!data.session) {
         alert("You must be logged in as Admin to perform this action.");
-        return null;
+        return false;
       }
-      return token;
+      return true;
     }
 
     function openAdminModal(title, bodyText, showFileInput = false) {
@@ -3046,41 +3066,6 @@
       if (fileInput) fileInput.style.display = 'none';
       currentEditItem = null;
     }
-
-    async function saveMenuToGithub(message) {
-      const token = getGithubToken();
-      if (!token) return;
-
-      openAdminModal("Saving Changes", "Saving updates...");
-      document.getElementById('adminModalSpinner').style.display = 'block';
-
-      try {
-        let jsContent = "const menuData = " + JSON.stringify(menuData, null, 4) + ";\n";
-        if (typeof specialsData !== 'undefined') {
-          jsContent += "\nconst specialsData = " + JSON.stringify(specialsData, null, 4) + ";\n";
-        }
-        jsContent += "\nconst siteVersion = " + Date.now() + ";\n";
-        const jsBase64 = btoa(unescape(encodeURIComponent(jsContent)));
-        await uploadFileToGithub('menu.js', jsBase64, message, token, true);
-        
-        document.getElementById('adminModalBody').innerText = "Success! Updates saved.";
-        document.getElementById('adminModalSpinner').style.display = 'none';
-        
-        // Surgically re-render only the current tab, no full page rebuild
-        if (currentCategory) renderItems(currentCategory);
-        if (typeof renderSpecials === 'function') renderSpecials();
-        
-      } catch (err) {
-        console.error(err);
-        document.getElementById('adminModalBody').innerText = "Error: " + err.message;
-        document.getElementById('adminModalSpinner').style.display = 'none';
-        if (err.message.includes('401')) {
-          localStorage.removeItem('gh_pat'); 
-          document.getElementById('adminModalBody').innerText += "\nInvalid token. Please try again.";
-        }
-      }
-    }
-
 
     let currentEditFormCallback = null;
 
@@ -3105,9 +3090,10 @@
         fields.forEach(f => {
           result[f.id] = document.getElementById(`editField_${f.id}`).value;
         });
+        const callback = currentEditFormCallback;
         closeEditFormModal();
-        if (currentEditFormCallback) {
-          currentEditFormCallback(result);
+        if (callback) {
+          callback(result);
         }
       };
 
@@ -3125,40 +3111,34 @@
     }
 
     function editSpecialDetails(specialName) {
-      let foundSpecial = specialsData.find(s => s.name === specialName);
-      if (!foundSpecial) return;
-
-      openEditFormModal(`Edit Special: ${foundSpecial.name}`, [
-        { id: 'newName', label: 'Special Name', type: 'text', value: foundSpecial.name },
-        { id: 'newPrice', label: 'Price', type: 'number', value: foundSpecial.price },
-        { id: 'newDesc', label: 'Description (e.g. Unlimited)', type: 'text', value: foundSpecial.desc },
-        { id: 'newTag', label: 'Tag (e.g. ⭐ Chef\'s Pick)', type: 'text', value: foundSpecial.tag }
-      ], (data) => {
-        if (!data.newName || data.newName.trim() === "") return;
-
-        foundSpecial.name = data.newName.trim();
-        foundSpecial.price = parseInt(data.newPrice) || 0;
-        foundSpecial.desc = data.newDesc.trim();
-        foundSpecial.tag = data.newTag.trim();
-
-        saveMenuToGithub(`Edit special details: ${foundSpecial.name}`);
-      });
+      // Stub for specials if needed in future
+      alert("Specials editing is currently disabled.");
     }
 
     function addNewCategory() {
       openEditFormModal("Add New Category", [
         { id: 'catName', label: 'Category Name', type: 'text', placeholder: 'e.g. Desserts' }
-      ], (data) => {
+      ], async (data) => {
         const catName = data.catName;
         if (!catName || catName.trim() === "") return;
         
-        if (menuData.find(c => c.category.toLowerCase() === catName.toLowerCase())) {
-          alert("Category already exists!");
-          return;
+        if (!await checkAdminStatus()) return;
+
+        openAdminModal("Saving...", "Adding category...");
+        document.getElementById('adminModalSpinner').style.display = 'block';
+
+        const { error } = await supabaseClient.from('categories').insert([{ 
+            name: catName.trim(), 
+            sort_order: menuData.length 
+        }]);
+
+        if (error) {
+            document.getElementById('adminModalBody').innerText = "Error: " + error.message;
+        } else {
+            document.getElementById('adminModalBody').innerText = "Category Added!";
+            await loadMenuDataFromSupabase();
         }
-        
-        menuData.push({ category: catName.trim(), items: [] });
-        saveMenuToGithub(`Add new category: ${catName.trim()}`);
+        document.getElementById('adminModalSpinner').style.display = 'none';
       });
     }
 
@@ -3167,20 +3147,33 @@
         { id: 'itemName', label: 'Item Name', type: 'text', placeholder: 'e.g. Masala Dosa' },
         { id: 'selfPrice', label: 'Self-Service Price', type: 'number', value: '0' },
         { id: 'acPrice', label: 'AC Price', type: 'number', value: '0' }
-      ], (data) => {
+      ], async (data) => {
         const itemName = data.itemName;
         if (!itemName || itemName.trim() === "") return;
         
+        if (!await checkAdminStatus()) return;
+
+        openAdminModal("Saving...", "Adding item...");
+        document.getElementById('adminModalSpinner').style.display = 'block';
+
         const catData = menuData.find(c => c.category === category);
         if (catData) {
-          catData.items.push({
-            name: itemName.trim(),
-            self_price: parseInt(data.selfPrice) || 0,
-            ac_price: parseInt(data.acPrice) || 0,
-            image: "logo.png"
-          });
-          saveMenuToGithub(`Add new item: ${itemName.trim()} to ${category}`);
+            const { error } = await supabaseClient.from('menu_items').insert([{
+                category_id: catData.id,
+                name: itemName.trim(),
+                self_price: parseInt(data.selfPrice) || 0,
+                ac_price: parseInt(data.acPrice) || 0,
+                image_url: 'logo.png' // Default image
+            }]);
+
+            if (error) {
+                document.getElementById('adminModalBody').innerText = "Error: " + error.message;
+            } else {
+                document.getElementById('adminModalBody').innerText = "Item Added!";
+                await loadMenuDataFromSupabase();
+            }
         }
+        document.getElementById('adminModalSpinner').style.display = 'none';
       });
     }
 
@@ -3196,14 +3189,27 @@
         { id: 'newName', label: 'Item Name', type: 'text', value: foundItem.name },
         { id: 'newSelfPrice', label: 'Self-Service Price', type: 'number', value: foundItem.self_price },
         { id: 'newAcPrice', label: 'AC Price', type: 'number', value: foundItem.ac_price }
-      ], (data) => {
+      ], async (data) => {
         if (!data.newName || data.newName.trim() === "") return;
         
-        foundItem.name = data.newName.trim();
-        foundItem.self_price = parseInt(data.newSelfPrice) || 0;
-        foundItem.ac_price = parseInt(data.newAcPrice) || 0;
+        if (!await checkAdminStatus()) return;
 
-        saveMenuToGithub(`Edit item details: ${foundItem.name}`);
+        openAdminModal("Saving...", "Updating item...");
+        document.getElementById('adminModalSpinner').style.display = 'block';
+
+        const { error } = await supabaseClient.from('menu_items').update({
+            name: data.newName.trim(),
+            self_price: parseInt(data.newSelfPrice) || 0,
+            ac_price: parseInt(data.newAcPrice) || 0
+        }).eq('id', foundItem.id);
+
+        if (error) {
+            document.getElementById('adminModalBody').innerText = "Error: " + error.message;
+        } else {
+            document.getElementById('adminModalBody').innerText = "Item Updated!";
+            await loadMenuDataFromSupabase();
+        }
+        document.getElementById('adminModalSpinner').style.display = 'none';
       });
     }
 
@@ -3213,8 +3219,7 @@
     }
 
     async function processAdminImageUpload(blob) {
-      const token = getGithubToken();
-      if (!token) return;
+      if (!await checkAdminStatus()) return;
 
       document.getElementById('adminModalBody').innerText = "Uploading image...";
       document.getElementById('adminModalSpinner').style.display = 'block';
@@ -3222,82 +3227,60 @@
       if (fileInput) fileInput.style.display = 'none';
 
       try {
-        const base64Data = await convertBlobToBase64(blob);
-        const b64 = base64Data.split(',')[1]; 
-        
-        if (currentEditItem.startsWith('STATIC:')) {
-          const staticPath = currentEditItem.split(':')[1];
-          await uploadFileToGithub(staticPath, b64, `Update static image ${staticPath}`, token, true);
-          
-          let jsContent = "const menuData = " + JSON.stringify(menuData, null, 4) + ";\n";
-          if (typeof specialsData !== 'undefined') {
-            jsContent += "\nconst specialsData = " + JSON.stringify(specialsData, null, 4) + ";\n";
-          }
-          jsContent += "\nconst siteVersion = " + Date.now() + ";\n";
-          const jsBase64 = btoa(unescape(encodeURIComponent(jsContent)));
-          await uploadFileToGithub('menu.js', jsBase64, `Update siteVersion for static image`, token, true);
-
-          document.getElementById('adminModalBody').innerText = "Success! Image updated.";
-          document.getElementById('adminModalSpinner').style.display = 'none';
-          document.querySelectorAll(`img[src*="${staticPath}"]`).forEach(img => img.src = base64Data);
-          return;
-        }
-
         const safeName = currentEditItem.replace(/[^a-z0-9]/gi, '_').toLowerCase();
         const extension = blob.type.split('/')[1] || 'png';
-        const imagePath = `assets/images/${safeName}_${Date.now()}.${extension}`;
+        const fileName = `${safeName}_${Date.now()}.${extension}`;
 
-        await uploadFileToGithub(imagePath, b64, `Update image for ${currentEditItem}`, token);
+        if (currentEditItem.startsWith('STATIC:')) {
+            const staticKey = currentEditItem.replace('STATIC:', '');
+            const { error: uploadError } = await supabaseClient.storage.from('menu-images').upload(fileName, blob);
+            if (uploadError) throw uploadError;
+
+            const { error: confError } = await supabaseClient.from('site_config').upsert({
+                key: staticKey,
+                value: fileName
+            });
+            if (confError) throw confError;
+
+            document.getElementById('adminModalBody').innerText = "Success! Static image updated.";
+            document.getElementById('adminModalSpinner').style.display = 'none';
+            await loadMenuDataFromSupabase();
+            return;
+        }
+
+        const { error: uploadError } = await supabaseClient.storage.from('menu-images').upload(fileName, blob);
+        if (uploadError) throw uploadError;
 
         document.getElementById('adminModalBody').innerText = "Updating menu...";
 
-        let foundInMenu = false;
+        let foundItem = null;
         for (let cat of menuData) {
           let item = cat.items.find(i => i.name === currentEditItem);
-          if (item) {
-            item.image = imagePath;
-            foundInMenu = true;
-            break;
-          }
-        }
-        
-        if (!foundInMenu && typeof specialsData !== 'undefined') {
-          let sp = specialsData.find(s => s.name === currentEditItem);
-          if (sp) {
-            sp.image = imagePath;
-            foundInMenu = true;
-          }
+          if (item) { foundItem = item; break; }
         }
 
-        if (foundInMenu) {
-          let jsContent = "const menuData = " + JSON.stringify(menuData, null, 4) + ";\n";
-          if (typeof specialsData !== 'undefined') {
-            jsContent += "\nconst specialsData = " + JSON.stringify(specialsData, null, 4) + ";\n";
-          }
-          jsContent += "\nconst siteVersion = " + Date.now() + ";\n";
-          const jsBase64 = btoa(unescape(encodeURIComponent(jsContent)));
-          await uploadFileToGithub('menu.js', jsBase64, `Update image link for ${currentEditItem}`, token, true);
+        if (foundItem) {
+          const { error: updateError } = await supabaseClient.from('menu_items')
+            .update({ image_url: fileName })
+            .eq('id', foundItem.id);
+          if (updateError) throw updateError;
         }
 
         document.getElementById('adminModalBody').innerText = "Success! Image updated.";
         document.getElementById('adminModalSpinner').style.display = 'none';
         
-        // Cache the base64 data so re-renders use instant data instead of the
-        // not-yet-deployed GitHub URL (avoids broken image for ~60s after upload)
-        _localImageCache[imagePath] = base64Data;
-        
-        // Re-render both specials and current menu tab with instant cached images
-        if (typeof renderSpecials === 'function') renderSpecials();
-        if (currentCategory) renderItems(currentCategory);
+        // Cache instantly for UI
+        const reader = new FileReader();
+        reader.onload = async () => {
+            _localImageCache[fileName] = reader.result;
+            await loadMenuDataFromSupabase();
+        };
+        reader.readAsDataURL(blob);
         
       } catch (err) {
         console.error(err);
         document.getElementById('adminModalBody').innerText = "Error: " + err.message;
         document.getElementById('adminModalSpinner').style.display = 'none';
-        if (err.message.includes('401')) {
-          localStorage.removeItem('gh_pat'); 
-          document.getElementById('adminModalBody').innerText += "\nInvalid token. Please try again.";
-        }
       }
     }
 
@@ -3331,47 +3314,9 @@
       await processAdminImageUpload(blob);
     });
 
-    function convertBlobToBase64(blob) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onerror = reject;
-        reader.onload = () => resolve(reader.result);
-        reader.readAsDataURL(blob);
-      });
-    }
-
-    async function uploadFileToGithub(path, base64Content, message, token, getSha = false) {
-      const owner = "ROHITH05012005";
-      const repo = "sriraghavendravaibhava";
-      const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
-      
-      let sha = null;
-      if (getSha) {
-        const res = await fetch(url, { headers: { "Authorization": `token ${token}` } });
-        if (res.ok) {
-          const data = await res.json();
-          sha = data.sha;
-        }
-      }
-
-      const body = { message: message, content: base64Content, branch: "main" };
-      if (sha) body.sha = sha;
-
-      const response = await fetch(url, {
-        method: 'PUT',
-        headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify(body)
-      });
-
-      if (!response.ok) {
-        const errData = await response.json();
-        throw new Error(`GitHub API Error: ${response.status} - ${errData.message}`);
-      }
-      return await response.json();
-    }
-
-    function initAdminMode() {
-      if (localStorage.getItem('gh_pat')) {
+    async function initAdminMode() {
+      const { data } = await supabaseClient.auth.getSession();
+      if (data.session) {
         document.body.classList.add('admin-mode');
         const btn = document.getElementById('navAdminBtn');
         if (btn) {
@@ -3382,11 +3327,12 @@
     }
     initAdminMode();
 
-    function toggleAdminLogin(e) {
-      if (localStorage.getItem('gh_pat')) {
+    async function toggleAdminLogin(e) {
+      const { data } = await supabaseClient.auth.getSession();
+      if (data.session) {
         if (e) e.preventDefault();
         if (confirm("You are currently logged in as Admin. Do you want to logout?")) {
-          localStorage.removeItem('gh_pat');
+          await supabaseClient.auth.signOut();
           document.body.classList.remove('admin-mode');
           const btn = document.getElementById('navAdminBtn');
           if (btn) {
@@ -3398,7 +3344,7 @@
       }
       return true;
     }
-  </script>
+</script>
 
   <style>
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }

@@ -128,8 +128,8 @@
     <p class="subtitle">Please sign in to continue</p>
     
     <div class="input-group">
-      <label>Username</label>
-      <input type="text" id="loginUsername" placeholder="Enter username" autocapitalize="none" autocorrect="off">
+      <label>Email</label>
+      <input type="email" id="loginUsername" placeholder="Enter email" autocapitalize="none" autocorrect="off">
     </div>
     
     <div class="input-group">
@@ -143,40 +143,34 @@
     <a href="index.html" class="btn-back">Return to Website</a>
   </div>
 
-  <!-- Include CryptoJS for secure decryption -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabaseClient.js?v=5"></script>
   <script>
     // If already logged in, redirect to index
-    if (localStorage.getItem('gh_pat')) {
-      window.location.href = 'index.html';
+    async function checkSession() {
+      const { data } = await supabaseClient.auth.getSession();
+      if (data.session) {
+        window.location.href = 'index.html';
+      }
     }
+    checkSession();
 
-    function submitAdminLogin() {
-      const username = document.getElementById('loginUsername').value.trim().toLowerCase();
+    async function submitAdminLogin() {
+      const email = document.getElementById('loginUsername').value.trim();
       const password = document.getElementById('loginPassword').value.trim();
       
-      if (username !== 'admin') {
-        document.getElementById('loginError').style.display = 'block';
-        return;
-      }
+      document.getElementById('loginError').style.display = 'none';
 
-      // The GitHub PAT is encrypted using the admin password as the key.
-      // This ensures the PAT is NEVER stored in plain text in the source code.
-      const encryptedPat = "U2FsdGVkX19bDUW8OcHZN7GC/o/zjuVDMs4AYFF/LTXu+GBCMr0UpMk/pi3zCNqRN0wqkZRomn/y6RBITjoG6Q==";
-      
-      try {
-        const decryptedBytes = CryptoJS.AES.decrypt(encryptedPat, password);
-        const decryptedPat = decryptedBytes.toString(CryptoJS.enc.Utf8);
-        
-        // If decryption is successful and valid
-        if (decryptedPat.startsWith('ghp_') || decryptedPat.startsWith('github_pat_')) {
-          localStorage.setItem('gh_pat', decryptedPat);
-          window.location.href = 'index.html';
-        } else {
-          throw new Error("Invalid decryption");
-        }
-      } catch (e) {
+      const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+      if (error) {
+        document.getElementById('loginError').innerText = error.message;
         document.getElementById('loginError').style.display = 'block';
+      } else {
+        window.location.href = 'index.html';
       }
     }
   </script>

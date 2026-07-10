@@ -1,0 +1,24 @@
+{
+  "name": "srv-restaurant-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "crypto.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ROHITH05012005/srv-restaurant-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ROHITH05012005/srv-restaurant-website/issues"
+  },
+  "homepage": "https://github.com/ROHITH05012005/srv-restaurant-website#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.2"
+  }
+}
